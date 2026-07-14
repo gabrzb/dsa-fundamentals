@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func linearSearch(arr []int, target int) int {
-	for i := 0; i < len(arr); i++ {
-		if arr[i] == target {
+	for i, value := range arr {
+		if value == target {
 			return i
 		}
 	}
