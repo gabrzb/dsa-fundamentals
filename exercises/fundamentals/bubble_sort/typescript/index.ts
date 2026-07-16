@@ -18,5 +18,5 @@ const testBubbleSort = (arr: number[]) => {
   console.log(`Sorted array: ${sortedArr}`);
 }
 
-let arr = [64, 34, 25, 12, 22, 11, 90];
+let arr: number[] = [64, 34, 25, 12, 22, 11, 90];
 testBubbleSort(arr);
