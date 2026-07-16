@@ -1,6 +1,6 @@
 const twoCrystalBalls = (breaks: boolean[]): number => { 
-  let jmpAmount = Math.floor(Math.sqrt(breaks.length));
-  let i = jmpAmount;
+  let jmpAmount: number = Math.floor(Math.sqrt(breaks.length));
+  let i: number = jmpAmount;
 
   for (; i < breaks.length; i += jmpAmount) { 
     if (breaks[i]) {
@@ -10,7 +10,7 @@ const twoCrystalBalls = (breaks: boolean[]): number => {
 
   i -= jmpAmount;
 
-  for (let j = 0; j < jmpAmount && i < breaks.length; j++, i++) {
+  for (let j: number = 0; j < jmpAmount && i < breaks.length; j++, i++) {
     if (breaks[i]) {
       return i;
     }
@@ -19,7 +19,7 @@ const twoCrystalBalls = (breaks: boolean[]): number => {
   return -1;
 }
 
-const breaks = [
+const breaks: boolean[] = [
   false, false, false,
   true, true, true
 ];
