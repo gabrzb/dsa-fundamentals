@@ -7,15 +7,19 @@ const isValid = (s: string): boolean => {
   };
 
   for (const current of s) {
-    if (current === "(" || current === "[" || current === "{") {
-      stack.push(current);
-      continue;
-    }
-
-    const last = stack.pop();
-
-    if (last !== pairs[current]) {
-      return false;
+    switch (current) {
+      case '(':
+      case '[':
+      case '{':
+        stack.push(current);
+        break;
+      case ')':
+      case ']':
+      case '}':
+        if (stack.pop() !== pairs[current]) {
+          return false;
+        }
+        break;
     }
   }
 
