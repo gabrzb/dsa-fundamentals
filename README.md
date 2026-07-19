@@ -1,6 +1,6 @@
 # Data Structures and Algorithms
 
-A collection of data structures, algorithms, and coding exercises implemented in Go, TypeScript, and Python. The repository is intended as a practical study resource: each implementation is small, self-contained, and includes examples that can be run from the command line.
+A collection of data structures, algorithms, and coding exercises implemented in Go, TypeScript and Python. The repository is intended as a practical study resource: each implementation is small, self-contained, and includes examples that can be run from the command line.
 
 ## Contents
 
