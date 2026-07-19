@@ -1,6 +1,6 @@
 # Data Structures and Algorithms
 
-A collection of data structures, algorithms, and coding exercises implemented in Go, TypeScript and Python. The repository is intended as a practical study resource: each implementation is small, self-contained, and includes examples that can be run from the command line.
+A collection of data structures, algorithms, and coding problems implemented in Go, TypeScript and Python. The repository is intended as a practical study resource: each implementation is small, self-contained, and includes examples that can be run from the command line.
 
 ## Contents
 
@@ -13,15 +13,15 @@ A collection of data structures, algorithms, and coding exercises implemented in
 | Bubble sort | `O(n^2)` | [Solution](concepts/algorithms/implementation/bubble_sort/golang/main.go) | [Solution](concepts/algorithms/implementation/bubble_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/bubble_sort/python/main.py) |
 | Queue | `O(1)` enqueue, dequeue, and peek | [Solution](concepts/algorithms/implementation/queues/golang/main.go) | [Solution](concepts/algorithms/implementation/queues/typescript/index.ts) | [Solution](concepts/algorithms/implementation/queues/python/main.py) |
 
-### Exercises
+### Problems
 
-| Exercise | Main technique | Problem | Go | TypeScript | Python |
+| Problem | Main technique | Description | Go | TypeScript | Python |
 | --- | --- | --- | --- | --- | --- |
-| Contains Duplicate | Hash set | [Description](exercises/contains_duplicate/QUESTION.md) | [Solution](exercises/contains_duplicate/golang/main.go) | [Solution](exercises/contains_duplicate/typescript/index.ts) | [Solution](exercises/contains_duplicate/python/main.py) |
-| Minimum Distance to the Target Element | Linear scan | [Description](exercises/minimum_distance/QUESTION.md) | [Solution](exercises/minimum_distance/golang/main.go) | [Solution](exercises/minimum_distance/typescript/index.ts) | [Solution](exercises/minimum_distance/python/main.py) |
-| Search Insert Position | Binary search | [Description](exercises/search_insert_position/QUESTION.md) | [Solution](exercises/search_insert_position/golang/main.go) | [Solution](exercises/search_insert_position/typescript/index.ts) | [Solution](exercises/search_insert_position/python/main.py) |
-| Two Crystal Balls | Square-root jump search | [Description](exercises/two_crystal_balls/QUESTION.md) | [Solution](exercises/two_crystal_balls/golang/main.go) | [Solution](exercises/two_crystal_balls/typescript/index.ts) | [Solution](exercises/two_crystal_balls/python/main.py) |
-| Valid Parentheses | Stack | [Description](exercises/valid_parenthesis/QUESTION.md) | [Solution](exercises/valid_parenthesis/golang/main.go) | [Solution](exercises/valid_parenthesis/typescript/index.ts) | [Solution](exercises/valid_parenthesis/python/main.py) |
+| Contains Duplicate | Hash set | [Description](problems/contains_duplicate/QUESTION.md) | [Solution](problems/contains_duplicate/golang/main.go) | [Solution](problems/contains_duplicate/typescript/index.ts) | [Solution](problems/contains_duplicate/python/main.py) |
+| Minimum Distance to the Target Element | Linear scan | [Description](problems/minimum_distance/QUESTION.md) | [Solution](problems/minimum_distance/golang/main.go) | [Solution](problems/minimum_distance/typescript/index.ts) | [Solution](problems/minimum_distance/python/main.py) |
+| Search Insert Position | Binary search | [Description](problems/search_insert_position/QUESTION.md) | [Solution](problems/search_insert_position/golang/main.go) | [Solution](problems/search_insert_position/typescript/index.ts) | [Solution](problems/search_insert_position/python/main.py) |
+| Two Crystal Balls | Square-root jump search | [Description](problems/two_crystal_balls/QUESTION.md) | [Solution](problems/two_crystal_balls/golang/main.go) | [Solution](problems/two_crystal_balls/typescript/index.ts) | [Solution](problems/two_crystal_balls/python/main.py) |
+| Valid Parentheses | Stack | [Description](problems/valid_parenthesis/QUESTION.md) | [Solution](problems/valid_parenthesis/golang/main.go) | [Solution](problems/valid_parenthesis/typescript/index.ts) | [Solution](problems/valid_parenthesis/python/main.py) |
 
 ## Repository structure
 
@@ -34,8 +34,8 @@ A collection of data structures, algorithms, and coding exercises implemented in
 |               |-- golang/
 |               |-- typescript/
 |               `-- python/
-`-- exercises/
-    `-- <exercise>/
+`-- problems/
+    `-- <problem>/
         |-- QUESTION.md         # Problem statement
         |-- golang/
         |-- typescript/
@@ -71,4 +71,4 @@ cd <location>/python
 python main.py
 ```
 
-Replace `<location>` with the directory containing the implementation, such as `exercises/contains_duplicate` or `concepts/algorithms/implementation/binary_search`.
+Replace `<location>` with the directory containing the implementation, such as `problems/contains_duplicate` or `concepts/algorithms/implementation/binary_search`.
