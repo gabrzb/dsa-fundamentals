@@ -1,8 +1,8 @@
 const binarySearch = (arr: number[], target: number): number => {
   let left = 0;
-  let right = arr.length - 1;
+  let right = arr.length;
 
-  while (left <= right) {
+  while (left < right) {
     const mid = Math.floor((left + right) / 2);
 
     if (arr[mid] === target) {
@@ -10,7 +10,7 @@ const binarySearch = (arr: number[], target: number): number => {
     } else if (arr[mid] < target) {
       left = mid + 1;
     } else {
-      right = mid - 1;
+      right = mid;
     }
   }
 
@@ -23,7 +23,7 @@ const testBinarySearch = (arr: number[], target: number) => {
   if (result !== -1) {
     console.log(`Element found at index: ${result}`);
   } else {
-    console.log("Element not found in the array.");
+    console.log("Element not found");
   }
 }
 
