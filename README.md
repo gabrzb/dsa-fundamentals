@@ -15,13 +15,13 @@ A collection of data structures, algorithms, and coding exercises implemented in
 
 ### Exercises
 
-| Exercise | Main technique | Go | TypeScript | Python | Problem |
+| Exercise | Main technique | Problem | Go | TypeScript | Python |
 | --- | --- | --- | --- | --- | --- |
-| Contains Duplicate | Hash set | [Solution](exercises/contains_duplicate/golang/main.go) | [Solution](exercises/contains_duplicate/typescript/index.ts) | [Solution](exercises/contains_duplicate/python/main.py) | [Description](exercises/contains_duplicate/QUESTION.md) |
-| Minimum Distance to the Target Element | Linear scan | [Solution](exercises/minimum_distance/golang/main.go) | [Solution](exercises/minimum_distance/typescript/index.ts) | [Solution](exercises/minimum_distance/python/main.py) | [Description](exercises/minimum_distance/QUESTION.md) |
-| Search Insert Position | Binary search | [Solution](exercises/search_insert_position/golang/main.go) | [Solution](exercises/search_insert_position/typescript/index.ts) | [Solution](exercises/search_insert_position/python/main.py) | [Description](exercises/search_insert_position/QUESTION.md) |
-| Two Crystal Balls | Square-root jump search | [Solution](exercises/two_crystal_balls/golang/main.go) | [Solution](exercises/two_crystal_balls/typescript/index.ts) | [Solution](exercises/two_crystal_balls/python/main.py) | [Description](exercises/two_crystal_balls/QUESTION.md) |
-| Valid Parentheses | Stack | [Solution](exercises/valid_parenthesis/golang/main.go) | [Solution](exercises/valid_parenthesis/typescript/index.ts) | [Solution](exercises/valid_parenthesis/python/main.py) | [Description](exercises/valid_parenthesis/QUESTION.md) |
+| Contains Duplicate | Hash set | [Description](exercises/contains_duplicate/QUESTION.md) | [Solution](exercises/contains_duplicate/golang/main.go) | [Solution](exercises/contains_duplicate/typescript/index.ts) | [Solution](exercises/contains_duplicate/python/main.py) |
+| Minimum Distance to the Target Element | Linear scan | [Description](exercises/minimum_distance/QUESTION.md) | [Solution](exercises/minimum_distance/golang/main.go) | [Solution](exercises/minimum_distance/typescript/index.ts) | [Solution](exercises/minimum_distance/python/main.py) |
+| Search Insert Position | Binary search | [Description](exercises/search_insert_position/QUESTION.md) | [Solution](exercises/search_insert_position/golang/main.go) | [Solution](exercises/search_insert_position/typescript/index.ts) | [Solution](exercises/search_insert_position/python/main.py) |
+| Two Crystal Balls | Square-root jump search | [Description](exercises/two_crystal_balls/QUESTION.md) | [Solution](exercises/two_crystal_balls/golang/main.go) | [Solution](exercises/two_crystal_balls/typescript/index.ts) | [Solution](exercises/two_crystal_balls/python/main.py) |
+| Valid Parentheses | Stack | [Description](exercises/valid_parenthesis/QUESTION.md) | [Solution](exercises/valid_parenthesis/golang/main.go) | [Solution](exercises/valid_parenthesis/typescript/index.ts) | [Solution](exercises/valid_parenthesis/python/main.py) |
 
 ## Repository structure
 
