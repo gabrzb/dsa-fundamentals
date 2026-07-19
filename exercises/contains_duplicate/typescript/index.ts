@@ -20,7 +20,7 @@ const testContainsDuplicate = () => {
 
   for (const { input, expected } of testCases) {
     const result = containsDuplicate(input);
-    console.log(`isValid([${input}]) = ${result} | Expected: ${expected}`);
+    console.log(`containsDuplicate([${input}]) = ${result} | Expected: ${expected}`);
   }
 }
 
