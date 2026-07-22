@@ -1,25 +1,25 @@
 class ListNode {
-  private data: any;
+  private data: number;
   private next: ListNode | undefined;
 
-  constructor(data: any, nextNode: ListNode | undefined = undefined) {
+  constructor(data: number, nextNode: ListNode | undefined = undefined) {
     this.data = data;
     this.next = nextNode;
   }
   
-  getData() {
+  getData(): number {
     return this.data;
   }
 
-  getNext() { 
+  getNext(): ListNode | undefined {
     return this.next;
   }
 
-  hasNext() { 
+  hasNext(): boolean {
     return this.next !== undefined;
   }
 
-  setNext(nextNode: ListNode | undefined) {
+  setNext(nextNode: ListNode | undefined): void {
     this.next = nextNode;
   }
 }
@@ -31,7 +31,7 @@ class SinglyLinkedList {
     this.head = undefined;
   }
 
-  insertToBack(data: any) {
+  insertToBack(data: number): void {
     let current = this.head;
 
     if (current === undefined) {
@@ -45,12 +45,12 @@ class SinglyLinkedList {
     current.setNext(new ListNode(data));
   }
 
-  insertInFront(data: any) {
+  insertInFront(data: number): void {
     const oldHead = this.head;
     this.head = new ListNode(data, oldHead);
   }
 
-  search(data: any) {
+  search(data: number): ListNode | undefined {
     let current = this.head;
     
     while (current !== undefined) {
@@ -63,9 +63,9 @@ class SinglyLinkedList {
     return undefined;
   }
 
-  delete(target: any) {
+  delete(target: number): void {
     let current = this.head;
-    let previous = undefined;
+    let previous: ListNode | undefined = undefined;
 
     while (current !== undefined) {
       if (current.getData() === target) {
@@ -83,9 +83,9 @@ class SinglyLinkedList {
     throw new Error(`Node with data ${target} not found in the list.`);
   }
 
-  insertInSortedList(data: any) {
+  insertInSortedList(data: number): void {
     let current = this.head;
-    let previous = undefined;
+    let previous: ListNode | undefined = undefined;
 
     while (current !== undefined) {
       if (current.getData() > data) { 
@@ -108,11 +108,11 @@ class SinglyLinkedList {
     }
   }
 
-  printList() {
+  printList(): void {
     let current = this.head;
     let listString = 'head -> ';
     while (current !== undefined) {
-      listString += current.getData() + ' -> ';
+      listString += `${current.getData()} -> `;
       current = current.getNext();
     }
     listString += 'tail';
@@ -122,7 +122,7 @@ class SinglyLinkedList {
 
 
 function testSinglyLinkedList() { 
-  let linkedList = new SinglyLinkedList();
+  const linkedList = new SinglyLinkedList();
 
   linkedList.insertToBack(1);
   linkedList.insertToBack(2);
