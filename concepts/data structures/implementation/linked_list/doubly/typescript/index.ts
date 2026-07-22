@@ -1,199 +1,154 @@
-class NodeL {
-  private data: number;
-  private next: NodeL | undefined;
-  private prev: NodeL | undefined;
+type DoublyListNode<T> = {
+  value: T;
+  next?: DoublyListNode<T>;
+  prev?: DoublyListNode<T>;
+};
 
-  constructor(
-    data: number,
-    nextNode: NodeL | undefined = undefined,
-    prevNode: NodeL | undefined = undefined,
-  ) {
-    this.data = data;
-    this.next = nextNode;
-    this.prev = prevNode;
-  }
+class DoublyLinkedList<T> {
+  public length = 0;
+  private head?: DoublyListNode<T>;
+  private tail?: DoublyListNode<T>;
 
-  getData(): number {
-    return this.data;
-  }
+  insertInFront(value: T): void {
+    const node: DoublyListNode<T> = {
+      value,
+      next: this.head,
+    };
 
-  getNext(): NodeL | undefined {
-    return this.next;
-  }
-
-  setNext(nextNode: NodeL | undefined): void {
-    this.next = nextNode;
-  }
-
-  getPrev(): NodeL | undefined {
-    return this.prev;
-  }
-
-  setPrev(prevNode: NodeL | undefined): void {
-    this.prev = prevNode;
-  }
-}
-
-class DoublyLinkedList {
-  private head: NodeL | undefined;
-  private tail: NodeL | undefined;
-
-  constructor() {
-    this.head = undefined;
-    this.tail = undefined;
-  }
-
-  insertInFront(data: number): void {
-    const newNode = new NodeL(data, this.head);
-
-    if (this.head === undefined) {
-      this.tail = newNode;
+    if (!this.head) {
+      this.tail = node;
     } else {
-      this.head.setPrev(newNode);
+      this.head.prev = node;
     }
 
-    this.head = newNode;
+    this.head = node;
+    this.length++;
   }
 
-  insertInBack(data: number): void {
-    const newNode = new NodeL(data, undefined, this.tail);
+  insertInBack(value: T): void {
+    const node: DoublyListNode<T> = {
+      value,
+      prev: this.tail,
+    };
 
-    if (this.tail === undefined) {
-      this.head = newNode;
+    if (!this.tail) {
+      this.head = node;
     } else {
-      this.tail.setNext(newNode);
+      this.tail.next = node;
     }
 
-    this.tail = newNode;
+    this.tail = node;
+    this.length++;
   }
 
-  search(data: number): NodeL | undefined {
+  search(value: T): DoublyListNode<T> | undefined {
     let current = this.head;
 
-    while (current !== undefined) {
-      if (current.getData() === data) {
+    while (current) {
+      if (current.value === value) {
         return current;
       }
 
-      current = current.getNext();
+      current = current.next;
     }
 
     return undefined;
   }
 
-  delete(target: number): void {
-    const node = this.search(target);
+  delete(value: T): void {
+    const node = this.search(value);
 
-    if (node === undefined) {
-      throw new Error(`${target} not found in the list.`);
+    if (!node) {
+      throw new Error(`Value ${value} not found in the list.`);
     }
 
-    const previous = node.getPrev();
-    const next = node.getNext();
-
-    if (previous === undefined) {
-      this.head = next;
+    if (!node.prev) {
+      this.head = node.next;
     } else {
-      previous.setNext(next);
+      node.prev.next = node.next;
     }
 
-    if (next === undefined) {
-      this.tail = previous;
+    if (!node.next) {
+      this.tail = node.prev;
     } else {
-      next.setPrev(previous);
+      node.next.prev = node.prev;
     }
 
-    node.setNext(undefined);
-    node.setPrev(undefined);
+    node.next = undefined;
+    node.prev = undefined;
+    this.length--;
   }
 
-  insertInSpecificPosition(data: number, position: number): void {
+  insertInSpecificPosition(value: T, position: number): void {
     if (!Number.isInteger(position) || position < 0) {
-      throw new Error(`Position ${position} is invalid. It must be a non-negative integer.`);
+      throw new Error(
+        `Position ${position} is invalid. It must be a non-negative integer.`,
+      );
     }
 
     if (position === 0) {
-      this.insertInFront(data);
+      this.insertInFront(value);
       return;
     }
 
-    let current = this.head;
-    let index = 0;
+    let previous = this.head;
+    let index = 1;
 
-    while (current !== undefined && index < position) {
-      current = current.getNext();
+    while (previous && index < position) {
+      previous = previous.next;
       index++;
     }
 
-    if (index !== position) {
+    if (!previous) {
       throw new Error(`Position ${position} is out of bounds.`);
     }
 
-    if (current === undefined) {
-      this.insertInBack(data);
+    if (!previous.next) {
+      this.insertInBack(value);
       return;
     }
 
-    const previous = current.getPrev();
-    const newNode = new NodeL(data, current, previous);
+    const node: DoublyListNode<T> = {
+      value,
+      next: previous.next,
+      prev: previous,
+    };
 
-    previous?.setNext(newNode);
-    current.setPrev(newNode);
-  }
-
-  insertInSortedList(data: number): void {
-    let current = this.head;
-
-    while (current !== undefined && current.getData() <= data) {
-      current = current.getNext();
-    }
-
-    if (current === this.head) {
-      this.insertInFront(data);
-      return;
-    }
-
-    if (current === undefined) {
-      this.insertInBack(data);
-      return;
-    }
-
-    const previous = current.getPrev();
-    const newNode = new NodeL(data, current, previous);
-
-    previous?.setNext(newNode);
-    current.setPrev(newNode);
+    previous.next.prev = node;
+    previous.next = node;
+    this.length++;
   }
 
   printList(): void {
     let current = this.head;
-    const elements: number[] = [];
+    const values: T[] = [];
 
-    while (current !== undefined) {
-      elements.push(current.getData());
-      current = current.getNext();
+    while (current) {
+      values.push(current.value);
+      current = current.next;
     }
 
-    console.log("head <->", elements.join(" <-> "),"<-> tail");
+    console.log("head <->", values.join(" <-> "), "<-> tail");
   }
 }
 
-function testDoublyLinkedList() { 
-  const doublyLinkedList = new DoublyLinkedList();
+function testDoublyLinkedList() {
+  const doublyLinkedList = new DoublyLinkedList<number>();
 
   doublyLinkedList.insertInBack(10);
   doublyLinkedList.insertInBack(20);
   doublyLinkedList.insertInBack(30);
   doublyLinkedList.insertInFront(5);
   doublyLinkedList.printList();
-  
+  console.log(`Length: ${doublyLinkedList.length}`);
+
   doublyLinkedList.insertInSpecificPosition(15, 2);
   doublyLinkedList.printList();
-  doublyLinkedList.insertInSortedList(25);
-  doublyLinkedList.printList();
+  console.log(`Length: ${doublyLinkedList.length}`);
 
   doublyLinkedList.delete(15);
   doublyLinkedList.printList();
+  console.log(`Length: ${doublyLinkedList.length}`);
 }
 
 testDoublyLinkedList();

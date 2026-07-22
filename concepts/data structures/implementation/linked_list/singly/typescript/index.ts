@@ -1,140 +1,105 @@
-class ListNode {
-  private data: number;
-  private next: ListNode | undefined;
+type SinglyListNode<T> = {
+  value: T;
+  next?: SinglyListNode<T>;
+};
 
-  constructor(data: number, nextNode: ListNode | undefined = undefined) {
-    this.data = data;
-    this.next = nextNode;
-  }
-  
-  getData(): number {
-    return this.data;
-  }
+class SinglyLinkedList<T> {
+  public length = 0;
+  private head?: SinglyListNode<T>;
 
-  getNext(): ListNode | undefined {
-    return this.next;
-  }
+  insertInBack(value: T): void {
+    const node: SinglyListNode<T> = { value };
 
-  hasNext(): boolean {
-    return this.next !== undefined;
-  }
-
-  setNext(nextNode: ListNode | undefined): void {
-    this.next = nextNode;
-  }
-}
-
-class SinglyLinkedList {
-  private head: ListNode | undefined;
-  
-  constructor() {
-    this.head = undefined;
-  }
-
-  insertToBack(data: number): void {
-    let current = this.head;
-
-    if (current === undefined) {
-      this.head = new ListNode(data);
+    if (!this.head) {
+      this.head = node;
+      this.length++;
       return;
     }
 
-    while (current.hasNext()) {
-      current = current.getNext()!;
-    }
-    current.setNext(new ListNode(data));
-  }
-
-  insertInFront(data: number): void {
-    const oldHead = this.head;
-    this.head = new ListNode(data, oldHead);
-  }
-
-  search(data: number): ListNode | undefined {
     let current = this.head;
-    
-    while (current !== undefined) {
-      if (current.getData() === data) {
+
+    while (current.next) {
+      current = current.next;
+    }
+
+    current.next = node;
+    this.length++;
+  }
+
+  insertInFront(value: T): void {
+    this.head = {
+      value,
+      next: this.head,
+    };
+
+    this.length++;
+  }
+
+  search(value: T): SinglyListNode<T> | undefined {
+    let current = this.head;
+
+    while (current) {
+      if (current.value === value) {
         return current;
       }
-      current = current.getNext();
+
+      current = current.next;
     }
-    
+
     return undefined;
   }
 
-  delete(target: number): void {
+  delete(value: T): void {
     let current = this.head;
-    let previous: ListNode | undefined = undefined;
+    let previous: SinglyListNode<T> | undefined;
 
-    while (current !== undefined) {
-      if (current.getData() === target) {
-        if (previous === undefined) {
-          this.head = current.getNext();
+    while (current) {
+      if (current.value === value) {
+        if (!previous) {
+          this.head = current.next;
         } else {
-          previous.setNext(current.getNext());
+          previous.next = current.next;
         }
+
+        current.next = undefined;
+        this.length--;
         return;
       }
+
       previous = current;
-      current = current.getNext();
+      current = current.next;
     }
 
-    throw new Error(`Node with data ${target} not found in the list.`);
-  }
-
-  insertInSortedList(data: number): void {
-    let current = this.head;
-    let previous: ListNode | undefined = undefined;
-
-    while (current !== undefined) {
-      if (current.getData() > data) { 
-        if (previous === undefined) {
-          this.head = new ListNode(data, current);
-        } else {
-          previous.setNext(new ListNode(data, current));
-        }
-        return;
-      }
-     
-      previous = current;
-      current = current.getNext();
-    }
-
-    if (previous === undefined) {
-      this.head = new ListNode(data);
-    } else {
-      previous.setNext(new ListNode(data));
-    }
+    throw new Error(`Value ${value} not found in the list.`);
   }
 
   printList(): void {
     let current = this.head;
-    let listString = 'head -> ';
-    while (current !== undefined) {
-      listString += `${current.getData()} -> `;
-      current = current.getNext();
+    const values: T[] = [];
+
+    while (current) {
+      values.push(current.value);
+      current = current.next;
     }
-    listString += 'tail';
-    console.log(listString);
+
+    console.log("head ->", values.join(" -> "), "-> tail");
   }
 }
 
+function testSinglyLinkedList() {
+  const linkedList = new SinglyLinkedList<number>();
 
-function testSinglyLinkedList() { 
-  const linkedList = new SinglyLinkedList();
-
-  linkedList.insertToBack(1);
-  linkedList.insertToBack(2);
-  linkedList.insertToBack(3);
+  linkedList.insertInBack(1);
+  linkedList.insertInBack(2);
+  linkedList.insertInBack(3);
   linkedList.insertInFront(0);
 
   linkedList.printList();
+  console.log(`Length: ${linkedList.length}`);
+
   linkedList.delete(2);
   linkedList.printList();
-
-  linkedList.insertInSortedList(2);
-  linkedList.printList();
+  console.log(`Length: ${linkedList.length}`);
 }
 
 testSinglyLinkedList();
