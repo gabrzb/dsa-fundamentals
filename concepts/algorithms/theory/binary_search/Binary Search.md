@@ -11,7 +11,7 @@ Characteristics:
 Its time complexity is **O(log n)** because each comparison reduces the search space by half. Therefore, the number of comparisons corresponds to the number of times `n` can be divided by `2` until only one element remains: `log₂(n)`.
 
 General Illustration:
-![[Images/General.png]]
+![General Illustration](./Images/General.png)
 
 
 # Step-by-Step
@@ -24,7 +24,7 @@ General Illustration:
 
 To follow the same execution shown in the general illustration, we will search for the value `8` in the following sorted array:
 
-![[Images/Initial State.png]]
+![Initial State](./Images/Initial%20State.png)
 
 The indices start at `0`. In this implementation, `low` point to valid position to the array, meanwhile `high` point plus one outside of the array. Therefore, the initial value of `high` is `arr.length`, which is `9`.
 
@@ -65,7 +65,7 @@ mid = floor(0 + (8 - 0) / 2)
 mid = 4
 ```
 
-![[Images/First Iteration.png]]
+![First Iteration](./Images/First%20Iteration.png)
 
 The middle element is `arr[4] = 5`. Since `5 < 8`, the target can only be to the right of `mid`. The indices from `0` through `4` are discarded, and `low` is updated:
 
@@ -74,7 +74,7 @@ low = mid + 1
 low = 5
 ```
 
-![[Images/First Iteration - Result.png]]
+![First Iteration Result](./Images/First%20Iteration%20-%20Result.png)
 
 The new search interval contains `[6, 7, 8, 9]`, stored at indices `5` through `8`.
 
@@ -96,7 +96,7 @@ low = mid + 1
 low = 7
 ```
 
-![[Images/Second Iteration.png]]
+![Second Iteration](./Images/Second%20Iteration.png)
 
 The remaining search interval contains `[8, 9]`, stored at indices `7` and `8`.
 
@@ -111,7 +111,7 @@ mid = floor(7.5)
 mid = 7
 ```
 
-![[Images/Third Iteration.png]]
+![Third Iteration](./Images/Third%20Iteration.png)
 
 Now, `arr[7] = 8`. Since the middle element is equal to the target, the search stops immediately and returns `true`.
 
