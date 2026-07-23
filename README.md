@@ -12,6 +12,17 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Binary search | `O(log n)` | [Notes](concepts/algorithms/theory/binary_search/Binary%20Search.md) | [Solution](concepts/algorithms/implementation/binary_search/golang/main.go) | [Solution](concepts/algorithms/implementation/binary_search/typescript/index.ts) | [Solution](concepts/algorithms/implementation/binary_search/python/main.py) |
 | Bubble sort | `O(n^2)` | — | [Solution](concepts/algorithms/implementation/bubble_sort/golang/main.go) | [Solution](concepts/algorithms/implementation/bubble_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/bubble_sort/python/main.py) |
 
+### Data structure implementations
+
+| Data structure | Typical operation complexity | Go | TypeScript | Python |
+| --- | --- | --- | --- | --- |
+| Static array | `O(1)` access; `O(n)` insertion and deletion | [Solution](concepts/data%20structures/implementation/arrays/static_array/golang/main.go) | [Solution](concepts/data%20structures/implementation/arrays/static_array/typescript/index.ts) | [Solution](concepts/data%20structures/implementation/arrays/static_array/python/main.py) |
+| Dynamic array | `O(1)` access; amortized `O(1)` append | [Solution](concepts/data%20structures/implementation/arrays/dynamic_array/golang/main.go) | [Solution](concepts/data%20structures/implementation/arrays/dynamic_array/typescript/index.ts) | [Solution](concepts/data%20structures/implementation/arrays/dynamic_array/python/main.py) |
+| Singly linked list | `O(1)` insertion at head; `O(n)` access | [Solution](concepts/data%20structures/implementation/linked_list/singly/golang/main.go) | [Solution](concepts/data%20structures/implementation/linked_list/singly/typescript/index.ts) | [Solution](concepts/data%20structures/implementation/linked_list/singly/python/main.py) |
+| Doubly linked list | `O(1)` insertion at head or tail; `O(n)` access | [Solution](concepts/data%20structures/implementation/linked_list/doubly/golang/main.go) | [Solution](concepts/data%20structures/implementation/linked_list/doubly/typescript/index.ts) | [Solution](concepts/data%20structures/implementation/linked_list/doubly/python/main.py) |
+| Queue | `O(1)` enqueue, dequeue, and peek | [Solution](concepts/data%20structures/implementation/queues/golang/main.go) | [Solution](concepts/data%20structures/implementation/queues/typescript/index.ts) | [Solution](concepts/data%20structures/implementation/queues/python/main.py) |
+| Stack | `O(1)` push, pop, and peek | [Solution](concepts/data%20structures/implementation/stack/golang/main.go) | [Solution](concepts/data%20structures/implementation/stack/typescript/index.ts) | [Solution](concepts/data%20structures/implementation/stack/python/main.py) |
+
 ### Problems
 
 | Problem | Main technique | Description | Go | TypeScript | Python |
@@ -27,13 +38,19 @@ A collection of data structures, algorithms, and coding problems implemented in 
 ```text
 .
 |-- concepts/
-|   `-- algorithms/
+|   |-- algorithms/
 |       |-- theory/            # Illustrated explanations and walkthroughs
 |       |   `-- <topic>/
 |       |       |-- Images/
 |       |       `-- <topic>.md
-|       `-- implementation/    # Core algorithms and data structures
+|       `-- implementation/    # Core algorithms
 |           `-- <topic>/
+|               |-- golang/
+|               |-- typescript/
+|               `-- python/
+|   `-- data structures/
+|       `-- implementation/    # Core data structures
+|           `-- <structure>/
 |               |-- golang/
 |               |-- typescript/
 |               `-- python/
