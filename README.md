@@ -1,17 +1,16 @@
 # Data Structures and Algorithms
 
-A collection of data structures, algorithms, and coding problems implemented in Go, TypeScript and Python. The repository is intended as a practical study resource: each implementation is small, self-contained, and includes examples that can be run from the command line.
+A collection of data structures, algorithms, and coding problems implemented in Go, TypeScript and Python. The repository is intended as a practical study resource, combining illustrated theory notes with small, self-contained implementations and examples that can be run from the command line.
 
 ## Contents
 
 ### Algorithm implementations
 
-| Topic | Time complexity | Go | TypeScript | Python |
-| --- | --- | --- | --- | --- |
-| Linear search | `O(n)` | [Solution](concepts/algorithms/implementation/linear_search/golang/main.go) | [Solution](concepts/algorithms/implementation/linear_search/typescript/index.ts) | [Solution](concepts/algorithms/implementation/linear_search/python/main.py) |
-| Binary search | `O(log n)` | [Solution](concepts/algorithms/implementation/binary_search/golang/main.go) | [Solution](concepts/algorithms/implementation/binary_search/typescript/index.ts) | [Solution](concepts/algorithms/implementation/binary_search/python/main.py) |
-| Bubble sort | `O(n^2)` | [Solution](concepts/algorithms/implementation/bubble_sort/golang/main.go) | [Solution](concepts/algorithms/implementation/bubble_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/bubble_sort/python/main.py) |
-| Queue | `O(1)` enqueue, dequeue, and peek | [Solution](concepts/algorithms/implementation/queues/golang/main.go) | [Solution](concepts/algorithms/implementation/queues/typescript/index.ts) | [Solution](concepts/algorithms/implementation/queues/python/main.py) |
+| Topic | Time complexity | Theory | Go | TypeScript | Python |
+| --- | --- | --- | --- | --- | --- |
+| Linear search | `O(n)` | [Notes](concepts/algorithms/theory/linear_search/Linear%20Search.md) | [Solution](concepts/algorithms/implementation/linear_search/golang/main.go) | [Solution](concepts/algorithms/implementation/linear_search/typescript/index.ts) | [Solution](concepts/algorithms/implementation/linear_search/python/main.py) |
+| Binary search | `O(log n)` | [Notes](concepts/algorithms/theory/binary_search/Binary%20Search.md) | [Solution](concepts/algorithms/implementation/binary_search/golang/main.go) | [Solution](concepts/algorithms/implementation/binary_search/typescript/index.ts) | [Solution](concepts/algorithms/implementation/binary_search/python/main.py) |
+| Bubble sort | `O(n^2)` | — | [Solution](concepts/algorithms/implementation/bubble_sort/golang/main.go) | [Solution](concepts/algorithms/implementation/bubble_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/bubble_sort/python/main.py) |
 
 ### Problems
 
@@ -29,6 +28,10 @@ A collection of data structures, algorithms, and coding problems implemented in 
 .
 |-- concepts/
 |   `-- algorithms/
+|       |-- theory/            # Illustrated explanations and walkthroughs
+|       |   `-- <topic>/
+|       |       |-- Images/
+|       |       `-- <topic>.md
 |       `-- implementation/    # Core algorithms and data structures
 |           `-- <topic>/
 |               |-- golang/
