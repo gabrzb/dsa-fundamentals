@@ -31,6 +31,7 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Minimum Distance to the Target Element | Linear scan | [Description](problems/minimum_distance/QUESTION.md) | [Solution](problems/minimum_distance/golang/main.go) | [Solution](problems/minimum_distance/typescript/index.ts) | [Solution](problems/minimum_distance/python/main.py) |
 | Search Insert Position | Binary search | [Description](problems/search_insert_position/QUESTION.md) | [Solution](problems/search_insert_position/golang/main.go) | [Solution](problems/search_insert_position/typescript/index.ts) | [Solution](problems/search_insert_position/python/main.py) |
 | Two Crystal Balls | Square-root jump search | [Description](problems/two_crystal_balls/QUESTION.md) | [Solution](problems/two_crystal_balls/golang/main.go) | [Solution](problems/two_crystal_balls/typescript/index.ts) | [Solution](problems/two_crystal_balls/python/main.py) |
+| Two Sum | Hash map | [Description](problems/two_sum/QUESTION.md) | [Solution](problems/two_sum/golang/main.go) | [Solution](problems/two_sum/typescript/index.ts) | [Solution](problems/two_sum/python/main.py) |
 | Valid Parentheses | Stack | [Description](problems/valid_parenthesis/QUESTION.md) | [Solution](problems/valid_parenthesis/golang/main.go) | [Solution](problems/valid_parenthesis/typescript/index.ts) | [Solution](problems/valid_parenthesis/python/main.py) |
 
 ## Repository structure
