@@ -141,12 +141,6 @@ The elements swap positions:
 
 ![Third comparison in the second pass](<images/Third Comparison - Second Pass.png>)
 
-At the end of the second pass, the array is:
-
-```text
-[3, 4, 2, 5, 8]
-```
-
 The value `5` has reached its final position. The last two elements are now sorted.
 
 ## 3rd pass
@@ -177,12 +171,6 @@ The elements swap positions:
 
 ![Second comparison in the third pass](<images/Second Comparison - Third Pass.png>)
 
-At the end of the third pass, the array is:
-
-```text
-[3, 2, 4, 5, 8]
-```
-
 The value `4` has reached its final position.
 
 ## 4th pass
@@ -210,10 +198,9 @@ pass < arr.length - 1
 4 < 5 - 1
 4 < 4 → false
 ```
+Since the condition is false, the algorithm does not start a fifth pass and exits the loop. If the first condition was true, the algorithm would have made another pass over the array, but the second condition would not have been satisfied, and the inner loop would not have executed. This is ilustrated in the following diagram:
 
 ![Loop termination](<images/Loop Termination.png>)
-
-Since the condition is false, the algorithm does not start a fifth pass and exits the loop. If the first condition was true, the algorithm would have made another pass over the array, but the second condition would not have been satisfied, and the inner loop would not have executed.
 
 ## Final state
 
