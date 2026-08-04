@@ -119,3 +119,13 @@ For an array with `n` elements, linear search may perform up to `n` comparisons:
 ```
 
 This growth in direct proportion to the input size is why linear search has a time complexity of **O(n)**.
+
+# Use Cases
+
+Linear search is suitable for:
+- Searching in an unsorted array or list;
+- Small datasets where the overhead of more complex algorithms is not justified;
+- Situations where the array is frequently modified, making it impractical to maintain a sorted order;
+- Finding the first occurrence of a target value in a collection.
+
+Linear search is not efficient for large datasets, especially when the data is sorted, as more efficient algorithms like binary search can be used in those cases.
