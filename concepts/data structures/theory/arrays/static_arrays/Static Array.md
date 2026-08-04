@@ -1,3 +1,5 @@
+# Static Arrays
+
 A static array is a data structure that stores elements of the same type in a fixed number of contiguous memory slots.
 
 Each element has an index, usually starting at `0`. The index provides direct access to any position in the array without requiring the preceding elements to be traversed.
@@ -160,7 +162,7 @@ addElement(arr, value) {
 
 ![Adding an element to a static array](<images/Element Addition.png>)
 
-Because the elements must be copied, this operation takes **O(n)** time.
+Since the elements must be copied, this operation takes **O(n)** time.
 
 If the array has unused slots and the value is inserted after the occupied portion, it can be stored in **O(1)** time without creating another array. The maximum capacity still remains unchanged.
 
@@ -196,8 +198,9 @@ removeElement(arr, indexToRemove) {
 
 ![Removing an element from a static array](<images/Element Removal.png>)
 
-This form of removal takes **O(n)** time because the remaining elements must be copied.
+This form of removal takes **O(n)** time the same way insertion does, but the array's capacity is reduced by one. 
 
+If the array has unused slots, a value can be removed in **O(1)** time without creating another array. The maximum capacity still remains unchanged.
 
 # Operation complexity
 
@@ -229,21 +232,6 @@ This form of removal takes **O(n)** time because the remaining elements must be 
 - The array may run out of space as the amount of data grows.
 - Insertions and removals may require shifting or copying elements.
 - The required capacity must be known or estimated in advance.
-
-
-# Static arrays and dynamic arrays
-
-| Characteristic             | Static array                              | Dynamic array                                |
-| -------------------------- | ----------------------------------------- | -------------------------------------------- |
-| Capacity                   | Defined when the array is created         | Can grow or shrink                           |
-| Index access               | **O(1)**                                  | **O(1)**                                     |
-| Automatic reallocation     | No                                        | May occur                                    |
-| Memory usage               | More predictable                          | May reserve additional capacity              |
-| Insertion beyond capacity  | Requires manually creating another array | The data structure expands itself internally |
-| Flexibility                | Lower                                     | Higher                                       |
-
-A dynamic array usually uses a static array internally. When its capacity is no longer sufficient, it creates a larger static array, copies the elements, and starts using the new storage.
-
 
 # When to use a static array
 
