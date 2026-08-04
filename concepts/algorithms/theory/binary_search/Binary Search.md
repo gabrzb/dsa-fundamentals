@@ -130,3 +130,13 @@ The search space was reduced from `9` elements to `4`, and then to `2`:
 ```
 
 This reduction by half after each comparison is why binary search has a time complexity of **O(log n)**.
+
+# Use Cases
+
+Binary search is suitable for:
+- Searching in a sorted array or list;
+- Finding the position of a specific element in a sorted collection;
+- Implementing efficient search algorithms in applications where the data is already sorted;
+- Reducing the time complexity of search operations in large datasets.
+
+Binary search should not be used for unsorted data, as it relies on the order of elements to function correctly. In such cases, linear search or other algorithms may be more appropriate.
