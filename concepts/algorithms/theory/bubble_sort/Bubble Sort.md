@@ -1,3 +1,5 @@
+# Bubble Sort
+
 Bubble Sort is a sorting algorithm that compares adjacent elements. When the element on the left is greater than the element on the right, they swap positions.
 
 At the end of each pass through the array, the largest unsorted element reaches its final position, much like a bubble rising to the surface.
@@ -59,7 +61,7 @@ arr[0] > arr[1]
 5 > 3 → true
 ```
 
-Because `5` is greater than `3`, the elements swap positions:
+`5` is greater than `3`, then the elements swap positions:
 
 ![First comparison in the first pass](<images/First Comparison - First Pass.png>)
 
@@ -71,7 +73,7 @@ Now, `i = 1`. The algorithm compares `arr[1]` with `arr[2]`:
 5 > 8 → false
 ```
 
-Because the elements are already in the correct order, no swap is performed:
+The elements are already in the correct order, so no swap is performed:
 
 ![Second comparison in the first pass](<images/Second Comparison - First Pass.png>)
 
@@ -115,7 +117,7 @@ The algorithm makes another pass over the unsorted portion:
 3 > 5 → false
 ```
 
-Because the elements are already in the correct order, no swap is performed:
+No swap is performed:
 
 ![First comparison in the second pass](<images/First Comparison - Second Pass.png>)
 
@@ -161,7 +163,7 @@ The algorithm scans only the remaining unsorted portion:
 3 > 4 → false
 ```
 
-Because the elements are already in the correct order, no swap is performed:
+No swap is performed:
 
 ![First comparison in the third pass](<images/First Comparison - Third Pass.png>)
 
@@ -211,7 +213,7 @@ pass < arr.length - 1
 
 ![Loop termination](<images/Loop Termination.png>)
 
-Because the condition is false, the algorithm does not start a fifth pass and exits the loop.
+Since the condition is false, the algorithm does not start a fifth pass and exits the loop. If the first condition was true, the algorithm would have made another pass over the array, but the second condition would not have been satisfied, and the inner loop would not have executed.
 
 ## Final state
 
@@ -241,3 +243,12 @@ In general, for an array with `n` elements, the maximum number of comparisons is
 ```
 
 This sum grows proportionally to `n²`, which explains Bubble Sort's **O(n²)** time complexity.
+
+# Use Cases
+
+Bubble Sort is suitable for:
+- Small datasets where simplicity is preferred over efficiency;
+- Educational purposes to teach the concept of sorting algorithms and algorithmic thinking;
+- Situations where the dataset is nearly sorted, as it can perform better than other O(n²) algorithms in such cases.
+
+Bubble Sort should not be used for large datasets due to its inefficiency compared to more advanced sorting algorithms like Quick Sort or Merge Sort, which have average time complexities of O(n log n).
