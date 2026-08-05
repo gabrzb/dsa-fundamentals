@@ -22,6 +22,10 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Doubly linked list | `O(1)` insertion at head or tail; `O(n)` access | — | [Solution](concepts/data%20structures/implementation/linked_list/doubly/golang/main.go) | [Solution](concepts/data%20structures/implementation/linked_list/doubly/typescript/index.ts) | [Solution](concepts/data%20structures/implementation/linked_list/doubly/python/main.py) |
 | Queue | `O(1)` enqueue, dequeue, and peek | [Notes](concepts/data%20structures/theory/queue/Queue.md) | [Solution](concepts/data%20structures/implementation/queues/golang/main.go) | [Solution](concepts/data%20structures/implementation/queues/typescript/index.ts) | [Solution](concepts/data%20structures/implementation/queues/python/main.py) |
 | Stack | `O(1)` push, pop, and peek | [Notes](concepts/data%20structures/theory/stack/Stack.md) | [Solution](concepts/data%20structures/implementation/stack/golang/main.go) | [Solution](concepts/data%20structures/implementation/stack/typescript/index.ts) | [Solution](concepts/data%20structures/implementation/stack/python/main.py) |
+| Binary tree base | `O(1)` node creation and access | — | [Solution](concepts/data%20structures/implementation/tree/bt_base/golang/binary_tree.go) | [Solution](concepts/data%20structures/implementation/tree/bt_base/typescript/binary_tree.ts) | [Solution](concepts/data%20structures/implementation/tree/bt_base/python/binary_tree.py) |
+| Binary tree comparison | `O(n)` time; `O(h)` recursion space | — | [Solution](concepts/data%20structures/implementation/tree/bt_comparison/golang/main.go) | [Solution](concepts/data%20structures/implementation/tree/bt_comparison/typescript/index.ts) | [Solution](concepts/data%20structures/implementation/tree/bt_comparison/python/main.py) |
+| Binary tree breadth-first search | `O(n)` time; `O(w)` queue space | — | [Solution](concepts/data%20structures/implementation/tree/bt_traversal/breadth_first/golang/main.go) | [Solution](concepts/data%20structures/implementation/tree/bt_traversal/breadth_first/typescript/bt_bfs.ts) | [Solution](concepts/data%20structures/implementation/tree/bt_traversal/breadth_first/python/main.py) |
+| Binary tree depth-first traversal | `O(n)` time; `O(h)` recursion space | — | [In-order](concepts/data%20structures/implementation/tree/bt_traversal/depth_first/golang/bt_in_order.go), [post-order](concepts/data%20structures/implementation/tree/bt_traversal/depth_first/golang/bt_post_order.go), [pre-order](concepts/data%20structures/implementation/tree/bt_traversal/depth_first/golang/bt_pre_order.go) | [In-order](concepts/data%20structures/implementation/tree/bt_traversal/depth_first/typescript/bt_in_order.ts), [post-order](concepts/data%20structures/implementation/tree/bt_traversal/depth_first/typescript/bt_post_order.ts), [pre-order](concepts/data%20structures/implementation/tree/bt_traversal/depth_first/typescript/bt_pre_order.ts) | [In-order](concepts/data%20structures/implementation/tree/bt_traversal/depth_first/python/bt_in_order.py), [post-order](concepts/data%20structures/implementation/tree/bt_traversal/depth_first/python/bt_post_order.py), [pre-order](concepts/data%20structures/implementation/tree/bt_traversal/depth_first/python/bt_pre_order.py) |
 
 ### Problems
 
@@ -71,6 +75,8 @@ A collection of data structures, algorithms, and coding problems implemented in 
 
 ## Running an implementation
 
+In the following examples, replace `<location>` with the directory containing the implementation, such as `problems/contains_duplicate` or `concepts/algorithms/implementation/binary_search`.
+
 ### Go
 
 Each Go solution has its own module. Enter its directory and run it:
@@ -98,4 +104,32 @@ cd <location>/python
 python main.py
 ```
 
-Replace `<location>` with the directory containing the implementation, such as `problems/contains_duplicate` or `concepts/algorithms/implementation/binary_search`.
+
+### Running the binary tree implementations
+
+The binary tree operations reuse the language-specific node implementation in `bt_base`.
+
+Go modules can be run from their implementation directories:
+
+```bash
+cd "concepts/data structures/implementation/tree/bt_comparison/golang"
+go run .
+```
+
+For TypeScript, run the operation's source file:
+
+```bash
+cd "concepts/data structures/implementation/tree/bt_traversal/depth_first/typescript"
+npx tsx bt_in_order.ts
+```
+
+Run Python tree operations as modules from the `tree` directory so Python can resolve `bt_base`:
+
+```bash
+cd "concepts/data structures/implementation/tree"
+python -m bt_comparison.python.main
+python -m bt_traversal.breadth_first.python.main
+python -m bt_traversal.depth_first.python.bt_in_order
+python -m bt_traversal.depth_first.python.bt_post_order
+python -m bt_traversal.depth_first.python.bt_pre_order
+```
