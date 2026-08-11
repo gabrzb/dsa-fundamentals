@@ -1,16 +1,16 @@
 from bt_base.python.binary_tree import BinaryNode
 
-def search(node, needle):
-    if node is None:
+def search(curr, needle):
+    if curr is None:
         return False
 
-    if node.value == needle:
+    if curr.value == needle:
         return True
 
-    if node.value < needle:
-        return search(node.right, needle)
+    if curr.value < needle:
+        return search(curr.right, needle)
 
-    return search(node.left, needle)
+    return search(curr.left, needle)
 
 def dfs(head, needle):
     return search(head, needle)
