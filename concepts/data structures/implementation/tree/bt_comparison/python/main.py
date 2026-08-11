@@ -1,6 +1,5 @@
 from bt_base.python.binary_tree import BinaryNode
 
-
 def compare(a, b):
     # Structure checks
     if a is None and b is None:
