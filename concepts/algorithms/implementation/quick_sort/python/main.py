@@ -38,11 +38,10 @@ def test_quick_sort():
 
     for input_arr, expected in test_cases:
         result = quick_sort(input_arr.copy())
-        passed = result == expected
 
         print(
-            f"Input: {input_arr} | Result: {result} | "
-            f"Expected: {expected} | Passed: {passed}"
+            f"Input: {input_arr}\nResult: {result} | "
+            f"Expected: {expected}"
         )
 
 test_quick_sort()
