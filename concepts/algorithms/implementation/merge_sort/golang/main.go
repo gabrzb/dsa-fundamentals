@@ -39,7 +39,7 @@ func mergeSort(arr []int) []int {
 	return merge(mergeSort(leftArray), mergeSort(rightArray))
 }
 
-func main() {
+func testMergeSort() {
 	testCases := []struct {
 		input    []int
 		expected []int
@@ -61,4 +61,8 @@ func main() {
 			testCase.expected,
 		)
 	}
+}
+
+func main() {
+	testMergeSort()
 }
