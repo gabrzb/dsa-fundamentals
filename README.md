@@ -17,7 +17,7 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Quick sort | Average `O(n log n)`; worst-case `O(n^2)` | — | [Solution](concepts/algorithms/implementation/quick_sort/golang/main.go) | [Solution](concepts/algorithms/implementation/quick_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/quick_sort/python/main.py) |
 | Heap sort | `O(n log n)` | — | [Solution](concepts/algorithms/implementation/heap_sort/golang/main.go) | [Solution](concepts/algorithms/implementation/heap_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/heap_sort/python/main.py) |
 | Radix sort (nonnegative integers) | `O(d(n + b))` for `d` digits and base `b` | — | [Solution](concepts/algorithms/implementation/radix_sort/golang/main.go) | [Solution](concepts/algorithms/implementation/radix_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/radix_sort/python/main.py) |
-| Recursive maze solver | `O(r * c)` for `r` rows and `c` columns | [Case study](concepts/algorithms/implementation/recursion/CASE.md) | [Solution](concepts/algorithms/implementation/recursion/golang/main.go) | [Solution](concepts/algorithms/implementation/recursion/typescript/index.ts) | [Solution](concepts/algorithms/implementation/recursion/python/main.py) |
+| Recursive maze solver | `O(r * c)` for `r` rows and `c` columns | — | [Solution](concepts/algorithms/implementation/recursion/typescript/index.ts) | [Solution](concepts/algorithms/implementation/recursion/python/main.py) |
 
 ### Data structure implementations
 
