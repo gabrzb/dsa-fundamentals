@@ -50,25 +50,24 @@ class minHeap {
 
   private heapifyDown(idx: number): void {
     const leftIdx = this.leftChild(idx);
-    const rightIdx = this.rightChild(idx);
-
-    if (idx >= this.length || leftIdx >= this.length) {
+    if (leftIdx >= this.length) {
       return;
     }
 
-    const leftValue = this.data[leftIdx];
-    const rightValue = this.data[rightIdx];
-    const value = this.data[idx];
+    let smallestIdx = leftIdx;
+    const rightIdx = this.rightChild(idx);
 
-    if (leftValue > rightValue && value > rightValue) {
-      this.data[idx] = rightValue;
-      this.data[rightIdx] = value;
-      this.heapifyDown(rightIdx);
-    } else if (leftValue < rightValue && value > leftValue) {
-      this.data[idx] = leftValue;
-      this.data[leftIdx] = value;
-      this.heapifyDown(leftIdx);
+    if (rightIdx < this.length && this.data[rightIdx] < this.data[leftIdx]) {
+      smallestIdx = rightIdx;
     }
+
+    if (this.data[idx] <= this.data[smallestIdx]) {
+      return;
+    }
+
+    [this.data[idx], this.data[smallestIdx]] =
+      [this.data[smallestIdx], this.data[idx]];
+    this.heapifyDown(smallestIdx);
   }
   
   private parent(idx: number): number {
