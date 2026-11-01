@@ -95,23 +95,28 @@ nonzero exit code; importing an implementation does not execute demonstrations.
 - Go 1.26.3 or newer
 - Python 3.10 or newer, available as `python`
 - Node.js 24.12 or newer
+- pnpm 11 or newer
 
 The test suites use Go's `testing`, Python's `unittest`, and Node's `node:test`
-with strict assertions. No third-party packages or installation step are needed.
-TypeScript runs using Node's native type stripping.
+with strict assertions. TypeScript runs using Node's native type stripping.
+The TypeScript compiler is a development dependency managed by pnpm, so no global
+TypeScript installation is required.
 
 ## Development
 
 Run commands from the repository root:
 
 ```sh
+pnpm install --frozen-lockfile
 task
 task test
 task check
 ```
 
 `task` lists commands. `task test` runs all three language suites sequentially.
-`task check` also runs `go vet ./...`.
+`task check` also checks TypeScript implementation types and runs `go vet ./...`.
+Run `task check:typescript` or `pnpm typecheck` to check types separately.
+`tsconfig.json` covers implementations; tests run directly through Node.js.
 
 Run a language suite or pass arguments to its test runner:
 

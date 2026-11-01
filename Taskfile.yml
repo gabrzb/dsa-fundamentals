@@ -32,10 +32,16 @@ tasks:
       - node --test {{.CLI_ARGS}} tests/typescript/*.test.ts
 
   check:
-    desc: Run all tests and Go static analysis
+    desc: Run all tests, TypeScript type checking and Go static analysis
     cmds:
       - task: test
+      - task: check:typescript
       - go vet ./...
+
+  check:typescript:
+    desc: Check implementation types with the project TypeScript compiler
+    cmds:
+      - pnpm exec tsc --noEmit
 
   fmt:go:
     desc: Format Go implementations and tests
