@@ -31,7 +31,7 @@ export function bfs(graph: WeightedAdjacencyMatrix, source: number, needle: numb
     seen[curr] = true;
   } while (q.length);
 
-  if (prev[needle] === -1) {
+  if (!seen[needle]) {
     return null;
   }
 

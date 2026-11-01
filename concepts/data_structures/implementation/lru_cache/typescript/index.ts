@@ -9,6 +9,7 @@ export function createNode<V>(value: V): DoublyLinkedListNode<V> {
 }
 
 export class LRU<K, V> {
+  private capacity: number;
   private length: number;
   private head?: DoublyLinkedListNode<V>;
   private tail?: DoublyLinkedListNode<V>;
@@ -16,7 +17,8 @@ export class LRU<K, V> {
   private lookup: Map<K, DoublyLinkedListNode<V>>;
   private reverseLookup: Map<DoublyLinkedListNode<V>, K>;
 
-  constructor(private capacity: number = 10) {
+  constructor(capacity: number = 10) {
+    this.capacity = capacity;
     this.length = 0;
     this.head = this.tail = undefined;
     this.lookup = new Map<K, DoublyLinkedListNode<V>>();

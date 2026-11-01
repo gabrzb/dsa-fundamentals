@@ -45,6 +45,9 @@ export function countingSort(arr: number[], exp: number): number[] {
 }
 
 export function radixSort(arr: number[]): number[] {
+  if (checkNegativeNumbers(arr)) {
+    throw new Error("Radix sort requires nonnegative integers");
+  }
   const maxNum: number = getMax(arr);
   let sortedArr: number[] = [...arr];
 
