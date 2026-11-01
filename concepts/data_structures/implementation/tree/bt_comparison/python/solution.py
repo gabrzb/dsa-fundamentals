@@ -1,4 +1,7 @@
-from concepts.data_structures.implementation.tree.bt_base.python.binary_tree import BinaryNode
+from concepts.data_structures.implementation.tree.bt_base.python.binary_tree import (
+    BinaryNode,
+)
+
 
 def compare(a, b):
 
@@ -7,7 +10,6 @@ def compare(a, b):
 
     if a is None or b is None:
         return False
-
 
     if a.value != b.value:
         return False

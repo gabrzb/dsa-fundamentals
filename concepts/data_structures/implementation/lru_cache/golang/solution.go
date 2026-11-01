@@ -20,6 +20,9 @@ type LRU[K comparable, V any] struct {
 }
 
 func NewLRU[K comparable, V any](capacity int) *LRU[K, V] {
+	if capacity <= 0 {
+		panic("capacity must be a positive integer")
+	}
 	return &LRU[K, V]{
 		capacity:      capacity,
 		lookup:        make(map[K]*DoublyLinkedListNode[V]),

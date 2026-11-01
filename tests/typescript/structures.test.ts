@@ -110,6 +110,12 @@ test("LRU refreshes reads and updates before eviction", () => {
   assert.equal(cache.get("a"), 10);
 });
 
+test("LRU rejects invalid capacities", () => {
+  for (const capacity of [0, -1, 1.5, NaN]) {
+    assert.throws(() => new LRU(capacity));
+  }
+});
+
 for (const List of [SinglyLinkedList, DoublyLinkedList]) {
   test(`${List.name}: removes middle, head and tail`, () => {
     const list = new List<number>();

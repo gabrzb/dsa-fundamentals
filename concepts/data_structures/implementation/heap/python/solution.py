@@ -20,7 +20,7 @@ class Heap:
             return out, True
 
         self.data[0] = self.data[self.length]
-        self.data = self.data[:self.length]
+        self.data = self.data[: self.length]
         self.heapify_down(0)
 
         return out, True
@@ -48,10 +48,7 @@ class Heap:
         smallest_index = left_index
         right_index = self.right_child(index)
 
-        if (
-            right_index < self.length
-            and self.data[right_index] < self.data[left_index]
-        ):
+        if right_index < self.length and self.data[right_index] < self.data[left_index]:
             smallest_index = right_index
 
         if self.data[index] <= self.data[smallest_index]:

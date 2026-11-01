@@ -15,6 +15,7 @@ class ListNode:
     def set_next(self, next_node: "ListNode | None") -> None:
         self.next = next_node
 
+
 class SinglyLinkedList:
     def __init__(self):
         self.head: ListNode | None = None

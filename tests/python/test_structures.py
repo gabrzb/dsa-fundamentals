@@ -1,15 +1,25 @@
 import unittest
 
-from concepts.data_structures.implementation.arrays.dynamic_array.python.main import DynamicArray
-from concepts.data_structures.implementation.arrays.static_array.python.main import StaticArray
-from concepts.data_structures.implementation.hashmaps.python.main import HashMap
-from concepts.data_structures.implementation.heap.python.main import Heap
-from concepts.data_structures.implementation.linked_list.doubly.python.main import DoublyLinkedList
-from concepts.data_structures.implementation.linked_list.singly.python.main import SinglyLinkedList
-from concepts.data_structures.implementation.lru_cache.python.main import LRU
-from concepts.data_structures.implementation.queues.python.main import Queue
-from concepts.data_structures.implementation.ringbuffer.python.main import RingBuffer
-from concepts.data_structures.implementation.stack.python.main import Stack
+from concepts.data_structures.implementation.arrays.dynamic_array.python.solution import (
+    DynamicArray,
+)
+from concepts.data_structures.implementation.arrays.static_array.python.solution import (
+    StaticArray,
+)
+from concepts.data_structures.implementation.hashmaps.python.solution import HashMap
+from concepts.data_structures.implementation.heap.python.solution import Heap
+from concepts.data_structures.implementation.linked_list.doubly.python.solution import (
+    DoublyLinkedList,
+)
+from concepts.data_structures.implementation.linked_list.singly.python.solution import (
+    SinglyLinkedList,
+)
+from concepts.data_structures.implementation.lru_cache.python.solution import LRU
+from concepts.data_structures.implementation.queues.python.solution import Queue
+from concepts.data_structures.implementation.ringbuffer.python.solution import (
+    RingBuffer,
+)
+from concepts.data_structures.implementation.stack.python.solution import Stack
 
 
 class StructureTests(unittest.TestCase):
@@ -59,7 +69,9 @@ class StructureTests(unittest.TestCase):
         values = [5, -1, 3, 3, 0, 10, 2]
         for value in values:
             heap.insert(value)
-        self.assertEqual([heap.delete() for _ in values], [(value, True) for value in sorted(values)])
+        self.assertEqual(
+            [heap.delete() for _ in values], [(value, True) for value in sorted(values)]
+        )
         self.assertEqual(heap.delete(), (0, False))
         heap.insert(4)
         self.assertEqual(heap.delete(), (4, True))
@@ -110,6 +122,11 @@ class StructureTests(unittest.TestCase):
         self.assertIsNone(cache.get("c"))
         self.assertEqual(cache.get("a"), 10)
         self.assertEqual(cache.length, 2)
+
+    def test_lru_rejects_invalid_capacity(self):
+        for capacity in (0, -1, True, 1.5):
+            with self.subTest(capacity=capacity), self.assertRaises(ValueError):
+                LRU(capacity)
 
     def test_linked_lists_remove_head_middle_and_tail(self):
         for list_type in (SinglyLinkedList, DoublyLinkedList):

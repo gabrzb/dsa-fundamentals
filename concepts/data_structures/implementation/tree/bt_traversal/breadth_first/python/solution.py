@@ -1,4 +1,7 @@
-from concepts.data_structures.implementation.tree.bt_base.python.binary_tree import BinaryNode
+from concepts.data_structures.implementation.tree.bt_base.python.binary_tree import (
+    BinaryNode,
+)
+
 
 def bfs(head, needle):
     queue = [head]
@@ -8,7 +11,6 @@ def bfs(head, needle):
 
         if curr is None:
             continue
-
 
         if curr.value == needle:
             return True

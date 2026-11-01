@@ -1,4 +1,4 @@
-export function qs(arr: number[], low: number, high: number): void {
+function qs(arr: number[], low: number, high: number): void {
   if (low >= high) {
     return;
   }
@@ -9,7 +9,7 @@ export function qs(arr: number[], low: number, high: number): void {
   qs(arr, pivotIdx + 1, high);
 }
 
-export function partition(arr: number[], low: number, high: number): number {
+function partition(arr: number[], low: number, high: number): number {
  const pivot = arr[high];
   let idx = low - 1;
 

@@ -1,5 +1,5 @@
-class DynamicArray():
-    def __init__(self, initial_capacity = 1):
+class DynamicArray:
+    def __init__(self, initial_capacity=1):
         self._size = 0
         self._capacity = initial_capacity
         self._array = [None] * self._capacity
@@ -7,7 +7,7 @@ class DynamicArray():
     def _double_size(self):
         old_array = self._array
         self._capacity *= 2
-        self._array = [None] *  (self._capacity)
+        self._array = [None] * (self._capacity)
 
         for i in range(self._size):
             self._array[i] = old_array[i]

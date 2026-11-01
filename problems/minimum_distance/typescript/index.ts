@@ -1,19 +1,11 @@
 export const getMinDistance = (nums: number[], target: number, start: number): number => {
-    let minDistance: number = nums.length;
+  let minDistance = nums.length;
 
-        for (let i: number = 0; i < nums.length; i++) {
-            if (nums[i] == target) {
-                let distance: number = i - start;
+  for (let index = 0; index < nums.length; index++) {
+    if (nums[index] === target) {
+      minDistance = Math.min(minDistance, Math.abs(index - start));
+    }
+  }
 
-                if (distance < 0) {
-                    distance = -distance;
-                }
-
-                if (distance < minDistance) {
-                    minDistance = distance;
-                }
-            }
-        }
-
-    return minDistance;
+  return minDistance;
 };

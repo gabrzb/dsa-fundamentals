@@ -4,6 +4,7 @@ class HashMapNode:
         self.value = value
         self.next = None
 
+
 class HashMap:
     def __init__(self, size):
         if not isinstance(size, int) or isinstance(size, bool) or size <= 0:

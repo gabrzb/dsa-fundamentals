@@ -5,6 +5,7 @@ def checkNegative(arr):
 
     return False
 
+
 def getMax(arr):
     mx = arr[0]
 
@@ -13,6 +14,7 @@ def getMax(arr):
             mx = arr[i]
 
     return mx
+
 
 def countingSort(arr, exp):
     output = [0] * len(arr)
@@ -31,6 +33,7 @@ def countingSort(arr, exp):
         count[digit] -= 1
 
     return output
+
 
 def radixSort(arr):
     if not arr:

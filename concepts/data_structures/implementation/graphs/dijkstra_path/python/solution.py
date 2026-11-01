@@ -1,7 +1,11 @@
 WeightedAdjacencyList = list[list[list[int]]]
 
+
 def has_unvisited(seen: list[bool], dists: list[float]) -> bool:
-    return any(not is_seen and dists[i] < float("inf") for i, is_seen in enumerate(seen))
+    return any(
+        not is_seen and dists[i] < float("inf") for i, is_seen in enumerate(seen)
+    )
+
 
 def get_lowest_unvisited(seen: list[bool], dists: list[float]) -> int:
     idx = -1
@@ -16,6 +20,7 @@ def get_lowest_unvisited(seen: list[bool], dists: list[float]) -> int:
             idx = i
 
     return idx
+
 
 def dijkstra_list(
     source: int,

@@ -1,6 +1,6 @@
 import { BinaryNode } from "../../../bt_base/typescript/binary_tree.ts";
 
-export function bfs(head: BinaryNode<number>, needle: number): boolean {
+export function bfs(head: BinaryNode<number> | null, needle: number): boolean {
   const q: (BinaryNode<number> | null)[] = [head];
 
   while (q.length) {
@@ -9,7 +9,6 @@ export function bfs(head: BinaryNode<number>, needle: number): boolean {
     if (!curr) {
       continue;
     }
-
 
     if (curr.value === needle) {
       return true;

@@ -19,6 +19,7 @@ class Node:
     def set_previous(self, previous_node):
         self.previous = previous_node
 
+
 class DoublyLinkedList:
     def __init__(self):
         self.head = None

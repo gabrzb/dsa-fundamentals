@@ -2,6 +2,7 @@ from collections import deque
 
 WeightedAdjacencyMatrix = list[list[int]]
 
+
 def bfs(
     graph: WeightedAdjacencyMatrix,
     source: int,
@@ -29,7 +30,6 @@ def bfs(
 
     if not seen[needle]:
         return None
-
 
     curr = needle
     path = []

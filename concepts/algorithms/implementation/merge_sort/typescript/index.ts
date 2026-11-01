@@ -1,4 +1,4 @@
-export function merge(leftArray: number[], rightArray: number[]): number[] {
+function merge(leftArray: number[], rightArray: number[]): number[] {
   let mergedArray: number[] = [];
 
   while (leftArray.length && rightArray.length) {

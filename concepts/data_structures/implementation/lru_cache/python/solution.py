@@ -4,8 +4,11 @@ class DoublyLinkedListNode:
         self.next = None
         self.prev = None
 
+
 class LRU:
     def __init__(self, capacity=10):
+        if not isinstance(capacity, int) or isinstance(capacity, bool) or capacity <= 0:
+            raise ValueError("Capacity must be a positive integer")
         self.length = 0
         self.capacity = capacity
         self.head = None
@@ -15,10 +18,6 @@ class LRU:
 
     def update(self, key, value):
         node = self._lookup.get(key)
-
-
-
-
 
         if node is None:
             node = DoublyLinkedListNode(value)
@@ -40,10 +39,8 @@ class LRU:
         if node is None:
             return None
 
-
         self._detach(node)
         self._prepend(node)
-
 
         return node.value
 

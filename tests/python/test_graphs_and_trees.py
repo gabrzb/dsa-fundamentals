@@ -1,15 +1,35 @@
 import unittest
 
-from concepts.data_structures.implementation.graphs.bfs_adj_matrix.python.main import bfs
-from concepts.data_structures.implementation.graphs.dfs_adj_list.python.main import dfs
-from concepts.data_structures.implementation.graphs.dijkstra_path.python.main import dijkstra_list
-from concepts.data_structures.implementation.tree.bt_base.python.binary_tree import BinaryNode
-from concepts.data_structures.implementation.tree.bt_comparison.python.main import compare
-from concepts.data_structures.implementation.tree.bt_dfs.python.main import dfs as tree_dfs
-from concepts.data_structures.implementation.tree.bt_traversal.breadth_first.python.main import bfs as tree_bfs
-from concepts.data_structures.implementation.tree.bt_traversal.depth_first.python.bt_in_order import in_order_search
-from concepts.data_structures.implementation.tree.bt_traversal.depth_first.python.bt_post_order import post_order_search
-from concepts.data_structures.implementation.tree.bt_traversal.depth_first.python.bt_pre_order import pre_order_search
+from concepts.data_structures.implementation.graphs.bfs_adj_matrix.python.solution import (
+    bfs,
+)
+from concepts.data_structures.implementation.graphs.dfs_adj_list.python.solution import (
+    dfs,
+)
+from concepts.data_structures.implementation.graphs.dijkstra_path.python.solution import (
+    dijkstra_list,
+)
+from concepts.data_structures.implementation.tree.bt_base.python.binary_tree import (
+    BinaryNode,
+)
+from concepts.data_structures.implementation.tree.bt_comparison.python.solution import (
+    compare,
+)
+from concepts.data_structures.implementation.tree.bt_dfs.python.solution import (
+    dfs as tree_dfs,
+)
+from concepts.data_structures.implementation.tree.bt_traversal.breadth_first.python.solution import (
+    bfs as tree_bfs,
+)
+from concepts.data_structures.implementation.tree.bt_traversal.depth_first.python.bt_in_order import (
+    in_order_search,
+)
+from concepts.data_structures.implementation.tree.bt_traversal.depth_first.python.bt_post_order import (
+    post_order_search,
+)
+from concepts.data_structures.implementation.tree.bt_traversal.depth_first.python.bt_pre_order import (
+    pre_order_search,
+)
 
 
 class GraphAndTreeTests(unittest.TestCase):
@@ -33,7 +53,11 @@ class GraphAndTreeTests(unittest.TestCase):
 
     def test_tree_traversals_and_search(self):
         tree = BinaryNode(2, BinaryNode(1), BinaryNode(3))
-        for traverse, expected in [(in_order_search, [1, 2, 3]), (pre_order_search, [2, 1, 3]), (post_order_search, [1, 3, 2])]:
+        for traverse, expected in [
+            (in_order_search, [1, 2, 3]),
+            (pre_order_search, [2, 1, 3]),
+            (post_order_search, [1, 3, 2]),
+        ]:
             with self.subTest(traverse=traverse.__name__):
                 self.assertEqual(traverse(tree), expected)
                 self.assertEqual(traverse(None), [])
@@ -47,4 +71,6 @@ class GraphAndTreeTests(unittest.TestCase):
         self.assertTrue(compare(BinaryNode(1), BinaryNode(1)))
         self.assertFalse(compare(BinaryNode(1), None))
         self.assertFalse(compare(BinaryNode(1), BinaryNode(2)))
-        self.assertFalse(compare(BinaryNode(1, BinaryNode(2)), BinaryNode(1, None, BinaryNode(2))))
+        self.assertFalse(
+            compare(BinaryNode(1, BinaryNode(2)), BinaryNode(1, None, BinaryNode(2)))
+        )

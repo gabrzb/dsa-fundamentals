@@ -35,7 +35,6 @@ export function bfs(graph: WeightedAdjacencyMatrix, source: number, needle: numb
     return null;
   }
 
-
   let curr = needle;
   const out: number[] = [];
 

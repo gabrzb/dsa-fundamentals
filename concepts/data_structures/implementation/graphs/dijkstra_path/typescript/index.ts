@@ -1,10 +1,10 @@
 type WeightedAdjacencyList = number[][][];
 
-export function hasUnvisited(seen: boolean[], dists: number[]): boolean {
+function hasUnvisited(seen: boolean[], dists: number[]): boolean {
   return seen.some((s, i) => !s && dists[i] < Infinity);
 }
 
-export function getLowestUnvisited(seen: boolean[], dists: number[]): number {
+function getLowestUnvisited(seen: boolean[], dists: number[]): number {
   let idx = -1;
   let lowestDistance = Infinity;
 

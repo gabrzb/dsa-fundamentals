@@ -4,6 +4,19 @@ import (
 	"testing"
 )
 
+func TestInvalidCapacity(t *testing.T) {
+	for _, capacity := range []int{0, -1} {
+		func() {
+			defer func() {
+				if recover() == nil {
+					t.Errorf("capacity %d should panic", capacity)
+				}
+			}()
+			NewLRU[string, int](capacity)
+		}()
+	}
+}
+
 func TestEvictionReadRefreshAndUpdate(t *testing.T) {
 	cache := NewLRU[string, int](2)
 	cache.Update("a", 1)

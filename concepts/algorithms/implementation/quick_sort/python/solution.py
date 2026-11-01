@@ -7,6 +7,7 @@ def qs(arr, low, high):
     qs(arr, low, pivotIdx - 1)
     qs(arr, pivotIdx + 1, high)
 
+
 def partition(arr, low, high):
     pivot = arr[high]
     idx = low - 1
@@ -20,6 +21,7 @@ def partition(arr, low, high):
     arr[high], arr[idx] = arr[idx], pivot
 
     return idx
+
 
 def quick_sort(arr):
     qs(arr, 0, len(arr) - 1)

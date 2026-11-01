@@ -14,11 +14,12 @@ def merge(left, right):
     result.extend(right[j:])
     return result
 
+
 def mergeSort(arr):
     if len(arr) <= 1:
         return arr
 
-    left = mergeSort(arr[:len(arr)//2])
-    right = mergeSort(arr[len(arr)//2:])
+    left = mergeSort(arr[: len(arr) // 2])
+    right = mergeSort(arr[len(arr) // 2 :])
 
     return merge(left, right)

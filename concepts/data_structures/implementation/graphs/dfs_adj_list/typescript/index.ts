@@ -1,19 +1,17 @@
 type WeightedAdjacencyList = number[][][];
 
-export function walk(graph: WeightedAdjacencyList, curr: number, needle: number, seen: boolean[], path: number[]) : boolean {
+function walk(graph: WeightedAdjacencyList, curr: number, needle: number, seen: boolean[], path: number[]) : boolean {
   if (seen[curr]) {
     return false;
   }
 
   seen[curr] = true;
 
-
   path.push(curr);
 
   if (curr === needle) {
     return true;
   }
-
 
   const list = graph[curr];
 
@@ -23,7 +21,6 @@ export function walk(graph: WeightedAdjacencyList, curr: number, needle: number,
       return true;
     }
   }
-
 
   path.pop();
 

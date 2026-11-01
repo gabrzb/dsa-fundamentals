@@ -1,4 +1,4 @@
-export function checkNegativeNumbers(arr: number[]): boolean {
+function checkNegativeNumbers(arr: number[]): boolean {
   for (const num of arr) {
     if (num < 0) {
       return true;
@@ -8,7 +8,7 @@ export function checkNegativeNumbers(arr: number[]): boolean {
   return false;
 }
 
-export function getMax(arr: number[]): number {
+function getMax(arr: number[]): number {
   let mx: number = arr[0];
 
   for (let i = 1; i < arr.length; i++) {
@@ -20,7 +20,7 @@ export function getMax(arr: number[]): number {
   return mx;
 }
 
-export function countingSort(arr: number[], exp: number): number[] {
+function countingSort(arr: number[], exp: number): number[] {
   let output: number[] = new Array(arr.length).fill(0);
   let count: number[] = new Array(10).fill(0);
 

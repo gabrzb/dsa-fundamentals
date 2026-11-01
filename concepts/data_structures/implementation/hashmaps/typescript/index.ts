@@ -1,4 +1,4 @@
-export class HashMapNode {
+class HashMapNode {
   public key: string;
   public value: any
   next: HashMapNode | null = null;

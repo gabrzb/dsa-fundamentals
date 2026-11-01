@@ -1,6 +1,6 @@
 import { BinaryNode } from "../../bt_base/typescript/binary_tree.ts";
 
-export function search(curr: BinaryNode<number> | null, needle: number): boolean {
+function search(curr: BinaryNode<number> | null, needle: number): boolean {
   if (!curr) {
     return false;
   }
@@ -16,6 +16,6 @@ export function search(curr: BinaryNode<number> | null, needle: number): boolean
   return search(curr.left, needle);
 }
 
-export function dfs(head: BinaryNode<number>, needle: number): boolean {
+export function dfs(head: BinaryNode<number> | null, needle: number): boolean {
   return search(head, needle);
 }

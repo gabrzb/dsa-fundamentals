@@ -1,10 +1,10 @@
-export function buildMaxHeap(arr: number[]): void {
+function buildMaxHeap(arr: number[]): void {
   for (let i = Math.floor(arr.length / 2) - 1; i >= 0; i--) {
     heapify(arr, arr.length, i);
   }
 }
 
-export function heapify(arr: number[], heapSize: number, i: number): void {
+function heapify(arr: number[], heapSize: number, i: number): void {
   const left = 2 * i + 1;
   const right = 2 * i + 2;
   let max = i;

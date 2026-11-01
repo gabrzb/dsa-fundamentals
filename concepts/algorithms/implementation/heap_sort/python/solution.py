@@ -3,6 +3,7 @@ def buildMaxHeap(arr):
     for i in range(n // 2 - 1, -1, -1):
         heapify(arr, n, i)
 
+
 def heapify(arr, heapSize, i):
     left = 2 * i + 1
     right = 2 * i + 2
@@ -17,6 +18,7 @@ def heapify(arr, heapSize, i):
     if largest != i:
         arr[i], arr[largest] = arr[largest], arr[i]
         heapify(arr, heapSize, largest)
+
 
 def heapSort(arr):
     length = len(arr)

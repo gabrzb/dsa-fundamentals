@@ -4,7 +4,7 @@ type DoublyLinkedListNode<T> = {
   prev?: DoublyLinkedListNode<T>,
 }
 
-export function createNode<V>(value: V): DoublyLinkedListNode<V> {
+function createNode<V>(value: V): DoublyLinkedListNode<V> {
   return { value };
 }
 
@@ -18,6 +18,9 @@ export class LRU<K, V> {
   private reverseLookup: Map<DoublyLinkedListNode<V>, K>;
 
   constructor(capacity: number = 10) {
+    if (!Number.isInteger(capacity) || capacity <= 0) {
+      throw new Error("Capacity must be a positive integer");
+    }
     this.capacity = capacity;
     this.length = 0;
     this.head = this.tail = undefined;
@@ -27,10 +30,6 @@ export class LRU<K, V> {
 
   update(key: K, value: V): void {
     let node = this.lookup.get(key);
-
-
-
-
 
     if (!node) {
       node = createNode(value);
@@ -49,17 +48,14 @@ export class LRU<K, V> {
   }
 
   get(key: K): V | undefined {
-
     const node = this.lookup.get(key);
 
     if (!node) {
       return undefined;
     }
 
-
     this.detach(node);
     this.prepend(node);
-
 
     return node.value;
   }
