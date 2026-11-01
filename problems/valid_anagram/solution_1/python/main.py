@@ -3,7 +3,7 @@ def isAnagram(s: str, t: str) -> bool:
         return False
 
     alphabet = [0] * 26
-    
+
     for char in s:
         alphabet[ord(char) - ord("a")] += 1
 
@@ -15,16 +15,3 @@ def isAnagram(s: str, t: str) -> bool:
             return False
 
     return True
-
-def testAnagram():
-    testCases = [
-        ("anagram", "nagaram", True),
-        ("rat", "car", False),
-    ]
-
-    for s, t, expected in testCases:
-        result = isAnagram(s, t)
-        print(f"isAnagram({s}, {t}) = {result}, expected = {expected}")
-
-    
-testAnagram()

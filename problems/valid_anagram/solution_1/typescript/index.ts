@@ -1,4 +1,4 @@
-function isAnagram(s: string, t: string): boolean { 
+export function isAnagram(s: string, t: string): boolean {
   if (s.length !== t.length) {
     return false;
   }
@@ -12,17 +12,3 @@ function isAnagram(s: string, t: string): boolean {
 
   return alphabet.every(count => count === 0);
 }
-
-function testAnagram() { 
-  const testCases: [string, string, boolean][] = [
-    ["anagram", "nagaram", true],
-    ["rat", "car", false],
-  ];
-
-  for (const [s, t, expected] of testCases) {
-    const result = isAnagram(s, t);
-    console.log(`isAnagram("${s}", "${t}") = ${result} | Expected: ${expected}`);
-  }  
-}
-
-testAnagram();

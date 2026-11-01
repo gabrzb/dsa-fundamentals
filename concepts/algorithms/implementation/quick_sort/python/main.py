@@ -24,24 +24,3 @@ def partition(arr, low, high):
 def quick_sort(arr):
     qs(arr, 0, len(arr) - 1)
     return arr
-
-def test_quick_sort():
-    test_cases = [
-        ([], []),
-        ([1], [1]),
-        ([1, 2, 3, 4, 5], [1, 2, 3, 4, 5]),
-        ([5, 4, 3, 2, 1], [1, 2, 3, 4, 5]),
-        ([3, 1, 2, 3, 1], [1, 1, 2, 3, 3]),
-        ([-3, 0, 2, -1, 5], [-3, -1, 0, 2, 5]),
-        ([64, 34, 25, 12, 22, 11, 90], [11, 12, 22, 25, 34, 64, 90]),
-    ]
-
-    for input_arr, expected in test_cases:
-        result = quick_sort(input_arr.copy())
-
-        print(
-            f"Input: {input_arr}\nResult: {result} | "
-            f"Expected: {expected}"
-        )
-
-test_quick_sort()

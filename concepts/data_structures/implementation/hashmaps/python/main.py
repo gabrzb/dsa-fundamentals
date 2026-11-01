@@ -4,7 +4,6 @@ class HashMapNode:
         self.value = value
         self.next = None
 
-
 class HashMap:
     def __init__(self, size):
         if not isinstance(size, int) or isinstance(size, bool) or size <= 0:
@@ -73,30 +72,3 @@ class HashMap:
 
             previous = current
             current = current.next
-
-
-def test_hash_map():
-    hash_map = HashMap(1)
-
-    hash_map.put("name", "Alice")
-    hash_map.put("age", 30)
-    hash_map.put("active", True)
-
-    print(f'Get name: {hash_map.get("name")} | Expected: Alice')
-    print(f'Get age: {hash_map.get("age")} | Expected: 30')
-    print(f'Get active: {hash_map.get("active")} | Expected: True')
-
-    hash_map.put("age", 31)
-    print(f'Get updated age: {hash_map.get("age")} | Expected: 31')
-
-    hash_map.remove("name")
-    print(f'Get removed name: {hash_map.get("name")} | Expected: None')
-
-    hash_map.remove("active")
-    print(f'Get removed active: {hash_map.get("active")} | Expected: None')
-    print(f'Get remaining age: {hash_map.get("age")} | Expected: 31')
-
-    hash_map.remove("missing")
-    print(f'Get missing key: {hash_map.get("missing")} | Expected: None')
-
-test_hash_map()

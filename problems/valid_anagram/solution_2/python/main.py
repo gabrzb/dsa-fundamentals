@@ -3,7 +3,7 @@ def isAnagram(s: str, t: str) -> bool:
         return False
 
     count = {}
-    
+
     for char in s:
         count[char] = count.get(char, 0) + 1
 
@@ -17,16 +17,3 @@ def isAnagram(s: str, t: str) -> bool:
             return False
 
     return True
-
-def testAnagram():
-    testCases = [
-        ("anagram", "nagaram", True),
-        ("rat", "car", False),
-    ]
-
-    for s, t, expected in testCases:
-        result = isAnagram(s, t)
-        print(f"isAnagram({s}, {t}) = {result}, expected = {expected}")
-
-    
-testAnagram()

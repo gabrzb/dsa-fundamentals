@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package solution
 
 type HashMapNode struct {
 	key   string
@@ -97,41 +95,4 @@ func (hashMap *HashMap) Remove(key string) {
 		previous = current
 		current = current.next
 	}
-}
-
-func testHashMap() {
-	hashMap := NewHashMap(1)
-
-	hashMap.Put("name", "Alice")
-	hashMap.Put("age", 30)
-	hashMap.Put("active", true)
-
-	value, found := hashMap.Get("name")
-	fmt.Printf("Get name: %v, %t | Expected: Alice, true\n", value, found)
-	value, found = hashMap.Get("age")
-	fmt.Printf("Get age: %v, %t | Expected: 30, true\n", value, found)
-	value, found = hashMap.Get("active")
-	fmt.Printf("Get active: %v, %t | Expected: true, true\n", value, found)
-
-	hashMap.Put("age", 31)
-	value, found = hashMap.Get("age")
-	fmt.Printf("Get updated age: %v, %t | Expected: 31, true\n", value, found)
-
-	hashMap.Remove("name")
-	_, found = hashMap.Get("name")
-	fmt.Printf("Get removed name: %t | Expected: false\n", found)
-
-	hashMap.Remove("active")
-	_, found = hashMap.Get("active")
-	fmt.Printf("Get removed active: %t | Expected: false\n", found)
-	value, found = hashMap.Get("age")
-	fmt.Printf("Get remaining age: %v, %t | Expected: 31, true\n", value, found)
-
-	hashMap.Remove("missing")
-	_, found = hashMap.Get("missing")
-	fmt.Printf("Get missing key: %t | Expected: false\n", found)
-}
-
-func main() {
-	testHashMap()
 }

@@ -1,4 +1,4 @@
-package main
+package solution
 
 import (
 	"fmt"
@@ -129,20 +129,4 @@ func (ll *LinkedList) print() {
 	}
 
 	fmt.Println(" -> tail")
-}
-
-func main() {
-	linkedList := NewLinkedList()
-
-	linkedList.insertToBack(1)
-	linkedList.insertToBack(2)
-	linkedList.insertToBack(3)
-	linkedList.insertToFront(0)
-
-	linkedList.print()
-	linkedList.delete(2)
-	linkedList.print()
-
-	linkedList.insertInSortedList(2)
-	linkedList.print()
 }

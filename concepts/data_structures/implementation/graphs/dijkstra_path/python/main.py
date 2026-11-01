@@ -3,7 +3,6 @@ WeightedAdjacencyList = list[list[list[int]]]
 def has_unvisited(seen: list[bool], dists: list[float]) -> bool:
     return any(not is_seen and dists[i] < float("inf") for i, is_seen in enumerate(seen))
 
-
 def get_lowest_unvisited(seen: list[bool], dists: list[float]) -> int:
     idx = -1
     lowest_distance = float("inf")
@@ -17,7 +16,6 @@ def get_lowest_unvisited(seen: list[bool], dists: list[float]) -> int:
             idx = i
 
     return idx
-
 
 def dijkstra_list(
     source: int,
@@ -58,20 +56,3 @@ def dijkstra_list(
     out.reverse()
 
     return out
-
-
-def test_dijkstra_list():
-    graph: WeightedAdjacencyList = [
-        [[1, 4], [2, 1]],
-        [[3, 1]],
-        [[1, 2], [3, 5], [4, 10]],
-        [[4, 3]],
-        [],
-        [],
-    ]
-
-    print(f"Path from 0 to 4: {dijkstra_list(0, 4, graph)} | Expected: [0, 2, 1, 3, 4]")
-    print(f"Path from 0 to 5: {dijkstra_list(0, 5, graph)} | Expected: None")
-    print(f"Path from 2 to 2: {dijkstra_list(2, 2, graph)} | Expected: [2]")
-
-test_dijkstra_list()

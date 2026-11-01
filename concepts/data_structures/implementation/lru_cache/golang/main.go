@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package solution
 
 type DoublyLinkedListNode[V any] struct {
 	value V
@@ -32,10 +30,6 @@ func NewLRU[K comparable, V any](capacity int) *LRU[K, V] {
 func (lru *LRU[K, V]) Update(key K, value V) {
 	node, exists := lru.lookup[key]
 
-	// does it exist?
-	// if it doesn't exist, insert it
-	// - check capacity and evict if over
-	// if it does exist, update to the front
 	if !exists {
 		node = createNode(value)
 		lru.length++
@@ -53,7 +47,7 @@ func (lru *LRU[K, V]) Update(key K, value V) {
 }
 
 func (lru *LRU[K, V]) Get(key K) (V, bool) {
-	// check the cache for existence
+
 	node, exists := lru.lookup[key]
 
 	if !exists {
@@ -61,11 +55,9 @@ func (lru *LRU[K, V]) Get(key K) (V, bool) {
 		return zero, false
 	}
 
-	// update the value we found and move it to the front
 	lru.detach(node)
 	lru.prepend(node)
 
-	// return out the value found or zero value and false if not exist
 	return node.value, true
 }
 
@@ -114,38 +106,4 @@ func (lru *LRU[K, V]) trimCache() {
 	delete(lru.lookup, key)
 	delete(lru.reverseLookup, tail)
 	lru.length--
-}
-
-func testLRU() {
-	cache := NewLRU[string, int](3)
-
-	cache.Update("first", 1)
-	cache.Update("second", 2)
-	cache.Update("third", 3)
-
-	value, found := cache.Get("first")
-	fmt.Printf("Get first: %d, %t | Expected: 1, true\n", value, found)
-
-	cache.Update("fourth", 4)
-
-	_, found = cache.Get("second")
-	fmt.Printf("Get evicted second: %t | Expected: false\n", found)
-	value, found = cache.Get("third")
-	fmt.Printf("Get third: %d, %t | Expected: 3, true\n", value, found)
-
-	cache.Update("first", 10)
-	cache.Update("fifth", 5)
-
-	_, found = cache.Get("fourth")
-	fmt.Printf("Get evicted fourth: %t | Expected: false\n", found)
-	value, found = cache.Get("first")
-	fmt.Printf("Get updated first: %d, %t | Expected: 10, true\n", value, found)
-	value, found = cache.Get("fifth")
-	fmt.Printf("Get fifth: %d, %t | Expected: 5, true\n", value, found)
-	_, found = cache.Get("missing")
-	fmt.Printf("Get missing key: %t | Expected: false\n", found)
-}
-
-func main() {
-	testLRU()
 }

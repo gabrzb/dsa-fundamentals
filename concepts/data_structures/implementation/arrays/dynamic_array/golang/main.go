@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package solution
 
 type DynamicArray struct {
 	size     int
@@ -42,7 +40,7 @@ func (array *DynamicArray) Insert(value int) {
 	}
 
 	array.array[array.size] = value
-	array.size++	
+	array.size++
 }
 
 func (array *DynamicArray) Find(target int) int {
@@ -65,31 +63,10 @@ func (array *DynamicArray) Delete(target int) {
 	for i := index; i < array.size-1; i++ {
 		array.array[i] = array.array[i+1]
 	}
-	
+
 	array.size--
 
-	if array.size <= array.capacity / 4 && array.capacity > 1 {
+	if array.size <= array.capacity/4 && array.capacity > 1 {
 		array.HalveSize()
 	}
-}
-
-func main() {
-	array := NewDynamicArray()
-
-	array.Insert(10)
-	array.Insert(20)
-	array.Insert(30)
-
-	fmt.Print("Starting array: ")
-	fmt.Println(array.array[:array.size])
-
-	fmt.Printf("Index of 20: %d\n", array.Find(20))
-	array.Delete(20)
-	fmt.Printf("Index of 20 after deletion: %d\n", array.Find(20))
-
-	array.Insert(40)
-	array.Insert(50)
-
-	fmt.Print("Final array: ")
-	fmt.Println(array.array[:array.size])
 }

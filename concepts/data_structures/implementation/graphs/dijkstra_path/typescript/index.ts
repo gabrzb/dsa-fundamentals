@@ -1,10 +1,10 @@
 type WeightedAdjacencyList = number[][][];
 
-function hasUnvisited(seen: boolean[], dists: number[]): boolean {
+export function hasUnvisited(seen: boolean[], dists: number[]): boolean {
   return seen.some((s, i) => !s && dists[i] < Infinity);
 }
 
-function getLowestUnvisited(seen: boolean[], dists: number[]): number {
+export function getLowestUnvisited(seen: boolean[], dists: number[]): number {
   let idx = -1;
   let lowestDistance = Infinity;
 
@@ -22,7 +22,7 @@ function getLowestUnvisited(seen: boolean[], dists: number[]): number {
   return idx;
 }
 
-function dijkstra_list(source: number, sink: number, arr: WeightedAdjacencyList): number[] | null {
+export function dijkstra_list(source: number, sink: number, arr: WeightedAdjacencyList): number[] | null {
   const seen: boolean[] = new Array(arr.length).fill(false);
   const prev: number[] = new Array(arr.length).fill(-1);
   const dists: number[] = new Array(arr.length).fill(Infinity);
@@ -65,33 +65,3 @@ function dijkstra_list(source: number, sink: number, arr: WeightedAdjacencyList)
 
   return out;
 }
-
-function testDijkstraList(): void {
-  const graph: WeightedAdjacencyList = [
-    [
-      [1, 4],
-      [2, 1],
-    ],
-    [[3, 1]],
-    [
-      [1, 2],
-      [3, 5],
-      [4, 10],
-    ],
-    [[4, 3]],
-    [],
-    [],
-  ];
-
-  console.log(
-    `Path from 0 to 4: ${JSON.stringify(dijkstra_list(0, 4, graph))} | Expected: [0,2,1,3,4]`,
-  );
-  console.log(
-    `Path from 0 to 5: ${JSON.stringify(dijkstra_list(0, 5, graph))} | Expected: null`,
-  );
-  console.log(
-    `Path from 2 to 2: ${JSON.stringify(dijkstra_list(2, 2, graph))} | Expected: [2]`,
-  );
-}
-
-testDijkstraList();

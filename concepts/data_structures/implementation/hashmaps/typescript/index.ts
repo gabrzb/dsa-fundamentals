@@ -1,4 +1,4 @@
-class HashMapNode {
+export class HashMapNode {
   public key: string;
   public value: any
   next: HashMapNode | null = null;
@@ -9,7 +9,7 @@ class HashMapNode {
   }
 }
 
-class HashMap {
+export class HashMap {
   private size: number;
   private array: Array<HashMapNode | null>;
 
@@ -27,13 +27,13 @@ class HashMap {
 
     for (let i = 0; i < key.length; i++) {
       hash = (hash << 5) - hash + key.charCodeAt(i);
-      hash |= 0; // Convert to 32bit integer
+      hash |= 0;
     }
 
     return Math.abs(hash) % this.size;
   }
 
-  put(key: string, value: any): void { 
+  put(key: string, value: any): void {
     const index = this.hashFunction(key);
 
     if (this.array[index] === null) {
@@ -87,36 +87,3 @@ class HashMap {
     }
   }
 }
-
-function testHashMap(): void {
-  const hashMap = new HashMap(1);
-
-  hashMap.put("name", "Alice");
-  hashMap.put("age", 30);
-  hashMap.put("active", true);
-
-  console.log(`Get name: ${hashMap.get("name")} | Expected: Alice`);
-  console.log(`Get age: ${hashMap.get("age")} | Expected: 30`);
-  console.log(`Get active: ${hashMap.get("active")} | Expected: true`);
-
-  hashMap.put("age", 31);
-  console.log(`Get updated age: ${hashMap.get("age")} | Expected: 31`);
-
-  hashMap.remove("name");
-  console.log(
-    `Get removed name: ${hashMap.get("name")} | Expected: undefined`,
-  );
-
-  hashMap.remove("active");
-  console.log(
-    `Get removed active: ${hashMap.get("active")} | Expected: undefined`,
-  );
-  console.log(`Get remaining age: ${hashMap.get("age")} | Expected: 31`);
-
-  hashMap.remove("missing");
-  console.log(
-    `Get missing key: ${hashMap.get("missing")} | Expected: undefined`,
-  );
-}
-
-testHashMap();

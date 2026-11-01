@@ -1,4 +1,4 @@
-class StaticArray {
+export class StaticArray {
   values: (number | undefined)[];
   length: number;
 
@@ -56,21 +56,3 @@ class StaticArray {
     return -1;
   }
 }
-
-function testStaticArray(): void {
-  const array = new StaticArray(3);
-
-  array.insert(10);
-  array.insert(20);
-  array.insert(30);
-
-  console.log("Index of 20:", array.find(20));
-
-  array.delete(1);
-
-  for (let index = 0; index < array.length; index++) {
-    console.log(array.values[index]);
-  }
-}
-
-testStaticArray();

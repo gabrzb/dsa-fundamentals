@@ -4,7 +4,7 @@ type DoublyListNode<T> = {
   prev?: DoublyListNode<T>;
 };
 
-class DoublyLinkedList<T> {
+export class DoublyLinkedList<T> {
   public length = 0;
   private head?: DoublyListNode<T>;
   private tail?: DoublyListNode<T>;
@@ -131,24 +131,3 @@ class DoublyLinkedList<T> {
     console.log("head <->", values.join(" <-> "), "<-> tail");
   }
 }
-
-function testDoublyLinkedList() {
-  const doublyLinkedList = new DoublyLinkedList<number>();
-
-  doublyLinkedList.insertInBack(10);
-  doublyLinkedList.insertInBack(20);
-  doublyLinkedList.insertInBack(30);
-  doublyLinkedList.insertInFront(5);
-  doublyLinkedList.printList();
-  console.log(`Length: ${doublyLinkedList.length}`);
-
-  doublyLinkedList.insertInSpecificPosition(15, 2);
-  doublyLinkedList.printList();
-  console.log(`Length: ${doublyLinkedList.length}`);
-
-  doublyLinkedList.delete(15);
-  doublyLinkedList.printList();
-  console.log(`Length: ${doublyLinkedList.length}`);
-}
-
-testDoublyLinkedList();

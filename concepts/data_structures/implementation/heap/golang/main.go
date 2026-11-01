@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package solution
 
 type Heap struct {
 	data   []int
@@ -84,29 +82,4 @@ func (h *Heap) leftChild(index int) int {
 
 func (h *Heap) rightChild(index int) int {
 	return index*2 + 2
-}
-
-func testMinHeap() {
-	heap := newHeap()
-	values := []int{5, 3, 69, 420, 4, 1, 8, 7}
-
-	for _, value := range values {
-		heap.insert(value)
-	}
-
-	fmt.Printf("Length after inserts: %d | Expected: 8\n", heap.length)
-
-	expectedOrder := []int{1, 3, 4, 5, 7, 8, 69, 420}
-	for _, expected := range expectedOrder {
-		value, ok := heap.delete()
-		fmt.Printf("Delete: %d, ok: %t | Expected: %d, true\n", value, ok, expected)
-	}
-
-	fmt.Printf("Length after deletes: %d | Expected: 0\n", heap.length)
-	_, ok := heap.delete()
-	fmt.Printf("Delete from empty heap succeeded: %t | Expected: false\n", ok)
-}
-
-func main() {
-	testMinHeap()
 }

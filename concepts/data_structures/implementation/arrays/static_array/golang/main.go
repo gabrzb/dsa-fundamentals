@@ -1,4 +1,4 @@
-package main
+package solution
 
 type StaticArray struct {
 	values []int
@@ -56,20 +56,4 @@ func (array StaticArray) Find(chosenValue int) int {
 	}
 
 	return -1
-}
-
-func main() {
-	array := NewStaticArray(3)
-
-	array.Insert(10)
-	array.Insert(20)
-	array.Insert(30)
-
-	println("Index of 20:", array.Find(20))
-
-	array.Delete(1)
-
-	for index := 0; index < array.length; index++ {
-		println(array.values[index])
-	}
 }

@@ -1,7 +1,6 @@
-package main
+package solution
 
 import (
-	"fmt"
 	"math"
 	"slices"
 )
@@ -82,23 +81,4 @@ func dijkstraList(source, sink int, graph WeightedAdjacencyList) []int {
 	slices.Reverse(out)
 
 	return out
-}
-
-func testDijkstraList() {
-	graph := WeightedAdjacencyList{
-		{{1, 4}, {2, 1}},
-		{{3, 1}},
-		{{1, 2}, {3, 5}, {4, 10}},
-		{{4, 3}},
-		{},
-		{},
-	}
-
-	fmt.Printf("Path from 0 to 4: %v | Expected: [0 2 1 3 4]\n", dijkstraList(0, 4, graph))
-	fmt.Printf("Path from 0 to 5: %v | Expected: [] (nil)\n", dijkstraList(0, 5, graph))
-	fmt.Printf("Path from 2 to 2: %v | Expected: [2]\n", dijkstraList(2, 2, graph))
-}
-
-func main() {
-	testDijkstraList()
 }

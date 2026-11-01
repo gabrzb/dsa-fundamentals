@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package solution
 
 func groupAnagrams(strs []string) [][]string {
 	res := make(map[[26]int][]string)
@@ -22,33 +20,4 @@ func groupAnagrams(strs []string) [][]string {
 	}
 
 	return groups
-}
-
-func testGroupAnagrams() {
-	tests := []struct {
-		input    []string
-		expected [][]string
-	}{
-		{
-			input:    []string{"eat", "tea", "tan", "ate", "nat", "bat"},
-			expected: [][]string{{"eat", "tea", "ate"}, {"tan", "nat"}, {"bat"}},
-		},
-		{
-			input:    []string{""},
-			expected: [][]string{{""}},
-		},
-		{
-			input:    []string{"a"},
-			expected: [][]string{{"a"}},
-		},
-	}
-
-	for i, test := range tests {
-		result := groupAnagrams(test.input)
-		fmt.Printf("Test %d:\nInput: %v\nExpected: %v\nResult: %v\n\n", i+1, test.input, test.expected, result)
-	}
-}
-
-func main() {
-	testGroupAnagrams()
 }

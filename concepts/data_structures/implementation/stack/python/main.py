@@ -3,7 +3,6 @@ class StackNode:
         self.value = value
         self.prev = prev
 
-
 class Stack:
     def __init__(self):
         self._head = None
@@ -38,33 +37,3 @@ class Stack:
             current = current.prev
 
         print(" -> ".join(str(value) for value in reversed(values)))
-
-
-def test_stack():
-    stack = Stack()
-
-    print("Initial values:")
-    print(f"Length: {stack.length}")
-    print(f"Head: {stack.peek()}")
-
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
-
-    print("After pushing 1, 2, 3:")
-    stack.print_stack()
-    print(f"Length: {stack.length}")
-    print(f"Head: {stack.peek()}")
-
-    print("Popping values:")
-    print(stack.pop())
-    print(stack.pop())
-    print(stack.pop())
-
-    print("After popping all values:")
-    stack.print_stack()
-    print(f"Length: {stack.length}")
-    print(f"Head: {stack.peek()}")
-
-
-test_stack()

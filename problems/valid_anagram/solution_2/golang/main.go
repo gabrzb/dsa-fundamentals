@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package solution
 
 func isAnagram(s string, t string) bool {
 	if len(s) != len(t) {
@@ -21,30 +19,4 @@ func isAnagram(s string, t string) bool {
 	}
 
 	return true
-}
-
-func testAnagram() {
-	testCases := []struct {
-		s        string
-		t        string
-		expected bool
-	}{
-		{"anagram", "nagaram", true},
-		{"rat", "car", false},
-	}
-
-	for _, tc := range testCases {
-		result := isAnagram(tc.s, tc.t)
-		fmt.Printf(
-			"isAnagram(%q, %q) = %v | Expected: %v\n",
-			tc.s,
-			tc.t,
-			result,
-			tc.expected,
-		)
-	}
-}
-
-func main() {
-	testAnagram()
 }

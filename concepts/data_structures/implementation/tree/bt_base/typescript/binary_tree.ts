@@ -1,7 +1,15 @@
 export class BinaryNode<T> {
+  value: T;
+  left: BinaryNode<T> | null;
+  right: BinaryNode<T> | null;
+
   constructor(
-    public value: T,
-    public left: BinaryNode<T> | null = null,
-    public right: BinaryNode<T> | null = null,
-  ) {}
+    value: T,
+    left: BinaryNode<T> | null = null,
+    right: BinaryNode<T> | null = null,
+  ) {
+    this.value = value;
+    this.left = left;
+    this.right = right;
+  }
 }

@@ -12,17 +12,3 @@ def searchInsertPosition(nums, target):
             high = mid
 
     return low
-
-def testSearchInsertPosition():
-    testCases = [
-        ([1, 3, 5, 6], 5, 2),
-        ([1, 3, 5, 6], 2, 1),
-        ([1, 3, 5, 6], 7, 4)
-    ]
-    
-    for nums, target, expected in testCases:
-        result = searchInsertPosition(nums, target)
-        
-        print(f"searchInsertPosition({nums}, {target}) = {result} | Expected: {expected}")
-
-testSearchInsertPosition()

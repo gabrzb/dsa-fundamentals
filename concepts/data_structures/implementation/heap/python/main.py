@@ -71,29 +71,3 @@ class Heap:
 
     def right_child(self, index):
         return index * 2 + 2
-
-
-def test_min_heap():
-    heap = Heap()
-    values = [5, 3, 69, 420, 4, 1, 8, 7]
-
-    for value in values:
-        heap.insert(value)
-
-    print(f"Length after inserts: {heap.length} | Expected: 8")
-
-    expected_order = [1, 3, 4, 5, 7, 8, 69, 420]
-    for expected in expected_order:
-        value, succeeded = heap.delete()
-        print(
-            f"Delete: {value}, succeeded: {succeeded} | "
-            f"Expected: {expected}, True"
-        )
-
-    print(f"Length after deletes: {heap.length} | Expected: 0")
-    _, succeeded = heap.delete()
-    print(
-        f"Delete from empty heap succeeded: {succeeded} | Expected: False"
-    )
-
-test_min_heap()

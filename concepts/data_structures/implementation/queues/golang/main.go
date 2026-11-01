@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package solution
 
 type node[T any] struct {
 	value T
@@ -57,29 +55,4 @@ func (q *Queue[T]) Peek() (T, bool) {
 	}
 
 	return q.head.value, true
-}
-
-func testQueue() {
-	queue := NewQueue[int]()
-
-	queue.Enqueue(10)
-	queue.Enqueue(20)
-	queue.Enqueue(30)
-
-	peeked, peekOK := queue.Peek()
-	fmt.Printf("Peek: %d, %t | Expected: 10, true\n", peeked, peekOK)
-	fmt.Printf("Length: %d | Expected: 3\n", queue.Length)
-
-	for _, expected := range []int{10, 20, 30} {
-		value, ok := queue.Dequeue()
-		fmt.Printf("Dequeue: %d, %t | Expected: %d, true\n", value, ok, expected)
-	}
-
-	_, dequeueOK := queue.Dequeue()
-	fmt.Printf("Dequeue empty: %t | Expected: false\n", dequeueOK)
-	fmt.Printf("Length: %d | Expected: 0\n", queue.Length)
-}
-
-func main() {
-	testQueue()
 }

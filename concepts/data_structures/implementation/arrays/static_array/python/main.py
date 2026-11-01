@@ -40,19 +40,3 @@ class StaticArray:
                 return index
 
         return -1
-
-def testStaticArray():
-    array = StaticArray(3)
-    
-    array.insert(10)
-    array.insert(20)
-    array.insert(30)
-    
-    print("Index of 20:", array.find(20))
-    
-    array.delete(1)
-    
-    for index in range(array.length):
-        print(array.values[index])
-
-testStaticArray()

@@ -1,4 +1,4 @@
-package main
+package solution
 
 import "fmt"
 
@@ -182,22 +182,4 @@ func (list *DoublyLinkedList) printList() {
 		current = current.getNext()
 	}
 	fmt.Print("tail\n")
-}
-
-func main() {
-	doublyLinkedList := NewDoublyLinkedList()
-
-	doublyLinkedList.InsertAtHead(20)
-	doublyLinkedList.InsertAtHead(10)
-	doublyLinkedList.InsertAtTail(30)
-	doublyLinkedList.InsertAtTail(40)
-	doublyLinkedList.printList()
-
-	doublyLinkedList.InsertAtPosition(15, 1)
-	doublyLinkedList.printList()
-	doublyLinkedList.InsertInSortedList(25)
-	doublyLinkedList.printList()
-
-	doublyLinkedList.Delete(20)
-	doublyLinkedList.printList()
 }

@@ -4,11 +4,11 @@ type DoublyLinkedListNode<T> = {
   prev?: DoublyLinkedListNode<T>,
 }
 
-function createNode<V>(value: V): DoublyLinkedListNode<V> {
+export function createNode<V>(value: V): DoublyLinkedListNode<V> {
   return { value };
 }
 
-class LRU<K, V> {
+export class LRU<K, V> {
   private length: number;
   private head?: DoublyLinkedListNode<V>;
   private tail?: DoublyLinkedListNode<V>;
@@ -22,14 +22,14 @@ class LRU<K, V> {
     this.lookup = new Map<K, DoublyLinkedListNode<V>>();
     this.reverseLookup = new Map<DoublyLinkedListNode<V>, K>();
   }
-  
+
   update(key: K, value: V): void {
     let node = this.lookup.get(key);
-    
-    // does it exist?
-    // if it doesn't exist, insert it
-    // - check capacity and evict if over
-    // if it does exist, update to the front
+
+
+
+
+
     if (!node) {
       node = createNode(value);
       this.length++;
@@ -47,18 +47,18 @@ class LRU<K, V> {
   }
 
   get(key: K): V | undefined {
-    // check the cache for existence
+
     const node = this.lookup.get(key);
 
     if (!node) {
       return undefined;
     }
 
-    // update the value we found and move it to the front
+
     this.detach(node);
     this.prepend(node);
 
-    // return out the value found or undefined if not exist
+
     return node.value;
   }
 
@@ -108,32 +108,3 @@ class LRU<K, V> {
     this.length--;
   }
 }
-
-function testLRU(): void {
-  const cache = new LRU<string, number>(3);
-
-  cache.update("first", 1);
-  cache.update("second", 2);
-  cache.update("third", 3);
-
-  console.log(`Get first: ${cache.get("first")} | Expected: 1`);
-
-  cache.update("fourth", 4);
-
-  console.log(
-    `Get evicted second: ${cache.get("second")} | Expected: undefined`,
-  );
-  console.log(`Get third: ${cache.get("third")} | Expected: 3`);
-
-  cache.update("first", 10);
-  cache.update("fifth", 5);
-
-  console.log(
-    `Get evicted fourth: ${cache.get("fourth")} | Expected: undefined`,
-  );
-  console.log(`Get updated first: ${cache.get("first")} | Expected: 10`);
-  console.log(`Get fifth: ${cache.get("fifth")} | Expected: 5`);
-  console.log(`Get missing key: ${cache.get("missing")} | Expected: undefined`);
-}
-
-testLRU();

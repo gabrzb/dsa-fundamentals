@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package solution
 
 type RingBuffer[T any] struct {
 	Length   int
@@ -62,36 +60,4 @@ func (r *RingBuffer[T]) Get(index int) (T, bool) {
 	}
 
 	return r.values[(r.head+index)%r.Capacity], true
-}
-
-func testRingBuffer() {
-	ringBuffer := NewRingBuffer[int](3)
-
-	ringBuffer.Enqueue(10)
-	ringBuffer.Enqueue(20)
-	ringBuffer.Enqueue(30)
-
-	peeked, peekOK := ringBuffer.Peek()
-	fmt.Printf("Peek: %d, %t | Expected: 10, true\n", peeked, peekOK)
-	fmt.Printf("Length: %d | Expected: 3\n", ringBuffer.Length)
-
-	value, getOK := ringBuffer.Get(2)
-	fmt.Printf("Value at index 2: %d, %t | Expected: 30, true\n", value, getOK)
-
-	value, dequeueOK := ringBuffer.Dequeue()
-	fmt.Printf("Dequeue: %d, %t | Expected: 10, true\n", value, dequeueOK)
-	ringBuffer.Enqueue(40)
-
-	for _, expected := range []int{20, 30, 40} {
-		value, ok := ringBuffer.Dequeue()
-		fmt.Printf("Dequeue: %d, %t | Expected: %d, true\n", value, ok, expected)
-	}
-
-	_, dequeueOK = ringBuffer.Dequeue()
-	fmt.Printf("Dequeue empty: %t | Expected: false\n", dequeueOK)
-	fmt.Printf("Length: %d | Expected: 0\n", ringBuffer.Length)
-}
-
-func main() {
-	testRingBuffer()
 }

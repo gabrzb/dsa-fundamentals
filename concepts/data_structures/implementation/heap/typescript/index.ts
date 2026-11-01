@@ -1,8 +1,8 @@
-class minHeap {
+export class minHeap {
   public length: number;
   private data: number[];
 
-  constructor() { 
+  constructor() {
     this.data = [];
     this.length = 0;
   }
@@ -20,7 +20,7 @@ class minHeap {
 
     const out = this.data[0];
     this.length--;
-    
+
     if (this.length === 0) {
       this.data = [];
       return out;
@@ -32,7 +32,7 @@ class minHeap {
     return out;
   }
 
-  private heapifyUp(idx: number): void { 
+  private heapifyUp(idx: number): void {
     if (idx == 0) {
       return;
     }
@@ -69,12 +69,12 @@ class minHeap {
       [this.data[smallestIdx], this.data[idx]];
     this.heapifyDown(smallestIdx);
   }
-  
+
   private parent(idx: number): number {
     return Math.floor((idx - 1) / 2);
   }
 
-  private leftChild(idx: number): number { 
+  private leftChild(idx: number): number {
     return idx * 2 + 1;
   }
 
@@ -82,22 +82,3 @@ class minHeap {
     return idx * 2 + 2;
   }
 }
-
-function testMinHeap(): void {
-  const heap = new minHeap();
-  const values = [5, 3, 69, 420, 4, 1, 8, 7];
-
-  values.forEach((value) => heap.insert(value));
-
-  console.log(`Length after inserts: ${heap.length} | Expected: 8`);
-
-  const expectedOrder = [1, 3, 4, 5, 7, 8, 69, 420];
-
-  expectedOrder.forEach((expected) => {
-    console.log(`Delete: ${heap.delete()} | Expected: ${expected}`);
-  });
-
-  console.log(`Length after deletes: ${heap.length} | Expected: 0`);
-}
-
-testMinHeap();

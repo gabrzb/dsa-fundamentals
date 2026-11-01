@@ -51,29 +51,3 @@ export default class RingBuffer<T> {
     return this.values[(this.head + index) % this.capacity];
   }
 }
-
-function testRingBuffer(): void {
-  const ringBuffer = new RingBuffer<number>(3);
-
-  ringBuffer.enqueue(10);
-  ringBuffer.enqueue(20);
-  ringBuffer.enqueue(30);
-
-  console.log(`Peek: ${ringBuffer.peek()} | Expected: 10`);
-  console.log(`Length: ${ringBuffer.length} | Expected: 3`);
-  console.log(`Value at index 2: ${ringBuffer.get(2)} | Expected: 30`);
-
-  console.log(`Dequeue: ${ringBuffer.dequeue()} | Expected: 10`);
-  ringBuffer.enqueue(40);
-
-  for (const expected of [20, 30, 40]) {
-    console.log(`Dequeue: ${ringBuffer.dequeue()} | Expected: ${expected}`);
-  }
-
-  console.log(
-    `Dequeue empty: ${ringBuffer.dequeue()} | Expected: undefined`,
-  );
-  console.log(`Length: ${ringBuffer.length} | Expected: 0`);
-}
-
-testRingBuffer();

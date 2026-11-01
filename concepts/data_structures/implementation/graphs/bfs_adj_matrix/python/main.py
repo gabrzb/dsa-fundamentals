@@ -30,7 +30,7 @@ def bfs(
     if prev[needle] == -1:
         return None
 
-    # build the path backwards
+
     curr = needle
     path = []
 
@@ -41,20 +41,3 @@ def bfs(
     path.reverse()
 
     return [source] + path
-
-
-def test_bfs():
-    graph: WeightedAdjacencyMatrix = [
-        [0, 3, 1, 0, 0, 0, 0],
-        [3, 0, 0, 4, 0, 0, 0],
-        [1, 0, 0, 0, 2, 0, 0],
-        [0, 4, 0, 0, 0, 5, 0],
-        [0, 0, 2, 0, 0, 6, 0],
-        [0, 0, 0, 5, 6, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-    ]
-
-    print(f"Path from 0 to 5: {bfs(graph, 0, 5)} | Expected: [0, 1, 3, 5]")
-    print(f"Path from 0 to 6: {bfs(graph, 0, 6)} | Expected: None")
-
-test_bfs()

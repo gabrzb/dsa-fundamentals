@@ -13,7 +13,3 @@ def twoCrystalBalls(breaks):
             return j
 
     return -1
-
-breaks = [False, False, False, True, True, True]
-result = twoCrystalBalls(breaks)
-print(result) # Correct Output: 3

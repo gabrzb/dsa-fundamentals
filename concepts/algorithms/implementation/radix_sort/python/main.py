@@ -5,7 +5,6 @@ def checkNegative(arr):
 
     return False
 
-
 def getMax(arr):
     mx = arr[0]
 
@@ -14,7 +13,6 @@ def getMax(arr):
             mx = arr[i]
 
     return mx
-
 
 def countingSort(arr, exp):
     output = [0] * len(arr)
@@ -34,7 +32,6 @@ def countingSort(arr, exp):
 
     return output
 
-
 def radixSort(arr):
     max_num = getMax(arr)
     sorted_arr = arr
@@ -45,31 +42,3 @@ def radixSort(arr):
         exp *= 10
 
     return sorted_arr
-
-
-def testRadixSort():
-    test_cases = [
-        ([-3, 0, 2, -1, 5], None), # Negative numbers are not supported in basic radix sort
-        ([3, 1, 2, 3, 1], [1, 1, 2, 3, 3]),
-        ([64, 34, 25, 12, 22, 11, 90], [11, 12, 22, 25, 34, 64, 90]),
-    ]
-
-    for input_arr, expected in test_cases:
-        input_copy = input_arr.copy()
-
-        if checkNegative(input_copy):
-            print(
-                f"Input: {input_arr}\nResult: Error | "
-                f"Expected: {expected}\n"
-            )
-            continue
-
-        result = radixSort(input_copy)
-
-        print(
-            f"Input: {input_arr}\nResult: {result} | "
-            f"Expected: {expected}\n"
-        )
-
-
-testRadixSort()

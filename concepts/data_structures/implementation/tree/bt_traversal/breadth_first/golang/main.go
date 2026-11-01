@@ -1,8 +1,6 @@
-package main
+package solution
 
 import (
-	"fmt"
-
 	btbase "dsa/concepts/data_structures/implementation/tree/bt_base/golang"
 )
 
@@ -17,7 +15,6 @@ func bfs(head *btbase.BinaryNode[int], needle int) bool {
 			continue
 		}
 
-		// Search
 		if curr.Value == needle {
 			return true
 		}
@@ -27,23 +24,4 @@ func bfs(head *btbase.BinaryNode[int], needle int) bool {
 	}
 
 	return false
-}
-
-func testBFS() {
-	tree := btbase.NewBinaryNode(
-		10,
-		btbase.NewBinaryNode(
-			5,
-			btbase.NewBinaryNode(2),
-			btbase.NewBinaryNode(7),
-		),
-		btbase.NewBinaryNode(15),
-	)
-
-	fmt.Printf("Search for 7: %t | Expected: true\n", bfs(tree, 7))
-	fmt.Printf("Search for 20: %t | Expected: false\n", bfs(tree, 20))
-}
-
-func main() {
-	testBFS()
 }

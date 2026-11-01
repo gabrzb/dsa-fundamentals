@@ -15,7 +15,6 @@ class ListNode:
     def set_next(self, next_node: "ListNode | None") -> None:
         self.next = next_node
 
-
 class SinglyLinkedList:
     def __init__(self):
         self.head: ListNode | None = None
@@ -100,23 +99,3 @@ class SinglyLinkedList:
 
         list_string += "tail"
         print(list_string)
-
-
-def test_singly_linked_list():
-    linked_list = SinglyLinkedList()
-
-    linked_list.insert_to_back(1)
-    linked_list.insert_to_back(2)
-    linked_list.insert_to_back(3)
-    linked_list.insert_in_front(0)
-
-    linked_list.print_list()
-    linked_list.delete(2)
-    linked_list.print_list()
-
-    linked_list.insert_in_sorted_list(2)
-    linked_list.print_list()
-
-
-if __name__ == "__main__":
-    test_singly_linked_list()

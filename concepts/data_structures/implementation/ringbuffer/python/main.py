@@ -44,27 +44,3 @@ class RingBuffer:
             return None
 
         return self._values[(self._head + index) % self.capacity]
-
-
-def test_ring_buffer():
-    ring_buffer = RingBuffer(3)
-
-    ring_buffer.enqueue(10)
-    ring_buffer.enqueue(20)
-    ring_buffer.enqueue(30)
-
-    print(f"Peek: {ring_buffer.peek()} | Expected: 10")
-    print(f"Length: {ring_buffer.length} | Expected: 3")
-    print(f"Value at index 2: {ring_buffer.get(2)} | Expected: 30")
-
-    print(f"Dequeue: {ring_buffer.dequeue()} | Expected: 10")
-    ring_buffer.enqueue(40)
-
-    for expected in [20, 30, 40]:
-        print(f"Dequeue: {ring_buffer.dequeue()} | Expected: {expected}")
-
-    print(f"Dequeue empty: {ring_buffer.dequeue()} | Expected: None")
-    print(f"Length: {ring_buffer.length} | Expected: 0")
-
-
-test_ring_buffer()

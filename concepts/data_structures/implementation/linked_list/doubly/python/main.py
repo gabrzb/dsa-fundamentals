@@ -19,7 +19,6 @@ class Node:
     def set_previous(self, previous_node):
         self.previous = previous_node
 
-
 class DoublyLinkedList:
     def __init__(self):
         self.head = None
@@ -137,24 +136,3 @@ class DoublyLinkedList:
             current = current.get_next()
 
         print("head <->", " <-> ".join(elements), "<-> tail")
-
-
-def test_doubly_linked_list():
-    doubly_linked_list = DoublyLinkedList()
-
-    doubly_linked_list.insert_in_back(10)
-    doubly_linked_list.insert_in_back(20)
-    doubly_linked_list.insert_in_back(30)
-    doubly_linked_list.insert_in_front(5)
-    doubly_linked_list.print_list()
-
-    doubly_linked_list.insert_in_specific_position(15, 2)
-    doubly_linked_list.print_list()
-
-    doubly_linked_list.insert_in_sorted_list(25)
-    doubly_linked_list.print_list()
-
-    doubly_linked_list.delete(15)
-    doubly_linked_list.print_list()
-    
-test_doubly_linked_list()

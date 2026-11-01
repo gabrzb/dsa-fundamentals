@@ -16,20 +16,3 @@ class Solution:
                 longest_streak = max(longest_streak, length)
 
         return longest_streak
-
-def test_longest_consecutive():
-    solution = Solution()
-
-    nums1 = [100, 4, 200, 1, 3, 2]
-    print(solution.longestConsecutive(nums1))
-
-    nums2 = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
-    print(solution.longestConsecutive(nums2))
-
-    nums3 = []
-    print(solution.longestConsecutive(nums3))
-
-    nums4 = [1, 2, 0, 1]
-    print(solution.longestConsecutive(nums4))
-
-test_longest_consecutive()

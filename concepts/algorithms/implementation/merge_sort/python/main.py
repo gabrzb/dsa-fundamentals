@@ -22,20 +22,3 @@ def mergeSort(arr):
     right = mergeSort(arr[len(arr)//2:])
 
     return merge(left, right)
-
-def testMergeSort():
-    test_cases = [
-        ([3, 1, 2, 3, 1], [1, 1, 2, 3, 3]),
-        ([-3, 0, 2, -1, 5], [-3, -1, 0, 2, 5]),
-        ([64, 34, 25, 12, 22, 11, 90], [11, 12, 22, 25, 34, 64, 90]),
-    ]
-
-    for input_arr, expected in test_cases:
-        result = mergeSort(input_arr.copy())
-
-        print(
-            f"Input: {input_arr}\nResult: {result} | "
-            f"Expected: {expected}\n"
-        )
-
-testMergeSort()

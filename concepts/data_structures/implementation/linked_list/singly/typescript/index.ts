@@ -3,7 +3,7 @@ type SinglyListNode<T> = {
   next?: SinglyListNode<T>;
 };
 
-class SinglyLinkedList<T> {
+export class SinglyLinkedList<T> {
   public length = 0;
   private head?: SinglyListNode<T>;
 
@@ -85,21 +85,3 @@ class SinglyLinkedList<T> {
     console.log("head ->", values.join(" -> "), "-> tail");
   }
 }
-
-function testSinglyLinkedList() {
-  const linkedList = new SinglyLinkedList<number>();
-
-  linkedList.insertInBack(1);
-  linkedList.insertInBack(2);
-  linkedList.insertInBack(3);
-  linkedList.insertInFront(0);
-
-  linkedList.printList();
-  console.log(`Length: ${linkedList.length}`);
-
-  linkedList.delete(2);
-  linkedList.printList();
-  console.log(`Length: ${linkedList.length}`);
-}
-
-testSinglyLinkedList();

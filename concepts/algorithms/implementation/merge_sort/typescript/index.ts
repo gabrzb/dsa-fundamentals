@@ -1,4 +1,4 @@
-function merge(leftArray: number[], rightArray: number[]): number[] { 
+export function merge(leftArray: number[], rightArray: number[]): number[] {
   let mergedArray: number[] = [];
 
   while (leftArray.length && rightArray.length) {
@@ -9,7 +9,7 @@ function merge(leftArray: number[], rightArray: number[]): number[] {
     }
   }
 
-  while (leftArray.length) { 
+  while (leftArray.length) {
     mergedArray.push(leftArray.shift()!);
   }
 
@@ -20,7 +20,7 @@ function merge(leftArray: number[], rightArray: number[]): number[] {
   return mergedArray;
 }
 
-function mergeSort(arr: number[]): number[] {
+export function mergeSort(arr: number[]): number[] {
   if (arr.length == 1) {
     return arr;
   }
@@ -30,22 +30,3 @@ function mergeSort(arr: number[]): number[] {
 
   return merge(mergeSort(leftArray), mergeSort(rightArray));
 }
-
-function testMergeSort() { 
-  const testCases: { input: number[]; expected: number[] }[] = [
-    { input: [5, 4, 3, 2, 1], expected: [1, 2, 3, 4, 5] },
-    { input: [3, 1, 2, 3, 1], expected: [1, 1, 2, 3, 3] },
-    { input: [-3, 0, 2, -1, 5], expected: [-3, -1, 0, 2, 5] },
-    { input: [64, 34, 25, 12, 22, 11, 90], expected: [11, 12, 22, 25, 34, 64, 90] },
-  ];
-
-  for (const { input, expected} of testCases) {
-    console.log(`Original array: ${input}`);
-
-    const sortedArray = mergeSort(input);
-
-    console.log(`Sorted array: ${sortedArray} | Expected: ${expected}`);
-  }
-}
-
-testMergeSort();
