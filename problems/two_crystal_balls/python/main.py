@@ -1,15 +1,12 @@
 def twoCrystalBalls(breaks):
-    jmpAmout = int(len(breaks) ** 0.5)
-    i = jmpAmout
+    jump = max(1, int(len(breaks) ** 0.5))
+    index = jump
 
-    for i in range(jmpAmout, len(breaks), jmpAmout):
-        if breaks[i]:
-            break
+    while index < len(breaks) and not breaks[index]:
+        index += jump
 
-    i -= jmpAmout
-
-    for j in range(i, min(i + jmpAmout, len(breaks))):
-        if breaks[j]:
-            return j
+    for candidate in range(index - jump, min(index + 1, len(breaks))):
+        if breaks[candidate]:
+            return candidate
 
     return -1

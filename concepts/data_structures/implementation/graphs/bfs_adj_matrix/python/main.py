@@ -27,7 +27,7 @@ def bfs(
             prev[i] = curr
             queue.append(i)
 
-    if prev[needle] == -1:
+    if not seen[needle]:
         return None
 
 

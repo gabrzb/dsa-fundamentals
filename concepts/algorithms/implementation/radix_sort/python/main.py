@@ -33,6 +33,10 @@ def countingSort(arr, exp):
     return output
 
 def radixSort(arr):
+    if not arr:
+        return []
+    if checkNegative(arr):
+        raise ValueError("Radix sort requires nonnegative integers")
     max_num = getMax(arr)
     sorted_arr = arr
     exp = 1
