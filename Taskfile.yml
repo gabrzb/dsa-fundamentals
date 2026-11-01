@@ -1,0 +1,43 @@
+version: '3'
+
+vars:
+  PYTHON: '{{default "python" .PYTHON}}'
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+
+  test:
+    desc: Run the Go, Python and TypeScript unit suites
+    cmds:
+      - task: test:go
+      - task: test:python
+      - task: test:typescript
+
+  test:go:
+    desc: Run Go unit tests
+    cmds:
+      - go test ./... {{.CLI_ARGS}}
+
+  test:python:
+    desc: Run Python unit tests
+    cmds:
+      - '{{.PYTHON}} -m unittest discover -s tests/python {{.CLI_ARGS}}'
+
+  test:typescript:
+    desc: Run TypeScript unit tests with Node.js
+    cmds:
+      - node --test {{.CLI_ARGS}} tests/typescript/*.test.ts
+
+  check:
+    desc: Run all tests and Go static analysis
+    cmds:
+      - task: test
+      - go vet ./...
+
+  fmt:go:
+    desc: Format Go implementations and tests
+    cmds:
+      - go fmt ./...
