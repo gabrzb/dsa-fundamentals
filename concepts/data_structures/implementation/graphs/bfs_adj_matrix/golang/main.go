@@ -35,7 +35,7 @@ func bfs(graph WeightedAdjacencyMatrix, source, needle int) []int {
 		}
 	}
 
-	if prev[needle] == -1 {
+	if !seen[needle] {
 		return nil
 	}
 

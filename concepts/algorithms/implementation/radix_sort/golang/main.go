@@ -45,11 +45,20 @@ func countingSort(arr []int, exp int) []int {
 }
 
 func radixSort(arr []int) []int {
+	if len(arr) == 0 {
+		return []int{}
+	}
+	if checkNegative(arr) {
+		panic("radix sort requires nonnegative integers")
+	}
 	maxNum := getMax(arr)
 	sortedArr := arr
 
 	for exp := 1; maxNum/exp > 0; exp *= 10 {
 		sortedArr = countingSort(sortedArr, exp)
+		if exp > maxNum/10 {
+			break
+		}
 	}
 
 	return sortedArr
