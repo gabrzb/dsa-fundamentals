@@ -16,7 +16,7 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Merge sort | `O(n log n)` | — | [Solution](concepts/algorithms/implementation/merge_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/merge_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/merge_sort/python/solution.py) |
 | Quick sort | Average `O(n log n)`; worst-case `O(n^2)` | — | [Solution](concepts/algorithms/implementation/quick_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/quick_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/quick_sort/python/solution.py) |
 | Heap sort | `O(n log n)` | — | [Solution](concepts/algorithms/implementation/heap_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/heap_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/heap_sort/python/solution.py) |
-| Radix sort (nonnegative integers) | `O(d(n + b))` for `d` digits and base `b` | — | [Solution](concepts/algorithms/implementation/radix_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/radix_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/radix_sort/python/solution.py) |
+| Radix sort (signed integers) | `O(d(n + b))` for `d` digits and base `b` | — | [Solution](concepts/algorithms/implementation/radix_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/radix_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/radix_sort/python/solution.py) |
 | Recursive maze solver | `O(r * c)` for `r` rows and `c` columns | — | [Solution](concepts/algorithms/implementation/recursion/golang/solution.go) | [Solution](concepts/algorithms/implementation/recursion/typescript/index.ts) | [Solution](concepts/algorithms/implementation/recursion/python/solution.py) |
 
 ### Data structure implementations
@@ -156,7 +156,9 @@ to experiment, and put reproducible examples in the unit suites. Keep assertions
 focused on behavior, including empty inputs, repeated values, boundaries, missing
 paths, capacity limits and reuse after removal.
 
-Radix sort accepts nonnegative integers and rejects negative inputs. Graph
-algorithms expect valid vertex indices; Dijkstra expects nonnegative edge weights.
+Radix sort accepts negative integers, zero and positive integers. Go supports the full
+`int` range, Python supports arbitrary precision integers, and TypeScript supports
+`number` values from `Number.MIN_SAFE_INTEGER` to `Number.MAX_SAFE_INTEGER`.
+Graph algorithms expect valid vertex indices; Dijkstra expects nonnegative edge weights.
 Anagram exercises follow the lowercase English alphabet constraints in their
 problem statement. Binary tree DFS uses binary search tree ordering.

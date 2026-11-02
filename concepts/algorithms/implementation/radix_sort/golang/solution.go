@@ -1,33 +1,11 @@
 package solution
 
-func checkNegative(arr []int) bool {
-	for _, num := range arr {
-		if num < 0 {
-			return true
-		}
-	}
-
-	return false
-}
-
-func getMax(arr []int) int {
-	mx := arr[0]
-
-	for i := 1; i < len(arr); i++ {
-		if arr[i] > mx {
-			mx = arr[i]
-		}
-	}
-
-	return mx
-}
-
 func countingSort(arr []int, exp int) []int {
 	output := make([]int, len(arr))
-	count := make([]int, 10)
+	count := make([]int, 19)
 
 	for i := range arr {
-		count[(arr[i]/exp)%10]++
+		count[(arr[i]/exp)%10+9]++
 	}
 
 	for i := 1; i < len(count); i++ {
@@ -35,7 +13,7 @@ func countingSort(arr []int, exp int) []int {
 	}
 
 	for i := len(arr) - 1; i >= 0; i-- {
-		digit := (arr[i] / exp) % 10
+		digit := (arr[i]/exp)%10 + 9
 
 		output[count[digit]-1] = arr[i]
 		count[digit]--
@@ -48,18 +26,17 @@ func radixSort(arr []int) []int {
 	if len(arr) == 0 {
 		return []int{}
 	}
-	if checkNegative(arr) {
-		panic("radix sort requires nonnegative integers")
+	lowest, highest := arr[0], arr[0]
+	for _, value := range arr {
+		lowest = min(lowest, value)
+		highest = max(highest, value)
 	}
-	maxNum := getMax(arr)
 	sortedArr := arr
 
-	for exp := 1; maxNum/exp > 0; exp *= 10 {
+	for exp := 1; ; exp *= 10 {
 		sortedArr = countingSort(sortedArr, exp)
-		if exp > maxNum/10 {
-			break
+		if lowest/exp > -10 && highest/exp < 10 {
+			return sortedArr
 		}
 	}
-
-	return sortedArr
 }

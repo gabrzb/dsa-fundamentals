@@ -1,34 +1,21 @@
-def checkNegative(arr):
-    for num in arr:
-        if num < 0:
-            return True
-
-    return False
-
-
-def getMax(arr):
-    mx = arr[0]
-
-    for i in range(1, len(arr)):
-        if arr[i] > mx:
-            mx = arr[i]
-
-    return mx
+def digit_index(value, exp):
+    digit = (abs(value) // exp) % 10
+    return 9 - digit if value < 0 else 9 + digit
 
 
 def countingSort(arr, exp):
     output = [0] * len(arr)
-    count = [0] * 10
+    count = [0] * 19
 
     for num in arr:
-        digit = (num // exp) % 10
+        digit = digit_index(num, exp)
         count[digit] += 1
 
     for i in range(1, len(count)):
         count[i] += count[i - 1]
 
     for i in range(len(arr) - 1, -1, -1):
-        digit = (arr[i] // exp) % 10
+        digit = digit_index(arr[i], exp)
         output[count[digit] - 1] = arr[i]
         count[digit] -= 1
 
@@ -38,13 +25,11 @@ def countingSort(arr, exp):
 def radixSort(arr):
     if not arr:
         return []
-    if checkNegative(arr):
-        raise ValueError("Radix sort requires nonnegative integers")
-    max_num = getMax(arr)
+    max_magnitude = max(abs(value) for value in arr)
     sorted_arr = arr
     exp = 1
 
-    while max_num // exp > 0:
+    while max_magnitude // exp > 0:
         sorted_arr = countingSort(sorted_arr, exp)
         exp *= 10
 
