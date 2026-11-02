@@ -71,9 +71,8 @@ problems/<problem>/
   golang/
   python/
   typescript/
-tests/
-  python/
-  typescript/
+scripts/
+  test_python.py
 Taskfile.yml
 go.mod
 package.json
@@ -84,10 +83,13 @@ Python implementations use `solution.py`, and TypeScript implementations use
 `index.ts`. Binary tree nodes and traversals have descriptive file names.
 Illustrated theory notes and problem statements stay separate from executable code.
 
-Go uses one root module, with `solution_test.go` files alongside implementations.
-Python and TypeScript suites live under `tests/`, grouped by algorithms, problems,
-data structures, and graphs/trees. Tests assert results and report failures with a
-nonzero exit code; importing an implementation does not execute demonstrations.
+Tests live alongside the implementation they exercise, inside each language's
+directory: `solution_test.go` for Go, `test_solution.py` for Python, and
+`index.test.ts` for TypeScript. Tree traversals follow their source file names.
+Go uses one root module. Python's small runner discovers test modules recursively
+without requiring package marker files throughout the repository.
+Tests assert results and report failures with a nonzero exit code; importing an
+implementation does not execute demonstrations.
 
 ## Requirements
 
@@ -137,14 +139,16 @@ The same suites can run without Task:
 
 ```sh
 go test ./...
-python -m unittest discover -s tests/python
-node --test tests/typescript/*.test.ts
+python -m scripts.test_python
+pnpm test
 ```
 
 For a single Go topic, use its package path:
 
 ```sh
 go test ./problems/two_sum/golang -v
+python -m unittest problems.two_sum.python.test_solution -v
+node --test problems/two_sum/typescript/index.test.ts
 ```
 
 Implementations are study libraries. Import them from a REPL or a separate script

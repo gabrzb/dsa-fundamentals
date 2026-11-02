@@ -24,12 +24,12 @@ tasks:
   test:python:
     desc: Run Python unit tests
     cmds:
-      - '{{.PYTHON}} -m unittest discover -s tests/python {{.CLI_ARGS}}'
+      - '{{.PYTHON}} -m scripts.test_python {{.CLI_ARGS}}'
 
   test:typescript:
     desc: Run TypeScript unit tests with Node.js
     cmds:
-      - node --test {{.CLI_ARGS}} tests/typescript/*.test.ts
+      - node --test {{.CLI_ARGS}} "concepts/**/*.test.ts" "problems/**/*.test.ts"
 
   check:
     desc: Run all tests, TypeScript type checking and Go static analysis

@@ -6,7 +6,7 @@
     "node": ">=24.12.0"
   },
   "scripts": {
-    "test": "node --test tests/typescript/*.test.ts",
+    "test": "node --test \"concepts/**/*.test.ts\" \"problems/**/*.test.ts\"",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

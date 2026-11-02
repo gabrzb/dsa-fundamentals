@@ -7,5 +7,6 @@
     "allowImportingTsExtensions": true,
     "erasableSyntaxOnly": true
   },
-  "include": ["concepts/**/*.ts", "problems/**/*.ts"]
+  "include": ["concepts/**/*.ts", "problems/**/*.ts"],
+  "exclude": ["**/*.test.ts"]
 }
