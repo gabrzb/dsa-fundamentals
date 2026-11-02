@@ -155,10 +155,3 @@ Implementations are study libraries. Import them from a REPL or a separate scrip
 to experiment, and put reproducible examples in the unit suites. Keep assertions
 focused on behavior, including empty inputs, repeated values, boundaries, missing
 paths, capacity limits and reuse after removal.
-
-Radix sort accepts negative integers, zero and positive integers. Go supports the full
-`int` range, Python supports arbitrary precision integers, and TypeScript supports
-`number` values from `Number.MIN_SAFE_INTEGER` to `Number.MAX_SAFE_INTEGER`.
-Graph algorithms expect valid vertex indices; Dijkstra expects nonnegative edge weights.
-Anagram exercises follow the lowercase English alphabet constraints in their
-problem statement. Binary tree DFS uses binary search tree ordering.
