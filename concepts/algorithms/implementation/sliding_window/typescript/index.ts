@@ -4,9 +4,11 @@ export function maxWindowSum(values: number[], size: number): number {
   }
 
   let windowSum = 0;
+
   for (let index = 0; index < size; index++) {
     windowSum += values[index];
   }
+
   let bestSum = windowSum;
 
   for (let right = size; right < values.length; right++) {

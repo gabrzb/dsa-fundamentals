@@ -6,9 +6,11 @@ func maxWindowSum(values []int, size int) int {
 	}
 
 	windowSum := 0
+
 	for _, value := range values[:size] {
 		windowSum += value
 	}
+
 	bestSum := windowSum
 
 	for right := size; right < len(values); right++ {
