@@ -25,7 +25,19 @@ inOrder(node, output) {
 
 For the diagram, pre-order produces `8, 3, 1, 6, 10, 14`; in-order produces `1, 3, 6, 8, 10, 14`; post-order produces `1, 6, 3, 14, 10, 8`. In-order produces sorted values when the tree satisfies the BST ordering rule.
 
+![The same tree numbered by visit position for pre-order, in-order and post-order](images/tree-traversals.png)
+
+The numbers beside the nodes mark output positions, not the order in which calls begin. In post-order, for example, the root's call starts first but emits its value last. The call waits until both subtrees finish.
+
+![An in-order traversal with the unfinished calls and accumulated output at each step](images/tree-call-stack.png)
+
+Descending from `8` to `3` to `1` leaves the earlier calls waiting. After visiting `1`, return to `3`, emit `3`, then traverse `6`. Only after that left subtree returns can the waiting call emit `8`. A `NULL` child returns without adding a value.
+
 Breadth-first traversal uses a queue. Enqueue the root, then dequeue one node at a time, visiting it and enqueuing its children. The resulting level order is `8, 3, 10, 1, 6, 14`. An empty tree has no values to visit.
+
+![The FIFO queue and growing output during breadth-first tree traversal](images/tree-queue.png)
+
+After visiting `3`, the queue contains `10, 1, 6`. Visit the older entry `10` before the children just enqueued from `3`; this waiting order gives level-by-level traversal. A recursive depth-first call would enter `1` before continuing to `10`.
 
 Searching a BST can follow one branch at each step. To find `6`, compare with `8`, go left to `3`, then right to `6`. A missing child means the value is absent.
 
