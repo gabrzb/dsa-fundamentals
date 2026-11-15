@@ -39,3 +39,9 @@ This fixed-jump strategy meets that asymptotic bound. It does not minimize the e
 Python and TypeScript enforce a minimum jump of one. Go handles an empty array before scanning and uses the square root for nonempty arrays. All three return a zero-based breaking index, not a one-based floor label.
 
 Code: [Go](golang/solution.go), [Python](python/solution.py) and [TypeScript](typescript/index.ts).
+
+## Complexity derivation
+
+Let `n` count represented floors and `j = max(1, floor(sqrt(n)))` for nonempty input. At most `O(n/j)` jump probes and `j + 1` scan probes occur. An all-safe array forces the jump phase to cross the building and supplies an `Ω(n/j)` lower bound; with this choice of `j`, worst-case time is therefore `Θ(sqrt(n))`. The algorithm reads selected entries directly; it does not first copy or scan the full input array.
+
+For `n = 16` and first breaking index 10, the actual read indices are `4, 8, 12, 8, 9, 10`. The repeated read of 8 belongs to the linear phase and counts as another probe. A threshold at index zero can return after a constant number of probes, so best-case time is `Θ(1)`. Empty input also takes constant time and returns `-1`. Jump, index and loop state use `Θ(1)` auxiliary and call-stack space. This is the cost of the fixed-jump implementation, not a proof of exact optimality among all two-ball strategies.
