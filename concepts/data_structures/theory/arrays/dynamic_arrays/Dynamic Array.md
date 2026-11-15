@@ -1,405 +1,83 @@
-# Dynamic Arrays
+# Dynamic Array
 
-A dynamic array is a data structure that stores elements in contiguous memory locations and can increase or decrease its capacity as the number of elements changes.
+A dynamic array is an indexed sequence backed by a contiguous block of slots whose capacity can change. It tracks a **size**, the number of stored elements, and a **capacity**, the number of reserved slots. Growing the array can require allocating a larger block and copying the occupied slots.
 
-Like a static array, each element has an index, usually starting at `0`. The difference is that a dynamic array separately tracks the number of stored elements and the number of reserved positions.
+In `[10, 20, 30, unused]`, the size is `3` and the capacity is `4`. The next append uses index `3`. Once all four slots hold elements, appending `50` can allocate eight slots, copy the four existing values and write `50` at index `4`. The size becomes `5` and the capacity becomes `8`.
 
-Characteristics:
+![A dynamic array growing from four to eight slots and shrinking after removals](images/dynamic-array.png)
 
-- Has a variable size;
-- Stores elements of the same type;
-- Uses contiguous memory locations;
-- Allows access and updates by index in **O(1)**;
-- Maintains additional capacity for new elements;
-- Resizes when its capacity is exhausted;
-- Can reduce its capacity when many positions become empty;
-- May copy its elements to a new memory block during resizing.
+Indexed access costs `O(1)` because you calculate a slot within the current block. Require `0 <= index < size` to access an element, even if the block has spare capacity. A slot can contain a value or a reference to an object elsewhere. Copying references during growth does not require copying the referenced objects.
 
-Its main advantage is combining fast indexed access with the flexibility to grow. Its main limitation is the occasional cost of reallocating memory and copying elements.
+## Growth and removal
 
-# Array organization
+To append, check the available space. The pseudocode starts with `size = 0` and `capacity = 1`. `createArray(c)` reserves `c` slots, and `error(...)` stops the operation with a failure.
 
-## Indices and values
-
-Consider a dynamic array containing five numbers with capacity for eight:
-
-![Dynamic array with five occupied positions and three reserved positions](images/General%20Representation.png)
-
-Indices `0` through `4` contain elements. Positions `5` through `7` are reserved but are not yet part of the array's logical size.
-
-```text
-array[0] → 10
-array[2] → 30
-array[4] → 50
-```
-
-For an array with size `size`, the occupied indices belong to the following range:
-
-```text
-0 to size - 1
-```
-
-In the example, `size = 5`. Therefore, the valid indices for access range from `0` to `4`, even though the capacity is `8`.
-
-## Contiguous memory
-
-The elements are stored next to each other in memory. If the array's initial address and the size of each element are known, the location of any element can be calculated directly:
-
-```text
-address(array[i]) = initialAddress + i × elementSize
-```
-
-This calculation does not depend on the number of elements. Therefore, accessing a position by index has **O(1)** complexity.
-
-When the array needs to grow, there may be no free space immediately after the current block. In that case, the structure reserves a larger contiguous block, copies the elements, and releases the previous block.
-
-## Size and capacity
-
-A dynamic array maintains two different values:
-
-- **Size (`size`)**: number of stored elements;
-- **Capacity (`capacity`)**: total number of reserved positions.
-
-```text
-size = 5
-capacity = 8
-
-[10, 20, 30, 40, 50, null, null, null]
-```
-
-The size must never exceed the capacity:
-
-```text
-0 ≤ size ≤ capacity
-```
-
-The additional positions prevent a reallocation on every insertion. While `size < capacity`, a new element can be placed at the end immediately.
-
-# Main operations
-
-## Access by index
-
-Access happens directly through the index:
-
-```text
-access(array, index) {
-    if (index < 0 || index >= array.size) {
-        throw "Invalid index"
-    }
-
-    return array.data[index]
-}
-```
-
-![Accessing an element in a dynamic array by index](images/Access.png)
-
-Since the array does not need to be traversed, the complexity is **O(1)**.
-
-## Update
-
-Updating means replacing the value stored at an existing position:
-
-```text
-update(array, index, newValue) {
-    if (index < 0 || index >= array.size) {
-        throw "Invalid index"
-    }
-
-    array.data[index] = newValue
-}
-```
-
-![Updating an element in a dynamic array](images/Update.png)
-
-An update also has **O(1)** complexity because the position is accessed directly.
-
-## Traversal and search
-
-Traversal means visiting only the elements that are part of the array's logical size:
-
-```text
-traverse(array) {
-    for (i = 0; i < array.size; i++) {
-        visit(array.data[i])
-    }
-}
-```
-
-Because all `n` stored elements are visited, traversal has **O(n)** complexity.
-
-When only the target value is known, it may be necessary to inspect the elements one by one:
-
-```text
-search(array, target) {
-    for (i = 0; i < array.size; i++) {
-        if (array.data[i] == target) {
-            return i
-        }
-    }
-
-    return -1
-}
-```
-
-![Searching for an element in a dynamic array](images/Search.png)
-
-In the worst case, every element is examined. Therefore, a linear search in a dynamic array has **O(n)** complexity.
-
-The fact that an array is dynamic does not automatically make searching fast. Access is **O(1)** only when the index is already known.
-
-# Insertion
-
-The insertion scenarios are shown below.
-
-## Insertion at the end without resizing
-
-When capacity is still available, the new value is stored in the first free position and the size is incremented:
-
-```text
+```c
 append(array, value) {
     if (array.size == array.capacity) {
-        resize(array)
+        resize(array, array.capacity * 2);
     }
 
-    array.data[array.size] = value
-    array.size++
+    array.data[array.size] = value;
+    array.size++;
 }
-```
 
-![Appending an element without resizing the dynamic array](images/Element%20Addition%20-%20Without%20Resizing.png)
-
-Without resizing, insertion at the end has **O(1)** complexity.
-
-## Growth and resizing
-
-If `size == capacity`, there are no free positions. The structure must:
-
-1. Define a larger capacity;
-2. Reserve a new memory block;
-3. Copy the elements to the new block;
-4. Replace the reference to the old block;
-5. Insert the new element.
-
-A common strategy is to multiply the capacity by a factor, often `2`:
-
-```text
-resize(array) {
-    if (array.capacity == 0) {
-        newCapacity = 1
-    } else {
-        newCapacity = array.capacity × 2
-    }
-
-    newData = createArray(newCapacity)
-
+resize(array, newCapacity) {
+    newData = createArray(newCapacity);
     for (i = 0; i < array.size; i++) {
-        newData[i] = array.data[i]
+        newData[i] = array.data[i];
     }
 
-    array.data = newData
-    array.capacity = newCapacity
+    array.data = newData;
+    array.capacity = newCapacity;
 }
 ```
 
-![Appending an element while resizing the dynamic array](images/Element%20Addition%20-%20With%20Resizing.png)
+Without resizing, an append needs one write. Resizing copies `n` elements. Doubling the capacity leaves room for later appends. For the first eight appends from capacity `1`, you copy `1 + 2 + 4 = 7` elements in addition to writing the eight new values. The total work grows in proportion to the number of appends. This gives **O(1) amortized** cost per append, although an append that copies elements costs `O(n)`. Amortized cost accounts for a sequence of operations; an individual operation can still take longer.
 
-An individual resize has **O(n)** complexity because all elements must be copied. However, it does not happen on every insertion.
+To remove index `1` from `[10, 20, 30, 40]`, save `20`, shift `30` and `40` one slot to the left, and decrease the size. Removing the last element needs no shifts. Clear the old reference if the slots store references. You can keep the capacity or shrink it after a sequence of removals.
 
-When capacity grows geometrically, the cost of copying is distributed across several insertions. Therefore, insertion at the end has **O(1) amortized** complexity, even though a particular insertion may cost **O(n)**.
-
-## Insertion at the beginning or in the middle
-
-To insert into an occupied position, the following elements must be shifted one position to the right:
-
-```text
-insert(array, index, value) {
-    if (index < 0 || index > array.size) {
-        throw "Invalid index"
-    }
-
-    if (array.size == array.capacity) {
-        resize(array)
-    }
-
-    for (i = array.size; i > index; i--) {
-        array.data[i] = array.data[i - 1]
-    }
-
-    array.data[index] = value
-    array.size++
-}
-```
-
-### Insertion at the beginning
-
-![Inserting an element at the beginning of a dynamic array](images/Addition%20at%20Beginning.png)
-
-### Insertion in the middle
-
-![Inserting an element in the middle of a dynamic array](images/Addition%20in%20Middle.png)
-
-In the worst case, all elements are shifted. Therefore, insertion at the beginning or in the middle has **O(n)** complexity.
-
-# Removal
-
-As with insertion, the removal scenarios are shown below.
-
-## Removal from the end
-
-Removing the last element only requires decreasing the logical size:
-
-```text
-removeLast(array) {
-    if (array.size == 0) {
-        throw "Empty array"
-    }
-
-    removedValue = array.data[array.size - 1]
-    array.size--
-    shrinkIfNeeded(array)
-
-    return removedValue
-}
-```
-
-![Removing the last element without resizing the dynamic array](images/Element%20Removal%20-%20Without%20Resizing.png)
-
-Without reducing capacity, this operation has **O(1)** complexity. When a reduction is required, that specific removal costs **O(n)** because of the copy, but it remains **O(1) amortized** across several removals.
-
-## Removal from the beginning or middle
-
-When a position is removed, the following elements are shifted one position to the left to keep the array contiguous:
-
-```text
+```c
 remove(array, index) {
     if (index < 0 || index >= array.size) {
-        throw "Invalid index"
+        error("Invalid index");
     }
 
-    removedValue = array.data[index]
-
+    value = array.data[index];
     for (i = index; i < array.size - 1; i++) {
-        array.data[i] = array.data[i + 1]
+        array.data[i] = array.data[i + 1];
+    }
+    array.size--;
+    array.data[array.size] = NULL;
+
+    if (array.capacity > 1 && array.size <= array.capacity / 4) {
+        resize(array, max(1, array.capacity / 2));
     }
 
-    array.size--
-    shrinkIfNeeded(array)
-    return removedValue
+    return value;
 }
 ```
 
-### Removal from the beginning
+The example uses integer division for capacity calculations and `NULL` to clear a slot outside the logical size. The size determines which slots contain elements.
 
-![Removing the first element from a dynamic array](images/Removal%20at%20Beginning.png)
+In the shrinking example, two elements remain in a block of eight slots. Copy them into a block of four slots; the size stays `2`. Waiting until one-quarter occupancy before halving the capacity separates the growth and shrink thresholds. Shrinking at half occupancy could cause alternating appends and removals near the threshold to trigger a copy on each operation.
 
-### Removal from the middle
+## Costs and project implementation
 
-![Removing an element from the middle of a dynamic array](images/Removal%20in%20Middle.png)
+For `n` elements and capacity `c`, with doubling and the shrinking policy above:
 
-In the worst case, all following elements must be shifted. Therefore, removal from the beginning or middle has **O(n)** complexity.
+| Operation | Cost |
+| --- | --- |
+| Read or update a valid index | `O(1)` |
+| Append | `O(1)` amortized; `O(n)` when resizing |
+| Remove the last element by index | `O(1)` amortized; `O(n)` when shrinking |
+| Insert or remove at the beginning or middle | `O(n)` worst case, due to shifts |
+| Search an unsorted array by value | `O(n)` worst case, due to comparisons |
 
-## Capacity reduction
+The reserved storage takes `O(c)` space. During a resize, you keep both the old and new blocks until the copy finishes. A dynamic array suits sequences that change in size and need indexed access or appends. Frequent insertions at the beginning require shifts even with spare capacity.
 
-After a removal, the array reduces its capacity by half when **two conditions** are satisfied at the same time:
+In this repository, `insert`/`Insert` appends. `delete`/`Delete` takes a **value**, searches for its first occurrence and then removes that position. The search costs `O(n)` in the worst case, including when the requested value is at the end. The pseudocode takes an index to show removal without that search.
 
-1. The size is less than or equal to one quarter of the capacity: `size ≤ capacity / 4`;
-2. The current capacity is greater than the minimum capacity: `capacity > minimumCapacity`.
+Go and TypeScript shrink at one-quarter occupancy. Python uses `size < capacity // 4`, so its shrink happens below that threshold.
 
-```text
-shrinkIfNeeded(array) {
-    if (
-        array.size <= array.capacity / 4
-        and array.capacity > array.minimumCapacity
-    ) {
-        newCapacity = max(
-            array.minimumCapacity,
-            array.capacity / 2
-        )
-
-        newData = createArray(newCapacity)
-
-        for (i = 0; i < array.size; i++) {
-            newData[i] = array.data[i]
-        }
-
-        array.data = newData
-        array.capacity = newCapacity
-    }
-}
-```
-
-![Removing an element while reducing the dynamic array capacity](images/Element%20Removal%20-%20With%20Resizing.png)
-
-For example:
-
-```text
-size = 4
-capacity = 16
-minimumCapacity = 4
-
-size ≤ capacity / 4        → 4 ≤ 4  → true
-capacity > minimumCapacity → 16 > 4 → true
-
-newCapacity = capacity / 2 → 8
-```
-
-The four elements are copied to a new array with capacity `8`. The capacity never becomes smaller than `minimumCapacity` or smaller than the number of stored elements.
-
-The one-quarter threshold prevents repeated resizing. If capacity were reduced as soon as the array became half full, an alternating sequence of insertions and removals near that threshold could grow and shrink the array on every operation.
-
-An individual reduction has **O(n)** complexity because the elements must be copied. Because it happens only after several removals, removal from the end still has **O(1) amortized** complexity.
-
-# Operation complexity
-
-| Operation                                 |          Complexity | Reason                                           |
-| ----------------------------------------- | ------------------: | ------------------------------------------------ |
-| Access by index                           |            **O(1)** | The position's address is calculated directly   |
-| Update by index                           |            **O(1)** | The position is known                            |
-| Traversal                                 |            **O(n)** | All elements are visited                         |
-| Linear search                             |            **O(n)** | The entire array may need to be examined         |
-| Insertion at the end without resizing     |            **O(1)** | The value occupies the next free position        |
-| Insertion at the end                      | **O(1) amortized**   | **O(n)** resizes occur only occasionally         |
-| Insertion at the beginning or middle      |            **O(n)** | Elements may need to be shifted                  |
-| Removal from the end without shrinking    |            **O(1)** | Only the logical size is decreased               |
-| Removal from the end                      | **O(1) amortized**   | **O(n)** reductions occur only occasionally      |
-| Removal from the beginning or middle      |            **O(n)** | Elements may need to be shifted                  |
-| Memory usage                              |            **O(n)** | Reserved memory grows with capacity              |
-
-# Advantages and disadvantages
-
-## Advantages
-
-- Very fast access by index;
-- Adjustable size during execution;
-- Efficient insertion at the end on average;
-- Good memory locality because elements are close together;
-- Does not require knowing the final number of elements in advance;
-- Suitable for lists that grow over time.
-
-## Disadvantages
-
-- May keep reserved positions unused;
-- Resizing requires memory allocation and copying elements;
-- Insertions and removals at the beginning or in the middle require shifting elements;
-- References to internal positions may become invalid after reallocation;
-- Requires a sufficiently large contiguous memory block when growing.
-
-# When to use
-
-Dynamic arrays are appropriate when:
-
-- The number of elements may vary;
-- Fast access by index is important;
-- Insertions at the end are frequent;
-- Insertions and removals at the beginning or in the middle are not predominant;
-- Reserving some additional capacity is acceptable;
-- The occasional cost of resizing is acceptable.
-
-Common examples include:
-
-- Lists of items added by the user;
-- Query results with an unknown number of elements;
-- Event histories;
-- Collections used during data processing;
-- Stack implementations;
-- Structures such as `ArrayList`, `Vector`, `List`, and `slice`, depending on the language.
+Code: [Go](../../../implementation/arrays/dynamic_array/golang/solution.go), [Python](../../../implementation/arrays/dynamic_array/python/solution.py) and [TypeScript](../../../implementation/arrays/dynamic_array/typescript/index.ts).
