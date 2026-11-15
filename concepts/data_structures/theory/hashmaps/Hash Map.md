@@ -8,7 +8,11 @@ Different keys can choose the same bucket, which is a **collision**. This projec
 
 ## Hash, compare and change a chain
 
-To get `"e"`, compute bucket `1`, compare against `"a"`, then follow `next` to `"e"`. An empty bucket or the end of the chain means the key is absent. The pseudocode uses `NOT_FOUND` as a separate missing result, so a stored value can be distinguished from a miss.
+To get `"e"`, compute bucket `1`, compare against `"a"`, then follow `next` to `"e"`. An empty bucket or the end of the chain means the key is absent.
+
+![Lookup following a collision chain to find a key, then exhausting the same chain for a missing key](images/hash-lookup.png)
+
+The two reads inspect the same bucket. `get("e")` rejects `"a"`, follows its link, then returns the value at `"e"`. The missing key `"i"` also hashes to bucket 1, but fails both key comparisons and reaches `NULL`. Reading the bucket alone cannot distinguish either outcome. The pseudocode uses `NOT_FOUND` as a separate missing result, so a stored value can be distinguished from a miss.
 
 ```c
 get(map, key) {
