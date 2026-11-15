@@ -50,6 +50,8 @@ Balanced partitions give `O(n log n)` time: each level performs linear partition
 
 Choosing the final element as pivot can produce extreme partitions for sorted, reverse-sorted or all-equal input. These versions do not randomize pivots or use three-way partitioning. A randomized variant changes the expected behavior, but it is not the implementation shown here.
 
+The pseudocode and diagrams follow Python and TypeScript's `<= pivot` comparison. Go uses `< pivot`, so its scanned prefix contains strictly smaller values and its other scanned values are greater than or equal to the pivot. For `[2, 2, 2]`, Go fixes the first pivot at index 0; Python and TypeScript fix it at index 2. Each version then recurses on a range of length two. The invariant differs at equality, but both variants still sort correctly and take `Θ(n²)` time with `Θ(n)` stack depth on all-equal input.
+
 All three implementations mutate the input. Their public wrappers supply the initial bounds; Python names its wrapper `quick_sort`.
 
 Code: [Go](../../implementation/quick_sort/golang/solution.go), [Python](../../implementation/quick_sort/python/solution.py) and [TypeScript](../../implementation/quick_sort/typescript/index.ts).
