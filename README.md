@@ -4,8 +4,6 @@ A collection of data structures, algorithms, and coding problems implemented in 
 
 ## Contents
 
-The [study roadmap](ROADMAP.md) records the completed analysis stage and the planned topics.
-
 ### Algorithm analysis
 
 | Topic | Theory |
