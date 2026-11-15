@@ -50,6 +50,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Ring buffer](concepts/data_structures/theory/ringbuffer/Ring%20Buffer.md) | `O(1)` enqueue, dequeue, and logical-index access |
 | [Stack](concepts/data_structures/theory/stack/Stack.md) | `O(1)` push, pop, and peek |
 | [Graph breadth-first search (adjacency matrix)](concepts/data_structures/theory/graphs/Graph.md) | `O(V^2)` time; `O(V)` auxiliary space |
+| [Graph breadth-first search (adjacency list)](concepts/data_structures/theory/graphs/bfs_adj_list/Breadth%20First%20Search.md) | `O(V + E)` time; `O(V)` auxiliary space |
 | [Graph depth-first search (adjacency list)](concepts/data_structures/theory/graphs/Graph.md) | `O(V + E)` time; `O(V)` auxiliary space |
 | [Dijkstra shortest path (adjacency list)](concepts/data_structures/theory/graphs/Graph.md) | `O(V^2 + E)` time; `O(V)` auxiliary space |
 | [Binary tree base](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(1)` node creation and access |

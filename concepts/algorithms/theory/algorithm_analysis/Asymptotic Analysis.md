@@ -81,6 +81,7 @@ The data-structure review uses `N` stored entries, `B` buckets, `a` key length, 
 | [AVL tree](../../../data_structures/theory/tree/avl/AVL%20Tree.md) | Insert/remove worst `O(log(N + 1))` time and frames; cached heights and rotations |
 | Tree BFS | Go worst `Θ(N)`; Python/TypeScript front removals can reach `O(N²)`; logical queue `O(w)`, while Go's slice may retain `O(N)` backing storage |
 | [Matrix BFS](../../../data_structures/theory/graphs/Graph.md) | Worst `Θ(V²)` row scanning, `O(V)` auxiliary memory; TypeScript queue shifts stay within this time bound |
+| [Adjacency-list BFS](../../../data_structures/theory/graphs/bfs_adj_list/Breadth%20First%20Search.md) | `O(V + E)` time including validation; `O(V)` auxiliary memory and shortest-edge-count path |
 | Adjacency-list DFS | Worst `O(V + E)` including seen-array initialization; `O(V)` auxiliary memory and frames |
 | Dijkstra | Worst `O(V² + E)`; scans for the next minimum, with `O(V)` auxiliary memory; no heap in this version |
 

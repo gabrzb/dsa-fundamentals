@@ -41,7 +41,7 @@ bfs(graph, source, target) {
 }
 ```
 
-The pseudocode uses adjacency lists and a queue with constant-time removal. Each `graph[current]` entry lists that vertex's outgoing edges. `pathFrom` follows predecessors from the target back to the source and reverses that sequence. A source equal to the target gives a one-vertex path.
+The pseudocode uses adjacency lists and a queue with constant-time removal. The [unweighted adjacency-list BFS](bfs_adj_list/Breadth%20First%20Search.md) implements this traversal with integer neighbor entries rather than weighted pairs. Each `graph[current]` entry lists that vertex's outgoing edges. `pathFrom` follows predecessors from the target back to the source and reverses that sequence. A source equal to the target gives a one-vertex path.
 
 **Depth-first search**, or DFS, follows one branch before trying another. The project uses recursive calls and a path list. Mark a vertex before exploring its neighbors, append it to the current path and remove it from that path if the branch fails. Keep it marked: reaching the same vertex from another branch does not reveal new outgoing edges in this reachability search. DFS returns a path if one exists, with no shortest-path guarantee.
 
@@ -93,7 +93,7 @@ Nonnegative weights ensure that a later route cannot improve a vertex after fina
 | --- | --- | --- |
 | Matrix BFS in this repository | `O(V^2)` | `O(V)` |
 | Adjacency-list DFS | `O(V + E)` | `O(V)` for marks, path and recursion |
-| Adjacency-list BFS with a FIFO queue | `O(V + E)` | `O(V)` |
+| Adjacency-list BFS | `O(V + E)` | `O(V)` |
 | Current Dijkstra with linear minimum selection | `O(V^2 + E)` | `O(V)` |
 
 The current Dijkstra scans the vertices to choose the next minimum. An implementation with a suitable min-priority queue can reduce selection costs, but the repository does not use one here. Its routines return a path rather than a distance table. A single traversal visits vertices reachable from the source; reaching the remaining vertices requires additional starting points.
