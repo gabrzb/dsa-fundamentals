@@ -36,6 +36,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [N queens](concepts/algorithms/theory/n_queens/N%20Queens.md) | `O(n * n! + S * n)` upper bound for `S` solutions |
 | [Variable Sliding Window](concepts/algorithms/theory/variable_window/Variable%20Sliding%20Window.md) | O(n) time; O(1) auxiliary space |
 | [Fast and Slow Pointers](concepts/algorithms/theory/fast_slow_pointers/Fast%20and%20Slow%20Pointers.md) | O(n) time; O(1) auxiliary space |
+| [Monotonic Stack](concepts/algorithms/theory/monotonic_stack/Monotonic%20Stack.md) | O(n) time; O(n) auxiliary space |
 
 ### Data structures
 
