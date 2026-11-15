@@ -10,6 +10,10 @@ Keep `head` at the next element to read, `tail` at the next slot to write, and `
 
 After enqueuing `10`, `20` and `30`, you have `head = 0`, `tail = 3` and `size = 3`. Dequeue `10`, then enqueue `40` at slot `3` and `50` at slot `0`. The physical slots contain `[50, 20, 30, 40]`, but the logical order is `20, 30, 40, 50`. Begin reading at `head = 1` to recover that order.
 
+![Separate writes across the array boundary, full versus empty states and logical-to-physical index mapping](images/ring-wrap.png)
+
+The write of `40` fills slot 3 and moves `tail` to 0. The next write stores `50` in slot 0 and moves `tail` to 1. Neither write moves the unread values at slots 1 and 2. Following four dequeues, `head` also returns to 1: the indices match the full state, but size is now zero. The mapping below the states uses the full state to recover FIFO order from physical slots.
+
 ```c
 enqueue(buffer, value) {
     if (buffer.size == buffer.capacity) {
