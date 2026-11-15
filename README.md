@@ -22,6 +22,7 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Sliding window (maximum fixed-window sum) | `O(n)` | [Notes](concepts/algorithms/theory/sliding_window/Sliding%20Window.md) | [Solution](concepts/algorithms/implementation/sliding_window/golang/solution.go) | [Solution](concepts/algorithms/implementation/sliding_window/typescript/index.ts) | [Solution](concepts/algorithms/implementation/sliding_window/python/solution.py) |
 | Prefix sum | `O(n)` construction; `O(1)` range query | [Notes](concepts/algorithms/theory/prefix_sum/Prefix%20Sum.md) | [Solution](concepts/algorithms/implementation/prefix_sum/golang/solution.go) | [Solution](concepts/algorithms/implementation/prefix_sum/typescript/index.ts) | [Solution](concepts/algorithms/implementation/prefix_sum/python/solution.py) |
 | Subsets | `O(n * 2^n)` worst-case, including output | [Notes](concepts/algorithms/theory/subsets/Subsets.md) | [Solution](concepts/algorithms/implementation/subsets/golang/solution.go) | [Solution](concepts/algorithms/implementation/subsets/typescript/index.ts) | [Solution](concepts/algorithms/implementation/subsets/python/solution.py) |
+| Permutations | `O(n * n!)` worst-case, including output | [Notes](concepts/algorithms/theory/permutations/Permutations.md) | [Solution](concepts/algorithms/implementation/permutations/golang/solution.go) | [Solution](concepts/algorithms/implementation/permutations/typescript/index.ts) | [Solution](concepts/algorithms/implementation/permutations/python/solution.py) |
 
 ### Data structure implementations
 
