@@ -41,6 +41,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Merging Intervals](concepts/algorithms/theory/intervals/Merging%20Intervals.md) | O(n log n) time; O(n) auxiliary space |
 | [Binary Search on the Answer](concepts/algorithms/theory/binary_search_answer/Binary%20Search%20on%20the%20Answer.md) | O(n log S) time; O(1) auxiliary space |
 | [KMP Pattern Search](concepts/algorithms/theory/kmp/KMP%20Pattern%20Search.md) | O(n + m + r) time; prefix table O(m) |
+| [Bit Operations](concepts/algorithms/theory/bit_operations/Bit%20Operations.md) | Constant bounds for unsigned 32-bit words |
 
 ### Data structures
 
