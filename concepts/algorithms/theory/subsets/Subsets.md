@@ -6,7 +6,13 @@ A subset is a selection of elements from a collection, including the empty selec
 
 Sort a copy of the input so equal values sit together. Maintain a current selection, `path`, and a start index. Save a copy of `path` at each call, then try each eligible next value. Recurse from the following index and remove the chosen value after returning.
 
-![Choices that generate the four subsets of two distinct values](images/subsets.png)
+![Subset choices with start indices, saved prefixes and repeated sibling branches](images/subsets.png)
+
+The diagram uses sorted input `[1, 2, 2]`. Save a result at every node, including the root, because a subset can have any size. A call's `start` limits later choices to unused occurrences after the chosen index.
+
+![The first subset branch growing and shrinking as calls return](images/subsets-state.png)
+
+After saving `[1, 2, 2]`, pop the last `2`, return from that call, then pop the earlier `2`. Resume the call with path `[1]` and `start = 1`. Index 2 would repeat the sibling branch begun at index 1, so skip it. At the deeper call with `start = 2`, that same occurrence was legal: it was the first candidate at that depth. This distinction allows `[2, 2]` while preventing duplicate subsets.
 
 Skip repeated values at the same recursion depth. That prevents two branches from starting with the same value. A deeper call can still choose another occurrence: `[1, 2, 2]` must include `[2, 2]`.
 
