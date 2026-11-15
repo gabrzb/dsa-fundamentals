@@ -94,9 +94,10 @@ Nonnegative weights ensure that a later route cannot improve a vertex after fina
 | Matrix BFS in this repository | `O(V^2)` | `O(V)` |
 | Adjacency-list DFS | `O(V + E)` | `O(V)` for marks, path and recursion |
 | Adjacency-list BFS | `O(V + E)` | `O(V)` |
-| Current Dijkstra with linear minimum selection | `O(V^2 + E)` | `O(V)` |
+| Dijkstra with linear minimum selection | `O(V^2 + E)` | `O(V)` |
+| Dijkstra with a lazy min heap | `O(V + E log(E + 1))` | `O(V + E)` |
 
-The current Dijkstra scans the vertices to choose the next minimum. An implementation with a suitable min-priority queue can reduce selection costs, but the repository does not use one here. Its routines return a path rather than a distance table. A single traversal visits vertices reachable from the source; reaching the remaining vertices requires additional starting points. [Connected components](connected_components/Connected%20Components.md) repeats BFS from unseen roots to partition an undirected graph, including its isolated vertices.
+The earlier Dijkstra scans the vertices to choose the next minimum and returns a path. The [heap version](dijkstra_heap/Heap%20Dijkstra.md) returns a distance and path, pushes improved candidates into a min-priority queue and discards outdated entries. Its heap can retain multiple candidates for one vertex, explaining the larger auxiliary-space bound. A single traversal visits vertices reachable from the source; reaching the remaining vertices requires additional starting points. [Connected components](connected_components/Connected%20Components.md) repeats BFS from unseen roots to partition an undirected graph, including its isolated vertices.
 
 Code: matrix BFS in [Go](../../implementation/graphs/bfs_adj_matrix/golang/solution.go), [Python](../../implementation/graphs/bfs_adj_matrix/python/solution.py) and [TypeScript](../../implementation/graphs/bfs_adj_matrix/typescript/index.ts); adjacency-list DFS in [Go](../../implementation/graphs/dfs_adj_list/golang/solution.go), [Python](../../implementation/graphs/dfs_adj_list/python/solution.py) and [TypeScript](../../implementation/graphs/dfs_adj_list/typescript/index.ts); Dijkstra in [Go](../../implementation/graphs/dijkstra_path/golang/solution.go), [Python](../../implementation/graphs/dijkstra_path/python/solution.py) and [TypeScript](../../implementation/graphs/dijkstra_path/typescript/index.ts).
 
