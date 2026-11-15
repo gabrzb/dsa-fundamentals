@@ -36,3 +36,9 @@ Building the set and checking potential starts takes `O(n)` expected time. Acros
 All three implementations use this approach and preserve the input. The problem's integer bounds keep the neighboring values within the supported numeric range of these implementations.
 
 Code: [Go](golang/solution.go), [Python](python/solution.py) and [TypeScript](typescript/index.ts).
+
+## Complexity derivation
+
+Let `n` count input positions, `u` count distinct values and `r` count maximal consecutive runs. Set construction takes expected `Θ(n)` time. The outer loop makes `u` predecessor checks. Across all inner loops there are exactly `u` successful membership checks and `r` terminating failed checks, because only the smallest value of each run starts an extension. Since `r <= u`, the nested loops do expected `Θ(u)` total work rather than `Θ(u²)`.
+
+For `{100, 4, 200, 1, 3, 2}`, there are six predecessor checks. The three runs have lengths 1, 1 and 4, so extensions make six successful checks and three terminating failures. Set iteration order does not change those counts. Every nonempty input is consumed to build the set, even if all values are equal; best and worst input cases both take expected `Θ(n)` time under constant expected hash costs. Storage is `Θ(u)` plus constant state, and call-stack space is `Θ(1)`. Pathological linear-cost hash operations can make total time `O(n²)` under that collision model. This aggregate count is compatible with, but distinct from, the resize argument in [amortized analysis](../../concepts/algorithms/theory/algorithm_analysis/Amortized%20Analysis.md).
