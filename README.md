@@ -4,61 +4,61 @@ A collection of data structures, algorithms, and coding problems implemented in 
 
 ## Contents
 
+Each topic links to its explanation, which includes the project implementations.
+
 ### Algorithm analysis
 
-| Topic | Theory |
+- [Big O, Ω and Θ; implementation and problem complexity review](concepts/algorithms/theory/algorithm_analysis/Asymptotic%20Analysis.md)
+- [Amortized analysis: aggregate, accounting and potential methods](concepts/algorithms/theory/algorithm_analysis/Amortized%20Analysis.md)
+- [Recurrences: expansion, substitution and Master theorem](concepts/algorithms/theory/algorithm_analysis/Recurrences.md)
+- [Call-stack space, recursion depth and retained output](concepts/algorithms/theory/algorithm_analysis/Call%20Stack%20Space.md)
+
+### Algorithms
+
+| Topic | Time complexity |
 | --- | --- |
-| Big O, Ω and Θ; implementation and problem complexity review | [Notes](concepts/algorithms/theory/algorithm_analysis/Asymptotic%20Analysis.md) |
-| Amortized analysis: aggregate, accounting and potential methods | [Notes](concepts/algorithms/theory/algorithm_analysis/Amortized%20Analysis.md) |
-| Recurrences: expansion, substitution and Master theorem | [Notes](concepts/algorithms/theory/algorithm_analysis/Recurrences.md) |
-| Call-stack space, recursion depth and retained output | [Notes](concepts/algorithms/theory/algorithm_analysis/Call%20Stack%20Space.md) |
+| [Linear search](concepts/algorithms/theory/linear_search/Linear%20Search.md) | `O(n)` |
+| [Binary search](concepts/algorithms/theory/binary_search/Binary%20Search.md) | `O(log n)` |
+| [Bubble sort](concepts/algorithms/theory/bubble_sort/Bubble%20Sort.md) | `O(n^2)` |
+| [Insertion sort](concepts/algorithms/theory/insertion_sort/Insertion%20Sort.md) | `O(n^2)` |
+| [Selection sort](concepts/algorithms/theory/selection_sort/Selection%20Sort.md) | `O(n^2)` |
+| [Merge sort](concepts/algorithms/theory/merge_sort/Merge%20Sort.md) | `O(n log n)`; TypeScript front removals can reach `O(n^2)` |
+| [Quick sort](concepts/algorithms/theory/quick_sort/Quick%20Sort.md) | Average `O(n log n)`; worst-case `O(n^2)` |
+| [Heap sort](concepts/algorithms/theory/heap_sort/Heap%20Sort.md) | Worst-case `O(n log n)` |
+| [Radix sort (signed integers)](concepts/algorithms/theory/radix_sort/Radix%20Sort.md) | `O(d(n + b))` for `d` digits and `b = 19` buckets |
+| [Recursive maze solver](concepts/algorithms/theory/recursion/Recursion%20and%20Maze%20Search.md) | `O(r * c)` for `r` rows and `c` columns |
+| [Two pointers (array reversal)](concepts/algorithms/theory/two_pointers/Two%20Pointers.md) | `O(n)` |
+| [Sliding window (maximum fixed-window sum)](concepts/algorithms/theory/sliding_window/Sliding%20Window.md) | `O(n)` |
+| [Prefix sum](concepts/algorithms/theory/prefix_sum/Prefix%20Sum.md) | `O(n)` construction; `O(1)` range query |
+| [Subsets](concepts/algorithms/theory/subsets/Subsets.md) | `O(n * 2^n)` worst-case, including output |
+| [Permutations](concepts/algorithms/theory/permutations/Permutations.md) | `O(n * n!)` worst-case, including output |
+| [Combinations](concepts/algorithms/theory/combinations/Combinations.md) | `O(k * C(n, k))` for `0 < k <= n`, including output |
+| [N queens](concepts/algorithms/theory/n_queens/N%20Queens.md) | `O(n * n! + S * n)` upper bound for `S` solutions |
 
-### Algorithm implementations
+### Data structures
 
-| Topic | Time complexity | Theory | Go | TypeScript | Python |
-| --- | --- | --- | --- | --- | --- |
-| Linear search | `O(n)` | [Notes](concepts/algorithms/theory/linear_search/Linear%20Search.md) | [Solution](concepts/algorithms/implementation/linear_search/golang/solution.go) | [Solution](concepts/algorithms/implementation/linear_search/typescript/index.ts) | [Solution](concepts/algorithms/implementation/linear_search/python/solution.py) |
-| Binary search | `O(log n)` | [Notes](concepts/algorithms/theory/binary_search/Binary%20Search.md) | [Solution](concepts/algorithms/implementation/binary_search/golang/solution.go) | [Solution](concepts/algorithms/implementation/binary_search/typescript/index.ts) | [Solution](concepts/algorithms/implementation/binary_search/python/solution.py) |
-| Bubble sort | `O(n^2)` | [Notes](concepts/algorithms/theory/bubble_sort/Bubble%20Sort.md) | [Solution](concepts/algorithms/implementation/bubble_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/bubble_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/bubble_sort/python/solution.py) |
-| Insertion sort | `O(n^2)` | [Notes](concepts/algorithms/theory/insertion_sort/Insertion%20Sort.md) | [Solution](concepts/algorithms/implementation/insertion_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/insertion_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/insertion_sort/python/solution.py) |
-| Selection sort | `O(n^2)` | [Notes](concepts/algorithms/theory/selection_sort/Selection%20Sort.md) | [Solution](concepts/algorithms/implementation/selection_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/selection_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/selection_sort/python/solution.py) |
-| Merge sort | `O(n log n)`; TypeScript front removals can reach `O(n^2)` | [Notes](concepts/algorithms/theory/merge_sort/Merge%20Sort.md) | [Solution](concepts/algorithms/implementation/merge_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/merge_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/merge_sort/python/solution.py) |
-| Quick sort | Average `O(n log n)`; worst-case `O(n^2)` | [Notes](concepts/algorithms/theory/quick_sort/Quick%20Sort.md) | [Solution](concepts/algorithms/implementation/quick_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/quick_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/quick_sort/python/solution.py) |
-| Heap sort | Worst-case `O(n log n)` | [Notes](concepts/algorithms/theory/heap_sort/Heap%20Sort.md) | [Solution](concepts/algorithms/implementation/heap_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/heap_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/heap_sort/python/solution.py) |
-| Radix sort (signed integers) | `O(d(n + b))` for `d` digits and `b = 19` buckets | [Notes](concepts/algorithms/theory/radix_sort/Radix%20Sort.md) | [Solution](concepts/algorithms/implementation/radix_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/radix_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/radix_sort/python/solution.py) |
-| Recursive maze solver | `O(r * c)` for `r` rows and `c` columns | [Notes](concepts/algorithms/theory/recursion/Recursion%20and%20Maze%20Search.md) | [Solution](concepts/algorithms/implementation/recursion/golang/solution.go) | [Solution](concepts/algorithms/implementation/recursion/typescript/index.ts) | [Solution](concepts/algorithms/implementation/recursion/python/solution.py) |
-| Two pointers (array reversal) | `O(n)` | [Notes](concepts/algorithms/theory/two_pointers/Two%20Pointers.md) | [Solution](concepts/algorithms/implementation/two_pointers/golang/solution.go) | [Solution](concepts/algorithms/implementation/two_pointers/typescript/index.ts) | [Solution](concepts/algorithms/implementation/two_pointers/python/solution.py) |
-| Sliding window (maximum fixed-window sum) | `O(n)` | [Notes](concepts/algorithms/theory/sliding_window/Sliding%20Window.md) | [Solution](concepts/algorithms/implementation/sliding_window/golang/solution.go) | [Solution](concepts/algorithms/implementation/sliding_window/typescript/index.ts) | [Solution](concepts/algorithms/implementation/sliding_window/python/solution.py) |
-| Prefix sum | `O(n)` construction; `O(1)` range query | [Notes](concepts/algorithms/theory/prefix_sum/Prefix%20Sum.md) | [Solution](concepts/algorithms/implementation/prefix_sum/golang/solution.go) | [Solution](concepts/algorithms/implementation/prefix_sum/typescript/index.ts) | [Solution](concepts/algorithms/implementation/prefix_sum/python/solution.py) |
-| Subsets | `O(n * 2^n)` worst-case, including output | [Notes](concepts/algorithms/theory/subsets/Subsets.md) | [Solution](concepts/algorithms/implementation/subsets/golang/solution.go) | [Solution](concepts/algorithms/implementation/subsets/typescript/index.ts) | [Solution](concepts/algorithms/implementation/subsets/python/solution.py) |
-| Permutations | `O(n * n!)` worst-case, including output | [Notes](concepts/algorithms/theory/permutations/Permutations.md) | [Solution](concepts/algorithms/implementation/permutations/golang/solution.go) | [Solution](concepts/algorithms/implementation/permutations/typescript/index.ts) | [Solution](concepts/algorithms/implementation/permutations/python/solution.py) |
-| Combinations | `O(k * C(n, k))` for `0 < k <= n`, including output | [Notes](concepts/algorithms/theory/combinations/Combinations.md) | [Solution](concepts/algorithms/implementation/combinations/golang/solution.go) | [Solution](concepts/algorithms/implementation/combinations/typescript/index.ts) | [Solution](concepts/algorithms/implementation/combinations/python/solution.py) |
-| N queens | `O(n * n! + S * n)` upper bound for `S` solutions | [Notes](concepts/algorithms/theory/n_queens/N%20Queens.md) | [Solution](concepts/algorithms/implementation/n_queens/golang/solution.go) | [Solution](concepts/algorithms/implementation/n_queens/typescript/index.ts) | [Solution](concepts/algorithms/implementation/n_queens/python/solution.py) |
-
-### Data structure implementations
-
-| Data structure | Typical operation complexity | Theory | Go | TypeScript | Python |
-| --- | --- | --- | --- | --- | --- |
-| Static array | `O(1)` access; `O(n)` insertion and deletion | [Notes](concepts/data_structures/theory/arrays/static_arrays/Static%20Array.md) | [Solution](concepts/data_structures/implementation/arrays/static_array/golang/solution.go) | [Solution](concepts/data_structures/implementation/arrays/static_array/typescript/index.ts) | [Solution](concepts/data_structures/implementation/arrays/static_array/python/solution.py) |
-| Dynamic array | `O(1)` access; amortized `O(1)` append | [Notes](concepts/data_structures/theory/arrays/dynamic_arrays/Dynamic%20Array.md) | [Solution](concepts/data_structures/implementation/arrays/dynamic_array/golang/solution.go) | [Solution](concepts/data_structures/implementation/arrays/dynamic_array/typescript/index.ts) | [Solution](concepts/data_structures/implementation/arrays/dynamic_array/python/solution.py) |
-| Hash map | Expected `O(1 + n/b)` bucket work for `b` fixed buckets; worst `O(n)`, plus key costs | [Notes](concepts/data_structures/theory/hashmaps/Hash%20Map.md) | [Solution](concepts/data_structures/implementation/hashmaps/golang/solution.go) | [Solution](concepts/data_structures/implementation/hashmaps/typescript/index.ts) | [Solution](concepts/data_structures/implementation/hashmaps/python/solution.py) |
-| Min heap | `O(log n)` repair; Python removal adds `O(n)` copying | [Notes](concepts/data_structures/theory/heap/Heap.md) | [Solution](concepts/data_structures/implementation/heap/golang/solution.go) | [Solution](concepts/data_structures/implementation/heap/typescript/index.ts) | [Solution](concepts/data_structures/implementation/heap/python/solution.py) |
-| LRU cache | Expected `O(1)` lookup and update | [Notes](concepts/data_structures/theory/lru_cache/LRU%20Cache.md) | [Solution](concepts/data_structures/implementation/lru_cache/golang/solution.go) | [Solution](concepts/data_structures/implementation/lru_cache/typescript/index.ts) | [Solution](concepts/data_structures/implementation/lru_cache/python/solution.py) |
-| Singly linked list | `O(1)` insertion at head; `O(n)` access | [Notes](concepts/data_structures/theory/linked_list/singly/Singly%20Linked%20List.md) | [Solution](concepts/data_structures/implementation/linked_list/singly/golang/solution.go) | [Solution](concepts/data_structures/implementation/linked_list/singly/typescript/index.ts) | [Solution](concepts/data_structures/implementation/linked_list/singly/python/solution.py) |
-| Doubly linked list | `O(1)` insertion at head or tail; `O(n)` access | [Notes](concepts/data_structures/theory/linked_list/doubly/Doubly%20Linked%20List.md) | [Solution](concepts/data_structures/implementation/linked_list/doubly/golang/solution.go) | [Solution](concepts/data_structures/implementation/linked_list/doubly/typescript/index.ts) | [Solution](concepts/data_structures/implementation/linked_list/doubly/python/solution.py) |
-| Queue | `O(1)` enqueue, dequeue, and peek | [Notes](concepts/data_structures/theory/queue/Queue.md) | [Solution](concepts/data_structures/implementation/queues/golang/solution.go) | [Solution](concepts/data_structures/implementation/queues/typescript/index.ts) | [Solution](concepts/data_structures/implementation/queues/python/solution.py) |
-| Ring buffer | `O(1)` enqueue, dequeue, and logical-index access | [Notes](concepts/data_structures/theory/ringbuffer/Ring%20Buffer.md) | [Solution](concepts/data_structures/implementation/ringbuffer/golang/solution.go) | [Solution](concepts/data_structures/implementation/ringbuffer/typescript/index.ts) | [Solution](concepts/data_structures/implementation/ringbuffer/python/solution.py) |
-| Stack | `O(1)` push, pop, and peek | [Notes](concepts/data_structures/theory/stack/Stack.md) | [Solution](concepts/data_structures/implementation/stack/golang/solution.go) | [Solution](concepts/data_structures/implementation/stack/typescript/index.ts) | [Solution](concepts/data_structures/implementation/stack/python/solution.py) |
-| Graph breadth-first search (adjacency matrix) | `O(V^2)` time; `O(V)` auxiliary space | [Notes](concepts/data_structures/theory/graphs/Graph.md) | [Solution](concepts/data_structures/implementation/graphs/bfs_adj_matrix/golang/solution.go) | [Solution](concepts/data_structures/implementation/graphs/bfs_adj_matrix/typescript/index.ts) | [Solution](concepts/data_structures/implementation/graphs/bfs_adj_matrix/python/solution.py) |
-| Graph depth-first search (adjacency list) | `O(V + E)` time; `O(V)` auxiliary space | [Notes](concepts/data_structures/theory/graphs/Graph.md) | [Solution](concepts/data_structures/implementation/graphs/dfs_adj_list/golang/solution.go) | [Solution](concepts/data_structures/implementation/graphs/dfs_adj_list/typescript/index.ts) | [Solution](concepts/data_structures/implementation/graphs/dfs_adj_list/python/solution.py) |
-| Dijkstra shortest path (adjacency list) | `O(V^2 + E)` time; `O(V)` auxiliary space | [Notes](concepts/data_structures/theory/graphs/Graph.md) | [Solution](concepts/data_structures/implementation/graphs/dijkstra_path/golang/solution.go) | [Solution](concepts/data_structures/implementation/graphs/dijkstra_path/typescript/index.ts) | [Solution](concepts/data_structures/implementation/graphs/dijkstra_path/python/solution.py) |
-| Binary tree base | `O(1)` node creation and access | [Notes](concepts/data_structures/theory/tree/Binary%20Tree.md) | [Solution](concepts/data_structures/implementation/tree/bt_base/golang/binary_tree.go) | [Solution](concepts/data_structures/implementation/tree/bt_base/typescript/binary_tree.ts) | [Solution](concepts/data_structures/implementation/tree/bt_base/python/binary_tree.py) |
-| Binary search tree maintenance | `O(h)` insertion/removal; worst `O(n)` | [Notes](concepts/data_structures/theory/tree/bst/Binary%20Search%20Tree.md) | [Solution](concepts/data_structures/implementation/tree/bst/golang/solution.go) | [Solution](concepts/data_structures/implementation/tree/bst/typescript/index.ts) | [Solution](concepts/data_structures/implementation/tree/bst/python/solution.py) |
-| AVL tree | Worst-case `O(log(n + 1))` insertion/removal with rebalancing | [Notes](concepts/data_structures/theory/tree/avl/AVL%20Tree.md) | [Solution](concepts/data_structures/implementation/tree/avl/golang/solution.go) | [Solution](concepts/data_structures/implementation/tree/avl/typescript/index.ts) | [Solution](concepts/data_structures/implementation/tree/avl/python/solution.py) |
-| Binary tree comparison | `O(n)` time; `O(h)` recursion space | [Notes](concepts/data_structures/theory/tree/Binary%20Tree.md) | [Solution](concepts/data_structures/implementation/tree/bt_comparison/golang/solution.go) | [Solution](concepts/data_structures/implementation/tree/bt_comparison/typescript/index.ts) | [Solution](concepts/data_structures/implementation/tree/bt_comparison/python/solution.py) |
-| Binary tree depth-first search | BST search: `O(h)`; worst-case `O(n)` | [Notes](concepts/data_structures/theory/tree/Binary%20Tree.md) | [Solution](concepts/data_structures/implementation/tree/bt_dfs/golang/solution.go) | [Solution](concepts/data_structures/implementation/tree/bt_dfs/typescript/index.ts) | [Solution](concepts/data_structures/implementation/tree/bt_dfs/python/solution.py) |
-| Binary tree breadth-first search | `O(n)` with FIFO queue; Python/TypeScript front removal can reach `O(n^2)` | [Notes](concepts/data_structures/theory/tree/Binary%20Tree.md) | [Solution](concepts/data_structures/implementation/tree/bt_traversal/breadth_first/golang/solution.go) | [Solution](concepts/data_structures/implementation/tree/bt_traversal/breadth_first/typescript/bt_bfs.ts) | [Solution](concepts/data_structures/implementation/tree/bt_traversal/breadth_first/python/solution.py) |
-| Binary tree depth-first traversal | `O(n)` time; `O(h)` recursion space | [Notes](concepts/data_structures/theory/tree/Binary%20Tree.md) | [In-order](concepts/data_structures/implementation/tree/bt_traversal/depth_first/golang/bt_in_order.go), [post-order](concepts/data_structures/implementation/tree/bt_traversal/depth_first/golang/bt_post_order.go), [pre-order](concepts/data_structures/implementation/tree/bt_traversal/depth_first/golang/bt_pre_order.go) | [In-order](concepts/data_structures/implementation/tree/bt_traversal/depth_first/typescript/bt_in_order.ts), [post-order](concepts/data_structures/implementation/tree/bt_traversal/depth_first/typescript/bt_post_order.ts), [pre-order](concepts/data_structures/implementation/tree/bt_traversal/depth_first/typescript/bt_pre_order.ts) | [In-order](concepts/data_structures/implementation/tree/bt_traversal/depth_first/python/bt_in_order.py), [post-order](concepts/data_structures/implementation/tree/bt_traversal/depth_first/python/bt_post_order.py), [pre-order](concepts/data_structures/implementation/tree/bt_traversal/depth_first/python/bt_pre_order.py) |
+| Data structure | Typical operation complexity |
+| --- | --- |
+| [Static array](concepts/data_structures/theory/arrays/static_arrays/Static%20Array.md) | `O(1)` access; `O(n)` insertion and deletion |
+| [Dynamic array](concepts/data_structures/theory/arrays/dynamic_arrays/Dynamic%20Array.md) | `O(1)` access; amortized `O(1)` append |
+| [Hash map](concepts/data_structures/theory/hashmaps/Hash%20Map.md) | Expected `O(1 + n/b)` bucket work for `b` fixed buckets; worst `O(n)`, plus key costs |
+| [Min heap](concepts/data_structures/theory/heap/Heap.md) | `O(log n)` repair; Python removal adds `O(n)` copying |
+| [LRU cache](concepts/data_structures/theory/lru_cache/LRU%20Cache.md) | Expected `O(1)` lookup and update |
+| [Singly linked list](concepts/data_structures/theory/linked_list/singly/Singly%20Linked%20List.md) | `O(1)` insertion at head; `O(n)` access |
+| [Doubly linked list](concepts/data_structures/theory/linked_list/doubly/Doubly%20Linked%20List.md) | `O(1)` insertion at head or tail; `O(n)` access |
+| [Queue](concepts/data_structures/theory/queue/Queue.md) | `O(1)` enqueue, dequeue, and peek |
+| [Ring buffer](concepts/data_structures/theory/ringbuffer/Ring%20Buffer.md) | `O(1)` enqueue, dequeue, and logical-index access |
+| [Stack](concepts/data_structures/theory/stack/Stack.md) | `O(1)` push, pop, and peek |
+| [Graph breadth-first search (adjacency matrix)](concepts/data_structures/theory/graphs/Graph.md) | `O(V^2)` time; `O(V)` auxiliary space |
+| [Graph depth-first search (adjacency list)](concepts/data_structures/theory/graphs/Graph.md) | `O(V + E)` time; `O(V)` auxiliary space |
+| [Dijkstra shortest path (adjacency list)](concepts/data_structures/theory/graphs/Graph.md) | `O(V^2 + E)` time; `O(V)` auxiliary space |
+| [Binary tree base](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(1)` node creation and access |
+| [Binary search tree maintenance](concepts/data_structures/theory/tree/bst/Binary%20Search%20Tree.md) | `O(h)` insertion/removal; worst `O(n)` |
+| [AVL tree](concepts/data_structures/theory/tree/avl/AVL%20Tree.md) | Worst-case `O(log(n + 1))` insertion/removal with rebalancing |
+| [Binary tree comparison](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(n)` time; `O(h)` recursion space |
+| [Binary tree depth-first search](concepts/data_structures/theory/tree/Binary%20Tree.md) | BST search: `O(h)`; worst-case `O(n)` |
+| [Binary tree breadth-first search](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(n)` with FIFO queue; Python/TypeScript front removal can reach `O(n^2)` |
+| [Binary tree depth-first traversal](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(n)` time; `O(h)` recursion space |
 
 ### Dynamic programming
 
@@ -66,22 +66,22 @@ A collection of data structures, algorithms, and coding problems implemented in 
 
 ### Problems
 
-| Problem | Main technique | Description | Go | TypeScript | Python |
-| --- | --- | --- | --- | --- | --- |
-| Climbing Stairs | Memoization / tabulation | [Description](problems/climbing_stairs/QUESTION.md) / [Explanation](problems/climbing_stairs/SOLUTION.md) | [Solutions](problems/climbing_stairs/golang/solution.go) | [Solutions](problems/climbing_stairs/typescript/index.ts) | [Solutions](problems/climbing_stairs/python/solution.py) |
-| Coin Change | Memoization / tabulation | [Description](problems/coin_change/QUESTION.md) / [Explanation](problems/coin_change/SOLUTION.md) | [Solutions](problems/coin_change/golang/solution.go) | [Solutions](problems/coin_change/typescript/index.ts) | [Solutions](problems/coin_change/python/solution.py) |
-| 0/1 Knapsack | Memoization / tabulation | [Description](problems/knapsack/QUESTION.md) / [Explanation](problems/knapsack/SOLUTION.md) | [Solutions](problems/knapsack/golang/solution.go) | [Solutions](problems/knapsack/typescript/index.ts) | [Solutions](problems/knapsack/python/solution.py) |
-| Longest Common Subsequence | Memoization / tabulation | [Description](problems/longest_common_subsequence/QUESTION.md) / [Explanation](problems/longest_common_subsequence/SOLUTION.md) | [Solutions](problems/longest_common_subsequence/golang/solution.go) | [Solutions](problems/longest_common_subsequence/typescript/index.ts) | [Solutions](problems/longest_common_subsequence/python/solution.py) |
-| Contains Duplicate | Hash set | [Description](problems/contains_duplicate/QUESTION.md) / [Explanation](problems/contains_duplicate/SOLUTION.md) | [Solution](problems/contains_duplicate/golang/solution.go) | [Solution](problems/contains_duplicate/typescript/index.ts) | [Solution](problems/contains_duplicate/python/solution.py) |
-| Group Anagrams | Frequency counting / hash map | [Description](problems/group_anagrams/QUESTION.md) / [Explanation](problems/group_anagrams/SOLUTION.md) | [Solution](problems/group_anagrams/golang/solution.go) | [Solution](problems/group_anagrams/typescript/index.ts) | [Solution](problems/group_anagrams/python/solution.py) |
-| Integer to Roman | Greedy conversion | [Description](problems/int_to_roman/QUESTION.md) / [Explanation](problems/int_to_roman/SOLUTION.md) | [Solution](problems/int_to_roman/golang/solution.go) | [Solution](problems/int_to_roman/typescript/index.ts) | [Solution](problems/int_to_roman/python/solution.py) |
-| Longest Consecutive Sequence | Hash set | [Description](problems/longest_consecutive_sequence/QUESTION.md) / [Explanation](problems/longest_consecutive_sequence/SOLUTION.md) | [Solution](problems/longest_consecutive_sequence/golang/solution.go) | [Solution](problems/longest_consecutive_sequence/typescript/index.ts) | [Solution](problems/longest_consecutive_sequence/python/solution.py) |
-| Minimum Distance to the Target Element | Linear scan | [Description](problems/minimum_distance/QUESTION.md) / [Explanation](problems/minimum_distance/SOLUTION.md) | [Solution](problems/minimum_distance/golang/solution.go) | [Solution](problems/minimum_distance/typescript/index.ts) | [Solution](problems/minimum_distance/python/solution.py) |
-| Search Insert Position | Binary search | [Description](problems/search_insert_position/QUESTION.md) / [Explanation](problems/search_insert_position/SOLUTION.md) | [Solution](problems/search_insert_position/golang/solution.go) | [Solution](problems/search_insert_position/typescript/index.ts) | [Solution](problems/search_insert_position/python/solution.py) |
-| Two Crystal Balls | Square-root jump search | [Description](problems/two_crystal_balls/QUESTION.md) / [Explanation](problems/two_crystal_balls/SOLUTION.md) | [Solution](problems/two_crystal_balls/golang/solution.go) | [Solution](problems/two_crystal_balls/typescript/index.ts) | [Solution](problems/two_crystal_balls/python/solution.py) |
-| Two Sum | Hash map | [Description](problems/two_sum/QUESTION.md) / [Explanation](problems/two_sum/SOLUTION.md) | [Solution](problems/two_sum/golang/solution.go) | [Solution](problems/two_sum/typescript/index.ts) | [Solution](problems/two_sum/python/solution.py) |
-| Valid Anagram | Frequency counting / hash map | [Description](problems/valid_anagram/QUESTION.md) / [Explanation](problems/valid_anagram/SOLUTION.md) | [Solution 1](problems/valid_anagram/solution_1/golang/solution.go), [Solution 2](problems/valid_anagram/solution_2/golang/solution.go) | [Solution 1](problems/valid_anagram/solution_1/typescript/index.ts), [Solution 2](problems/valid_anagram/solution_2/typescript/index.ts) | [Solution 1](problems/valid_anagram/solution_1/python/solution.py), [Solution 2](problems/valid_anagram/solution_2/python/solution.py) |
-| Valid Parentheses | Stack | [Description](problems/valid_parenthesis/QUESTION.md) / [Explanation](problems/valid_parenthesis/SOLUTION.md) | [Solution](problems/valid_parenthesis/golang/solution.go) | [Solution](problems/valid_parenthesis/typescript/index.ts) | [Solution](problems/valid_parenthesis/python/solution.py) |
+| Problem | Main technique |
+| --- | --- |
+| [Climbing Stairs](problems/climbing_stairs/SOLUTION.md) | Memoization / tabulation |
+| [Coin Change](problems/coin_change/SOLUTION.md) | Memoization / tabulation |
+| [0/1 Knapsack](problems/knapsack/SOLUTION.md) | Memoization / tabulation |
+| [Longest Common Subsequence](problems/longest_common_subsequence/SOLUTION.md) | Memoization / tabulation |
+| [Contains Duplicate](problems/contains_duplicate/SOLUTION.md) | Hash set |
+| [Group Anagrams](problems/group_anagrams/SOLUTION.md) | Frequency counting / hash map |
+| [Integer to Roman](problems/int_to_roman/SOLUTION.md) | Greedy conversion |
+| [Longest Consecutive Sequence](problems/longest_consecutive_sequence/SOLUTION.md) | Hash set |
+| [Minimum Distance to the Target Element](problems/minimum_distance/SOLUTION.md) | Linear scan |
+| [Search Insert Position](problems/search_insert_position/SOLUTION.md) | Binary search |
+| [Two Crystal Balls](problems/two_crystal_balls/SOLUTION.md) | Square-root jump search |
+| [Two Sum](problems/two_sum/SOLUTION.md) | Hash map |
+| [Valid Anagram](problems/valid_anagram/SOLUTION.md) | Frequency counting / hash map |
+| [Valid Parentheses](problems/valid_parenthesis/SOLUTION.md) | Stack |
 
 ## Repository structure
 
