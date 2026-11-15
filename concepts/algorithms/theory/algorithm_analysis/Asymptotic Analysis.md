@@ -89,6 +89,9 @@ The data-structure review uses `N` stored entries, `B` buckets, `a` key length, 
 | [Topological sort](../../../data_structures/theory/graphs/topological_sort/Topological%20Sort.md) | `O(V + E)` time; `O(V)` indegrees and queue; complete order or failure on a cycle |
 | Dijkstra (linear selection) | Worst `O(V² + E)`; scans for the next minimum, with `O(V)` auxiliary memory; no heap in this version |
 | [Heap Dijkstra](../../../data_structures/theory/graphs/dijkstra_heap/Heap%20Dijkstra.md) | `O(V + E log(E + 1))` time; `O(V + E)` arrays and lazy heap entries |
+| [Kruskal](../../../data_structures/theory/graphs/kruskal/Kruskal.md) | `O(V + E log(E + 1) + E ?(V + 1))` time; `O(V + E)` copied edges and Union-Find storage |
+
+Here `?` denotes the inverse Ackermann function in the Union-Find bounds.
 
 Native maps used in problems and LRU are distinct from the educational fixed-bucket hash map. Its load factor `N/B` can grow without bound. No uniform collision distribution is promised by its deterministic hash function. Hashing a long key and comparing long strings are not constant-time operations.
 

@@ -104,3 +104,7 @@ Code: matrix BFS in [Go](../../implementation/graphs/bfs_adj_matrix/golang/solut
 [Cycle detection](cycle_detection/Cycle%20Detection.md) distinguishes active and finished vertices in directed DFS, and skips the arrival edge during undirected BFS. Both versions scan every component and use explicit work containers instead of recursion.
 
 [Topological sorting](topological_sort/Topological%20Sort.md) uses incoming-edge counts and a FIFO ready queue to order every vertex of a DAG. If a cycle blocks the remaining vertices, it returns no ordering rather than an incomplete prefix.
+
+## Minimum spanning forests
+
+A minimum spanning tree connects every vertex of a connected undirected graph with minimum total edge weight and no cycles. For disconnected graphs, a minimum spanning forest supplies one such tree per component. [Kruskal](kruskal/Kruskal.md) sorts edge records by weight and uses [Union-Find](../union_find/Union%20Find.md) to accept only edges joining separate selected components. Input edges are listed once with a separate vertex count, so isolated vertices are retained in the universe. Negative weights are valid for this task.
