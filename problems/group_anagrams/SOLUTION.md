@@ -37,3 +37,9 @@ For `n` words containing `L` letters in total, counting and constructing fixed-s
 Go uses a comparable `[26]int` key, Python a tuple, and TypeScript a string joining the counts with `#`. The separator keeps sequences such as `1, 11` and `11, 1` distinct. A fresh array object would compare by identity as a TypeScript map key, so it would not group equal counts. The implementations assume lowercase English letters.
 
 Code: [Go](golang/solution.go), [Python](python/solution.py) and [TypeScript](typescript/index.ts).
+
+## Complexity derivation
+
+Let `n` count input words, `L` count all their letters and `g` count distinct signatures. The outer loop initializes 26 slots per word; the inner loops together visit exactly `L` characters. Counting, key construction and expected map work therefore take `Θ(L + 26n)` time under the statement's bounded word lengths. The loops are not `n` times the total character count: each word contributes only its own length. TypeScript joins the signature three times per word, which adds a constant factor under these bounds.
+
+The grouping map retains `Θ(26g)` key slots or bounded signature representations, and the returned groups retain `Θ(n)` word references or descriptors. The map points to those same groups; they are not independent copies of every word. Building the outer result adds `Θ(g)` references. Empty words still require a signature and a group entry, so `L = 0` does not imply zero work. All words are processed, with no successful early exit and no recursive frames. If word lengths were unbounded, decimal serialization of TypeScript's counts and arbitrary-precision counter costs would also need accounting. Expected map access is an explicit assumption, not a collision worst-case guarantee.
