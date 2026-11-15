@@ -1,0 +1,2 @@
+import assert from "node:assert/strict";import test from "node:test";import {gcd} from "./index.ts";
+test("Euclid matches divisor enumeration including zero",()=>{for(let a=0;a<50;a++)for(let b=0;b<50;b++){let want=Math.max(a,b);if(a&&b){want=1;for(let d=1;d<=Math.min(a,b);d++)if(a%d===0&&b%d===0)want=d;}assert.equal(gcd(a,b),want);}assert.equal(gcd(1071,462),21);for(const bad of [-1,0.5,NaN])assert.throws(()=>gcd(bad,1),RangeError);});

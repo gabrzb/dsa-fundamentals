@@ -42,6 +42,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Binary Search on the Answer](concepts/algorithms/theory/binary_search_answer/Binary%20Search%20on%20the%20Answer.md) | O(n log S) time; O(1) auxiliary space |
 | [KMP Pattern Search](concepts/algorithms/theory/kmp/KMP%20Pattern%20Search.md) | O(n + m + r) time; prefix table O(m) |
 | [Bit Operations](concepts/algorithms/theory/bit_operations/Bit%20Operations.md) | Constant bounds for unsigned 32-bit words |
+| [Greatest Common Divisor](concepts/algorithms/theory/gcd/Greatest%20Common%20Divisor.md) | O(log(min(a,b)+1) + 1) remainder steps |
 
 ### Data structures
 
