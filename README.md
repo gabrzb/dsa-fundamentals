@@ -4,10 +4,13 @@ A collection of data structures, algorithms, and coding problems implemented in 
 
 ## Contents
 
+The [study roadmap](ROADMAP.md) records the completed analysis stage and the planned topics.
+
 ### Algorithm analysis
 
 | Topic | Theory |
 | --- | --- |
+| Big O, Ω and Θ; implementation and problem complexity review | [Notes](concepts/algorithms/theory/algorithm_analysis/Asymptotic%20Analysis.md) |
 | Amortized analysis: aggregate, accounting and potential methods | [Notes](concepts/algorithms/theory/algorithm_analysis/Amortized%20Analysis.md) |
 | Recurrences: expansion, substitution and Master theorem | [Notes](concepts/algorithms/theory/algorithm_analysis/Recurrences.md) |
 | Call-stack space, recursion depth and retained output | [Notes](concepts/algorithms/theory/algorithm_analysis/Call%20Stack%20Space.md) |
@@ -40,9 +43,9 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | --- | --- | --- | --- | --- | --- |
 | Static array | `O(1)` access; `O(n)` insertion and deletion | [Notes](concepts/data_structures/theory/arrays/static_arrays/Static%20Array.md) | [Solution](concepts/data_structures/implementation/arrays/static_array/golang/solution.go) | [Solution](concepts/data_structures/implementation/arrays/static_array/typescript/index.ts) | [Solution](concepts/data_structures/implementation/arrays/static_array/python/solution.py) |
 | Dynamic array | `O(1)` access; amortized `O(1)` append | [Notes](concepts/data_structures/theory/arrays/dynamic_arrays/Dynamic%20Array.md) | [Solution](concepts/data_structures/implementation/arrays/dynamic_array/golang/solution.go) | [Solution](concepts/data_structures/implementation/arrays/dynamic_array/typescript/index.ts) | [Solution](concepts/data_structures/implementation/arrays/dynamic_array/python/solution.py) |
-| Hash map | Average `O(1)` insertion, lookup, and deletion; worst-case `O(n)` | [Notes](concepts/data_structures/theory/hashmaps/Hash%20Map.md) | [Solution](concepts/data_structures/implementation/hashmaps/golang/solution.go) | [Solution](concepts/data_structures/implementation/hashmaps/typescript/index.ts) | [Solution](concepts/data_structures/implementation/hashmaps/python/solution.py) |
+| Hash map | Expected `O(1 + n/b)` bucket work for `b` fixed buckets; worst `O(n)`, plus key costs | [Notes](concepts/data_structures/theory/hashmaps/Hash%20Map.md) | [Solution](concepts/data_structures/implementation/hashmaps/golang/solution.go) | [Solution](concepts/data_structures/implementation/hashmaps/typescript/index.ts) | [Solution](concepts/data_structures/implementation/hashmaps/python/solution.py) |
 | Min heap | `O(log n)` repair; Python removal adds `O(n)` copying | [Notes](concepts/data_structures/theory/heap/Heap.md) | [Solution](concepts/data_structures/implementation/heap/golang/solution.go) | [Solution](concepts/data_structures/implementation/heap/typescript/index.ts) | [Solution](concepts/data_structures/implementation/heap/python/solution.py) |
-| LRU cache | `O(1)` lookup and update | [Notes](concepts/data_structures/theory/lru_cache/LRU%20Cache.md) | [Solution](concepts/data_structures/implementation/lru_cache/golang/solution.go) | [Solution](concepts/data_structures/implementation/lru_cache/typescript/index.ts) | [Solution](concepts/data_structures/implementation/lru_cache/python/solution.py) |
+| LRU cache | Expected `O(1)` lookup and update | [Notes](concepts/data_structures/theory/lru_cache/LRU%20Cache.md) | [Solution](concepts/data_structures/implementation/lru_cache/golang/solution.go) | [Solution](concepts/data_structures/implementation/lru_cache/typescript/index.ts) | [Solution](concepts/data_structures/implementation/lru_cache/python/solution.py) |
 | Singly linked list | `O(1)` insertion at head; `O(n)` access | [Notes](concepts/data_structures/theory/linked_list/singly/Singly%20Linked%20List.md) | [Solution](concepts/data_structures/implementation/linked_list/singly/golang/solution.go) | [Solution](concepts/data_structures/implementation/linked_list/singly/typescript/index.ts) | [Solution](concepts/data_structures/implementation/linked_list/singly/python/solution.py) |
 | Doubly linked list | `O(1)` insertion at head or tail; `O(n)` access | [Notes](concepts/data_structures/theory/linked_list/doubly/Doubly%20Linked%20List.md) | [Solution](concepts/data_structures/implementation/linked_list/doubly/golang/solution.go) | [Solution](concepts/data_structures/implementation/linked_list/doubly/typescript/index.ts) | [Solution](concepts/data_structures/implementation/linked_list/doubly/python/solution.py) |
 | Queue | `O(1)` enqueue, dequeue, and peek | [Notes](concepts/data_structures/theory/queue/Queue.md) | [Solution](concepts/data_structures/implementation/queues/golang/solution.go) | [Solution](concepts/data_structures/implementation/queues/typescript/index.ts) | [Solution](concepts/data_structures/implementation/queues/python/solution.py) |
