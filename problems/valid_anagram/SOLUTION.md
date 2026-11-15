@@ -1,0 +1,45 @@
+# Valid Anagram
+
+Two strings are anagrams when they contain the same characters with the same multiplicities, regardless of order. Decide whether the two input strings satisfy that condition. The core problem uses lowercase English letters. See the [problem statement](QUESTION.md).
+
+## How it works
+
+Reject unequal lengths first. Count the characters in `s`, then subtract one occurrence for each character in `t`. If you need a character whose remaining count is zero, return false. After consuming equal-length strings without exceeding a count, you have matched every occurrence.
+
+![Character counts decreasing to zero for an anagram and below zero for a mismatch](images/solution.png)
+
+For `s = "aab"` and `t = "aba"`, start with `a:2, b:1`. Reading `a`, `b`, `a` leaves `a:0, b:0`. For `t = "abb"`, the final `b` needs a second occurrence that `s` does not contain. Equal length alone cannot detect that mismatch.
+
+```c
+isAnagram(s, t) {
+    if (length(s) != length(t)) {
+        return false;
+    }
+    counts = array(26, 0);
+    for (i = 0; i < length(s); i++) {
+        counts[s[i] - 'a']++;
+    }
+    for (i = 0; i < length(t); i++) {
+        slot = t[i] - 'a';
+        counts[slot]--;
+        if (counts[slot] < 0) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+The fixed-array approach in `solution_1` assigns one slot per lowercase letter. Python follows the two counting phases above. Go and TypeScript add from `s` and subtract from `t` in the same loop, then check that all slots equal zero. Their intermediate counts can be negative before later additions, so they wait until the end to reject a nonzero count.
+
+The map approach in `solution_2` uses characters as keys. First count `s`; then decrement as you consume `t`, rejecting a missing or exhausted character. A missing key has count zero. This approach supports alphabets beyond 26 letters without allocating a slot for each possible character. In either approach, the final count for a character is its number of occurrences in `s` minus its number in `t`. Zero differences prove the anagram condition. Two empty strings also satisfy it.
+
+## Costs and project code
+
+For strings of length `n`, both approaches take `O(n)` time, with expected hash-operation costs for the map. The fixed array uses `O(26) = O(1)` auxiliary space. The map uses `O(u)` space for `u` distinct characters, also bounded by 26 under the core problem's alphabet. Neither approach changes the inputs.
+
+For the Unicode follow-up, define what counts as a character. Python iterates code points; Go's map version iterates runes but checks byte lengths first; TypeScript iterates code points with `for...of` but checks UTF-16 lengths first. These versions count code points without normalization or grapheme segmentation. For inputs using different representations of the same visible text, normalize and count in the chosen unit before applying this approach.
+
+Array code: [Go](solution_1/golang/solution.go), [Python](solution_1/python/solution.py) and [TypeScript](solution_1/typescript/index.ts).
+
+Map code: [Go](solution_2/golang/solution.go), [Python](solution_2/python/solution.py) and [TypeScript](solution_2/typescript/index.ts).
