@@ -9,6 +9,7 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Topic | Theory |
 | --- | --- |
 | Amortized analysis: aggregate, accounting and potential methods | [Notes](concepts/algorithms/theory/algorithm_analysis/Amortized%20Analysis.md) |
+| Recurrences: expansion, substitution and Master theorem | [Notes](concepts/algorithms/theory/algorithm_analysis/Recurrences.md) |
 
 ### Algorithm implementations
 
