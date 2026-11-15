@@ -10,6 +10,14 @@ Build `prefix` with `n + 1` entries. Set `prefix[0]` to zero and compute each ne
 
 For `[2, -1, 3, 0, -4]`, build `[0, 2, 1, 4, 4, 0]`. The range `[1, 4)` contains `[-1, 3, 0]`, so its sum is `prefix[4] - prefix[1] = 4 - 2 = 2`.
 
+![Building one prefix entry from the preceding sum and the next input value](images/prefix-build.png)
+
+Construction reuses the preceding sum: `prefix[2] = prefix[1] + values[1] = 2 + (-1) = 1`. Each new input contributes once. The query diagram below shows why subtracting two completed prefixes leaves the requested range.
+
+![The shared beginning cancelling when subtracting two prefixes](images/prefix-cancel.png)
+
+`prefix[4]` includes indices 0 through 3. `prefix[1]` includes index 0 alone. Subtracting removes that shared first value and leaves indices 1 through 3, matching the exclusive end of `[1, 4)`.
+
 ```c
 prefixSums(values) {
     prefix = array(length(values) + 1, 0);
