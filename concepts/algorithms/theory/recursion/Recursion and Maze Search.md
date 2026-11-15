@@ -8,6 +8,14 @@ Represent a position as `(x, y)` and read its cell with `maze[y][x]`. Reject out
 
 ![A maze route and a branch removed after reaching a dead end](images/recursion.png)
 
+The overview combines the final path with the failed branch. The states below show when the branch enters and leaves the current path.
+
+![Maze states showing recursive descent, failed returns and persistent seen marks](images/maze-backtracking.png)
+
+At `(2, 2)`, the call tries left and waits. The calls at `(1, 2)` and `(0, 2)` extend the path, but cannot reach the goal. Each removes its own position before returning false. The waiting call at `(2, 2)` then tries right and reaches the goal. The removed positions stay in `seen`, so the search does not explore their outgoing moves again.
+
+The path records the current candidate route through calls that passed the initial checks. Rejected neighbor calls also occupy the call stack for a moment, but bounds, walls or seen checks return before appending them. On success, the calls return true without popping the completed path.
+
 If a recursive call succeeds, keep its path and return success through the waiting calls. If all neighbors fail, remove the current position from the path. Keep its seen mark: another route does not need to explore that same cell again to establish reachability.
 
 ```c
