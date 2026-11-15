@@ -4,7 +4,9 @@ A binary min heap is a complete binary tree in which each parent's value is less
 
 The project stores the tree in an array. For a node at index `i`, its children are at `2 * i + 1` and `2 * i + 2`; its parent is at `(i - 1) / 2` using integer division. The array `[2, 5, 3, 9, 7]` represents a root `2`, children `5` and `3`, and children `9` and `7` under `5`. Siblings have no required order.
 
-![A min heap as a tree and array, followed by the swaps needed to insert one and remove the minimum](images/min-heap.png)
+![A min heap insertion showing the tree and array before each upward repair](images/min-heap.png)
+
+Each panel keeps node indices aligned with the array. Appending at index 5 creates the left child of index 2. The two following exchanges move `1` from index 5 to 2, then to 0. The tree keeps the same shape while those values change places.
 
 ## Restore order along one path
 
@@ -28,6 +30,10 @@ insert(heap, value) {
 ```
 
 To remove the minimum, save the root and move the last value to index `0`. Decrease the size, then swap the replacement with its smaller child while it exceeds that child. Choosing the smaller child keeps the new parent no larger than either child. Only the replacement's downward path needs repair.
+
+![Removing the minimum, moving the last value to the root and choosing the smaller child](images/heap-remove.png)
+
+After the insertion example, removing `1` moves the last value, `3`, to the root and drops the last leaf. Compare both children before swapping: choose `2` rather than `5`. The exchange restores root order and places `3` at a leaf, ending the repair. Removing the final array slot preserves the complete-tree shape; removing an arbitrary interior leaf would leave a gap.
 
 ```c
 removeMin(heap) {
