@@ -47,6 +47,14 @@ The pseudocode uses adjacency lists and a queue with constant-time removal. Each
 
 BFS can return `0, 1, 3` in the diagram: two edges with total weight `5`. It minimizes edge count, not the sum of weights.
 
+![BFS queue and predecessor changes after processing each vertex](images/graph-bfs.png)
+
+When processing `2`, vertex `3` is already waiting in the queue after discovery through `1`. Its seen mark prevents another enqueue and preserves its first predecessor. Reconstruct the path by following `3 -> 1 -> 0`, then reverse it. The matrix implementation scans destinations by increasing index, giving the neighbor order shown here.
+
+![DFS call returns and path changes when searching for an unreachable vertex](images/graph-dfs.png)
+
+To expose DFS backtracking on the same graph, search for disconnected vertex `4`. Follow `0 -> 1 -> 3`, remove `3` and `1` as their calls fail, then try `2`. Its neighbors are already seen. Removing a vertex from the current path does not erase its seen mark. After the root returns, the path is empty and no route exists.
+
 ## Shortest paths and costs
 
 **Dijkstra's algorithm** finds minimum total-weight paths from a source when edge weights are nonnegative. Maintain a tentative distance for each vertex, initially infinity except for distance zero at the source. Repeatedly choose the unfinished reachable vertex with the smallest distance and try to improve its neighbors. This improvement step is **relaxation**.
@@ -74,6 +82,10 @@ while (true) {
 ```
 
 Initialize `visited` to false, distances to infinity and predecessors to `NONE` before this loop. In the diagram, processing `0` gives distances `4` to `1` and `1` to `2`. Processing `2` improves the distance to `1` to `3`. Processing `1` then improves the distance to `3` to `4`. The minimum-weight path is `0, 2, 1, 3`, with three edges and total weight `4`.
+
+![Dijkstra distance and predecessor tables through each minimum selection and relaxation](images/graph-dijkstra.png)
+
+Processing `2` improves the tentative distance to `1` from 4 to 3 and first reaches `3` at cost 6. Processing `1` then reduces `3` to cost 4 and replaces its predecessor. A predecessor can change until its vertex is finalized. Vertex `4` keeps an infinite distance, so the algorithm never selects it.
 
 Nonnegative weights ensure that a later route cannot improve a vertex after finalizing its smallest tentative distance. Negative weights invalidate that argument. The implementation assumes this precondition; it does not validate the edge weights. An infinite target distance means no path exists.
 
