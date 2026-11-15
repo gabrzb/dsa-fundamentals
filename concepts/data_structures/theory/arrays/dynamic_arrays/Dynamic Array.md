@@ -4,6 +4,10 @@ A dynamic array is an indexed sequence backed by a contiguous block of slots who
 
 In `[10, 20, 30, unused]`, the size is `3` and the capacity is `4`. The next append uses index `3`. Once all four slots hold elements, appending `50` can allocate eight slots, copy the four existing values and write `50` at index `4`. The size becomes `5` and the capacity becomes `8`.
 
+![Both memory blocks during growth, index-to-index copying, and the final append](images/dynamic-copy.png)
+
+The allocation supplies a new block; it does not stretch the original block in place. Keep the old values reachable while copying them into matching indices. After the copy, update the backing reference and capacity, then append into the first unused slot. The size stays four until that final write.
+
 ![A dynamic array growing from four to eight slots and shrinking after removals](images/dynamic-array.png)
 
 Indexed access costs `O(1)` because you calculate a slot within the current block. Require `0 <= index < size` to access an element, even if the block has spare capacity. A slot can contain a value or a reference to an object elsewhere. Copying references during growth does not require copying the referenced objects.
@@ -61,6 +65,10 @@ remove(array, index) {
 The example uses integer division for capacity calculations and `NULL` to clear a slot outside the logical size. The size determines which slots contain elements.
 
 In the shrinking example, two elements remain in a block of eight slots. Copy them into a block of four slots; the size stays `2`. Waiting until one-quarter occupancy before halving the capacity separates the growth and shrink thresholds. Shrinking at half occupancy could cause alternating appends and removals near the threshold to trigger a copy on each operation.
+
+![Removals that preserve capacity until the shrink threshold, then copying into the smaller block](images/dynamic-shrink.png)
+
+Starting at size 5 and capacity 8, removing `50` and `40` leaves capacity unchanged. Removing `30` leaves two elements and reaches the model's quarter-full threshold. Copy those two live elements into four slots; do not copy stale slots beyond the logical size. Python's strict comparison waits for one more removal, as noted below.
 
 ## Costs and project implementation
 
