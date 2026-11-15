@@ -32,3 +32,9 @@ The implementations scan `n` positions in `O(n)` time and keep `O(1)` auxiliary 
 Go computes the absolute value with a sign check; Python and TypeScript use their standard absolute-value operation. If the target is absent, the implementations retain the initial array-length sentinel. That case is outside the problem's contract.
 
 Code: [Go](golang/solution.go), [Python](python/solution.py) and [TypeScript](typescript/index.ts).
+
+## Complexity derivation
+
+Let `n` be the array length. Each version compares exactly `n` positions with the target and does constant extra work at a match. Thus both best-case and worst-case time are `Θ(n)` for nonempty input. A match at `start` yields the smallest possible distance but does not stop these implementations. For `[5, 1, 2, 3, 5, 4, 5]`, target 5 and start 3, the running best changes from 7 to 3 at index 0, then to 1 at index 4, and remains 1 at index 6.
+
+The current index, distance and minimum occupy `Θ(1)` auxiliary space; the scalar result and call stack are constant-sized too. There is no hashing, recursion, slicing or growing result to add a hidden cost. Empty input would return the zero-length sentinel, but falls outside the statement's guaranteed valid start and present target.
