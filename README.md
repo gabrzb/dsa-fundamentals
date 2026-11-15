@@ -23,6 +23,7 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Prefix sum | `O(n)` construction; `O(1)` range query | [Notes](concepts/algorithms/theory/prefix_sum/Prefix%20Sum.md) | [Solution](concepts/algorithms/implementation/prefix_sum/golang/solution.go) | [Solution](concepts/algorithms/implementation/prefix_sum/typescript/index.ts) | [Solution](concepts/algorithms/implementation/prefix_sum/python/solution.py) |
 | Subsets | `O(n * 2^n)` worst-case, including output | [Notes](concepts/algorithms/theory/subsets/Subsets.md) | [Solution](concepts/algorithms/implementation/subsets/golang/solution.go) | [Solution](concepts/algorithms/implementation/subsets/typescript/index.ts) | [Solution](concepts/algorithms/implementation/subsets/python/solution.py) |
 | Permutations | `O(n * n!)` worst-case, including output | [Notes](concepts/algorithms/theory/permutations/Permutations.md) | [Solution](concepts/algorithms/implementation/permutations/golang/solution.go) | [Solution](concepts/algorithms/implementation/permutations/typescript/index.ts) | [Solution](concepts/algorithms/implementation/permutations/python/solution.py) |
+| Combinations | `O(k * C(n, k))` for `0 < k <= n`, including output | [Notes](concepts/algorithms/theory/combinations/Combinations.md) | [Solution](concepts/algorithms/implementation/combinations/golang/solution.go) | [Solution](concepts/algorithms/implementation/combinations/typescript/index.ts) | [Solution](concepts/algorithms/implementation/combinations/python/solution.py) |
 
 ### Data structure implementations
 
