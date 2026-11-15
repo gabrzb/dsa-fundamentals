@@ -84,6 +84,7 @@ The data-structure review uses `N` stored entries, `B` buckets, `a` key length, 
 | [Adjacency-list BFS](../../../data_structures/theory/graphs/bfs_adj_list/Breadth%20First%20Search.md) | `O(V + E)` time including validation; `O(V)` auxiliary memory and shortest-edge-count path |
 | Adjacency-list DFS | Worst `O(V + E)` including seen-array initialization; `O(V)` auxiliary memory and frames |
 | [Connected components](../../../data_structures/theory/graphs/connected_components/Connected%20Components.md) | `O(V + E)` total time over all starts; `O(V)` auxiliary memory plus component output |
+| [Cycle detection](../../../data_structures/theory/graphs/cycle_detection/Cycle%20Detection.md) | Directed/undirected `O(V + E)` time; `O(V)` explicit stack or queue; constant recursive depth |
 | Dijkstra | Worst `O(V² + E)`; scans for the next minimum, with `O(V)` auxiliary memory; no heap in this version |
 
 Native maps used in problems and LRU are distinct from the educational fixed-bucket hash map. Its load factor `N/B` can grow without bound. No uniform collision distribution is promised by its deterministic hash function. Hashing a long key and comparing long strings are not constant-time operations.
