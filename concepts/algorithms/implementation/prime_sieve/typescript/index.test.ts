@@ -1,0 +1,2 @@
+import assert from "node:assert/strict";import test from "node:test";import {primesUpTo} from "./index.ts";
+test("sieve matches trial division at every boundary through 150",()=>{for(let limit=0;limit<=150;limit++){const want:number[]=[];for(let n=2;n<=limit;n++){let prime=true;for(let d=2;d<n;d++)if(n%d===0)prime=false;if(prime)want.push(n);}assert.deepEqual(primesUpTo(limit),want);}assert.equal(primesUpTo(1000).length,168);for(const n of [-1,0.5,NaN])assert.throws(()=>primesUpTo(n),RangeError);});

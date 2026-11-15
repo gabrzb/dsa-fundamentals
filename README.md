@@ -43,6 +43,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [KMP Pattern Search](concepts/algorithms/theory/kmp/KMP%20Pattern%20Search.md) | O(n + m + r) time; prefix table O(m) |
 | [Bit Operations](concepts/algorithms/theory/bit_operations/Bit%20Operations.md) | Constant bounds for unsigned 32-bit words |
 | [Greatest Common Divisor](concepts/algorithms/theory/gcd/Greatest%20Common%20Divisor.md) | O(log(min(a,b)+1) + 1) remainder steps |
+| [Sieve of Eratosthenes](concepts/algorithms/theory/prime_sieve/Sieve%20of%20Eratosthenes.md) | O(n log log n) time; O(n) auxiliary space |
 
 ### Data structures
 
