@@ -54,6 +54,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Graph depth-first search (adjacency list)](concepts/data_structures/theory/graphs/Graph.md) | `O(V + E)` time; `O(V)` auxiliary space |
 | [Connected components](concepts/data_structures/theory/graphs/connected_components/Connected%20Components.md) | `O(V + E)` time; `O(V)` auxiliary space |
 | [Cycle detection](concepts/data_structures/theory/graphs/cycle_detection/Cycle%20Detection.md) | Directed and undirected: `O(V + E)` time; `O(V)` auxiliary space |
+| [Topological sort](concepts/data_structures/theory/graphs/topological_sort/Topological%20Sort.md) | `O(V + E)` time; `O(V)` auxiliary space |
 | [Dijkstra shortest path (adjacency list)](concepts/data_structures/theory/graphs/Graph.md) | `O(V^2 + E)` time; `O(V)` auxiliary space |
 | [Binary tree base](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(1)` node creation and access |
 | [Binary search tree maintenance](concepts/data_structures/theory/tree/bst/Binary%20Search%20Tree.md) | `O(h)` insertion/removal; worst `O(n)` |
