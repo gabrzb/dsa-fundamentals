@@ -20,6 +20,7 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Recursive maze solver | `O(r * c)` for `r` rows and `c` columns | — | [Solution](concepts/algorithms/implementation/recursion/golang/solution.go) | [Solution](concepts/algorithms/implementation/recursion/typescript/index.ts) | [Solution](concepts/algorithms/implementation/recursion/python/solution.py) |
 | Two pointers (array reversal) | `O(n)` | [Notes](concepts/algorithms/theory/two_pointers/Two%20Pointers.md) | [Solution](concepts/algorithms/implementation/two_pointers/golang/solution.go) | [Solution](concepts/algorithms/implementation/two_pointers/typescript/index.ts) | [Solution](concepts/algorithms/implementation/two_pointers/python/solution.py) |
 | Sliding window (maximum fixed-window sum) | `O(n)` | [Notes](concepts/algorithms/theory/sliding_window/Sliding%20Window.md) | [Solution](concepts/algorithms/implementation/sliding_window/golang/solution.go) | [Solution](concepts/algorithms/implementation/sliding_window/typescript/index.ts) | [Solution](concepts/algorithms/implementation/sliding_window/python/solution.py) |
+| Prefix sum | `O(n)` construction; `O(1)` range query | [Notes](concepts/algorithms/theory/prefix_sum/Prefix%20Sum.md) | [Solution](concepts/algorithms/implementation/prefix_sum/golang/solution.go) | [Solution](concepts/algorithms/implementation/prefix_sum/typescript/index.ts) | [Solution](concepts/algorithms/implementation/prefix_sum/python/solution.py) |
 
 ### Data structure implementations
 
