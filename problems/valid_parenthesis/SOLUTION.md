@@ -38,3 +38,9 @@ For `n` characters, time is `O(n)` and auxiliary space is `O(n)` in the worst ca
 Go compares before popping. Python and TypeScript pop while checking, and return false on a mismatch or missing opener. Those variants make the same validity decision. The implementations assume the statement's bracket-only alphabet; they do not share a contract for other characters.
 
 Code: [Go](golang/solution.go), [Python](python/solution.py) and [TypeScript](typescript/index.ts).
+
+## Complexity derivation
+
+Let `n` count bracket characters and `p` count the prefix processed before returning. Each character performs at most one push or pop and constant bracket matching. Dynamic-array growth makes a particular push potentially linear in current stack size, but the whole sequence of pushes costs `O(p)` through geometric growth. Thus total time is `Θ(p)` under the usual amortized array model, with worst-case `Θ(n)` time. A first-character unmatched closer gives best-case `Θ(1)` time. These are bracket-only inputs as required by the statement.
+
+For `([])`, stack sizes after each character are `1, 2, 1, 0`, so maximum live logical stack size is 2. More generally, let `d` be the maximum number of simultaneously unmatched openers in the processed prefix; auxiliary storage is `O(d)` plus constant overhead, reaching `Θ(n)` for all openers. The returned boolean and function call stack remain `Θ(1)`: this explicit bracket stack is separate from recursive call-stack storage. See [amortized analysis](../../concepts/algorithms/theory/algorithm_analysis/Amortized%20Analysis.md) for why occasional backing-array growth does not make the full scan quadratic.
