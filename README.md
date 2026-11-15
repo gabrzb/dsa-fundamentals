@@ -67,6 +67,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Binary tree depth-first search](concepts/data_structures/theory/tree/Binary%20Tree.md) | BST search: `O(h)`; worst-case `O(n)` |
 | [Binary tree breadth-first search](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(n)` with FIFO queue; Python/TypeScript front removal can reach `O(n^2)` |
 | [Binary tree depth-first traversal](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(n)` time; `O(h)` recursion space |
+| [Deque](concepts/data_structures/theory/deque/Deque.md) | Amortized O(1) insertion; O(1) removal and peek |
 
 ### Dynamic programming
 
