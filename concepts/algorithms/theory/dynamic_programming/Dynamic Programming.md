@@ -39,3 +39,4 @@ The introductory project example uses a fresh array cache per call and an explic
 | [Climbing Stairs](../../../../problems/climbing_stairs/SOLUTION.md) | Count ways for remaining height `r` | Sum one-step and two-step branches; tabulate increasing heights |
 | [Coin Change](../../../../problems/coin_change/SOLUTION.md) | Fewest reusable coins for remainder `r` | Minimize reachable predecessor plus one; tabulate increasing amounts |
 | [0/1 Knapsack](../../../../problems/knapsack/SOLUTION.md) | Maximum value from item index `i` with capacity `c` | Maximize skip versus take, advancing the item in both; tabulate decreasing item indices |
+| [Longest Common Subsequence](../../../../problems/longest_common_subsequence/SOLUTION.md) | Longest common subsequence of suffixes at `i` and `j` | Match both characters or maximize the two skips; tabulate decreasing string indices |
