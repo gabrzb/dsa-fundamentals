@@ -8,6 +8,12 @@ Sort a copy of the input, track which indices you have used, and build a path on
 
 ![Choosing unused values to build all six permutations](images/permutations.png)
 
+Each edge adds one unused occurrence. The middle level contains two-value prefixes; only the leaves have enough values to save a result. After saving `[1, 2, 3]`, the search returns through two choices before it can build `[1, 3, 2]`.
+
+![Changes to the path and used flags between two results, with the duplicate-occurrence rule](images/permutations-state.png)
+
+Pop `3` and clear `used[2]`, then return from the exhausted `[1, 2]` branch. Pop `2` and clear `used[1]`. The call with path `[1]` can now choose index 2, then index 1. The flags describe input indices: a value can occupy different output positions across results.
+
 For equal adjacent values, skip the later one when the earlier one is unused. Otherwise, two sibling branches would produce the same orderings. If the earlier occurrence is already in the path, the later occurrence remains available for another position.
 
 ```c
