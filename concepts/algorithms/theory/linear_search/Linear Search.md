@@ -1,131 +1,34 @@
 # Linear Search
 
-Linear search is an algorithm that looks for a value in an array by comparing it with each element, from beginning to end. It works with both sorted and unsorted arrays.
+Linear search is a search algorithm that checks elements in sequence until it finds a target or reaches the end. It works on unsorted input and returns the first matching index in this project. An absent value produces `-1`.
 
-Characteristics:
-- Examines the elements one by one;
-- Stops searching as soon as it finds the target;
-- Its running time depends on the target's position;
-- If the target does not exist or is in the last position, it examines the entire array.
+In `[4, 7, 2, 9]`, searching for `2` compares against `4`, then `7`, then `2`. The result is index `2`, counting from zero. Searching for `8` examines all four values and returns `-1`.
 
-Its time complexity is **O(n)** because, in the worst case, the algorithm must compare the target with all `n` elements in the array. Since the maximum number of comparisons grows at the same rate[...]
+![Linear search comparing three consecutive elements before finding the target](Images/linear-search.png)
 
-General Illustration:
-![General Illustration](./Images/General.png)
+## Check one element at a time
 
-
-# Step-by-Step
-
-## Initial State
-
-- `target = 10`;
-- `i = 0`, pointing to the value `1`;
-- The array contains `10` elements, stored at indices `0` through `9`.
-
-To follow the same execution shown in the general illustration, we will search for the value `10` in the following array:
-
-![Initial Representation](./Images/Initial%20Representation.png)
-
-The indices start at `0`. The variable `i` indicates the position currently being checked and advances by one position after each comparison that does not find the target.
-
-## Algorithm Used
-
-```typescript
-function linearSearch(arr: number[], target: number): boolean {
-    let i: number = 0;
-
-    while (i < arr.length) {
-        if (arr[i] === target) {
-            return true;
+```c
+linearSearch(values, target) {
+    for (i = 0; i < length(values); i++) {
+        if (values[i] == target) {
+            return i;
         }
-
-        i++;
     }
-
-    return false;
+    return -1;
 }
 ```
 
-The loop runs while `i` refers to a valid position in the array. If `arr[i]` is equal to the target, the function returns `true` and stops the search immediately. Otherwise, `i` is incremented and[...]
+Before checking index `i`, the target has not appeared in indices `0` through `i - 1`. A match at `i` is therefore the first occurrence. If the loop finishes, none of the elements matches. An empty array skips the loop and returns `-1`.
 
-If the loop ends without finding the target, every element has been compared; in that case, the function returns `false`.
+The algorithm reads the input without changing it. It requires a way to compare an element with the target, but it requires no ordering or preprocessing.
 
-## 1st Iteration
+## Costs and project code
 
-Initially, `i = 0`. The algorithm compares the first element with the target:
+For `n` elements, a match at the beginning costs `O(1)` time. A missing value or a match at the end costs `O(n)`. Under a uniform choice of matching position, the average comparison count also grows in proportion to `n`. The loop uses `O(1)` auxiliary space.
 
-```text
-arr[i] === target
-arr[0] === 10
-1 === 10 → false
-```
+Linear search suits short sequences, unsorted input or a one-off lookup. Sorting the input for a single search can cost more than examining it once. A sorted array allows binary search when repeated lookups justify keeping that order.
 
-![Comparison](./Images/Comparison.png)
+The Go, Python and TypeScript versions return an index rather than a boolean. Repeated values do not change the rule: return the first matching index.
 
-Since the values are different, `i` is incremented:
-
-```text
-i++
-i = 1
-```
-
-The search continues with the next element in the array.
-
-## 2nd Through 9th Iterations
-
-The same process is repeated for indices `1` through `8`, which store the values `2` through `9`. In each iteration, `arr[i]` is different from `10`, so the index advances again:
-
-```text
-2 !== 10
-3 !== 10
-4 !== 10
-5 !== 10
-6 !== 10
-7 !== 10
-8 !== 10
-9 !== 10
-```
-
-After comparing the value `9`, the index is incremented to `i = 9`.
-
-## 10th Iteration
-
-Now, `i = 9`. The algorithm compares the last element in the array with the target:
-
-```text
-arr[i] === target
-arr[9] === 10
-10 === 10 → true
-```
-
-![Found](./Images/Found.png)
-
-Since the values are equal, the target has been found. The function returns `true` and stops the search without incrementing `i` again.
-
-## Execution Summary
-
-| Iteration | `i`       | `arr[i]` | Comparison result        | Decision                              |
-| --------- | --------: | -------: | ------------------------ | ------------------------------------- |
-| 1         |         0 |        1 | `1 !== 10`               | Increment `i`                         |
-| 2 through 9 |   1 to 8 |   2 to 9 | Element differs from `10` | Increment `i` after each comparison   |
-| 10        |         9 |       10 | `10 === 10`              | Return `true`                         |
-
-This example required **10 comparisons**. Since the target was in the last position, this execution represents the worst case for linear search. The same number of comparisons would be required i[...]
-
-For an array with `n` elements, linear search may perform up to `n` comparisons:
-
-```text
-1 → 2 → 3 → ... → n
-```
-
-This growth in direct proportion to the input size is why linear search has a time complexity of **O(n)**.
-
-# Use Cases
-
-Linear search is suitable for:
-- Searching in an unsorted array or list;
-- Small datasets where the overhead of more complex algorithms is not justified;
-- Situations where the array is frequently modified, making it impractical to maintain a sorted order;
-- Finding the first occurrence of a target value in a collection.
-
-Linear search is not efficient for large datasets, especially when the data is sorted, as more efficient algorithms like binary search can be used in those cases.
+Code: [Go](../../implementation/linear_search/golang/solution.go), [Python](../../implementation/linear_search/python/solution.py) and [TypeScript](../../implementation/linear_search/typescript/index.ts).
