@@ -43,3 +43,11 @@ For the Unicode follow-up, define what counts as a character. Python iterates co
 Array code: [Go](solution_1/golang/solution.go), [Python](solution_1/python/solution.py) and [TypeScript](solution_1/typescript/index.ts).
 
 Map code: [Go](solution_2/golang/solution.go), [Python](solution_2/python/solution.py) and [TypeScript](solution_2/typescript/index.ts).
+
+## Complexity derivation
+
+Let `n` be the common string length after the length check, and `u` the number of distinct characters stored by the map version. A length mismatch returns in `Θ(1)` time because these string types store their lengths. For equal-length nonempty inputs, the array versions take `Θ(n)` time even on an early mismatch: Python counts all of `s` before testing `t`, while Go and TypeScript process both strings fully before checking their 26 counters. The equal-length map versions likewise first count all of `s`, so take expected `Θ(n)` time under expected constant map access.
+
+For `s = "aab"` and `t = "aba"`, Python's subtracting pass changes `(a:2,b:1)` to `(a:1,b:1)`, `(a:1,b:0)`, then `(a:0,b:0)`. Go and TypeScript's fixed arrays interleave additions and subtractions, yielding a different intermediate trace with the same final differences. Neither approach sorts or copies the input strings.
+
+The fixed array takes `Θ(26) = Θ(1)` space. The map takes `Θ(u)` entries, bounded by 26 under the lowercase-English contract. Under that fixed alphabet, collision chains cannot grow with `n`; for an expanded alphabet with growing `u`, expected lookup assumptions matter and a linear-chain model can raise time to `O(nu)`. All variants use `Θ(1)` call-stack space. The Unicode discussion above concerns behavior as well as cost: string length and iteration do not always count the same character unit across languages.
