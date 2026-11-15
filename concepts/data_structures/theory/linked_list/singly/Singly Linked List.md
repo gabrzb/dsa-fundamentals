@@ -30,6 +30,10 @@ find(list, target) {
 
 To remove `20`, find its node and keep a reference to its predecessor, `10`. Set `10.next` to `20.next`, which points to `30`. The remaining sequence is `10 -> 30 -> NULL`. You change a link without shifting the other values.
 
+![The removed node staying visible while its predecessor bypasses it and its next link clears](images/singly-remove.png)
+
+The intermediate state still contains node `20`, but the head no longer reaches it. Save its successor before clearing links or releasing the node. Nodes `10` and `30` keep their values and identities.
+
 ```c
 remove(list, target) {
     previous = NULL;
@@ -53,6 +57,10 @@ remove(list, target) {
 ```
 
 Removing the head updates `head`; removing the last node sets its predecessor's `next` to `NULL`. With manual memory management, release the removed node after saving any return value. Inserting after a known node also takes a link update: point the new node to the old successor before linking the predecessor to the new node.
+
+![Allocating a node, preserving its successor and linking the predecessor to complete insertion](images/singly-insert.png)
+
+For an insertion of `15` after `10`, first set `15.next` to the old successor `20`. Then set `10.next` to `15`. Reversing those assignments without keeping the old successor would lose the reference needed to reach the remainder of the list.
 
 Appending requires finding the last node unless you keep a `tail` reference. To insert into a sorted list, walk until the next value belongs after the new value, then splice the node into that position. You must find that position even though the link changes take constant time.
 
