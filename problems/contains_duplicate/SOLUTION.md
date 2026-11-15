@@ -32,3 +32,9 @@ With expected constant-time hash operations, scanning `n` elements takes `O(n)` 
 Python and TypeScript use sets. Go stores counts in a map and returns true when a count exceeds one; it detects the same second occurrence. None of the implementations modifies the input.
 
 Code: [Go](golang/solution.go), [Python](python/solution.py) and [TypeScript](typescript/index.ts).
+
+## Complexity derivation
+
+Let `p` be the number of positions processed before returning, and `u` the number of distinct values stored. Each position performs a bounded number of hash operations, so time is expected `Θ(p)` and auxiliary space is `Θ(u)`, apart from constant empty-container overhead. On `[1, 2, 3, 1]`, the set grows through `{1}`, `{1, 2}`, `{1, 2, 3}` and the fourth lookup returns true without adding another value.
+
+For arrays of length `n >= 2`, a repeat at index 1 gives best-case `Θ(1)` time. An all-distinct input forces `n` iterations and gives expected `Θ(n)` time and `Θ(n)` space. These expected hash costs are not deterministic worst-case guarantees: in a model with linear collision-chain operations, the same scan can take `O(n²)`. The code does not use recursion, so call-stack space is `Θ(1)`. See [asymptotic analysis](../../concepts/algorithms/theory/algorithm_analysis/Asymptotic%20Analysis.md) for the distinction between input cases and expected costs.
