@@ -59,6 +59,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Dijkstra shortest path (linear selection)](concepts/data_structures/theory/graphs/Graph.md) | `O(V^2 + E)` time; `O(V)` auxiliary space |
 | [Dijkstra shortest path (min heap)](concepts/data_structures/theory/graphs/dijkstra_heap/Heap%20Dijkstra.md) | `O(V + E log(E + 1))` time; `O(V + E)` auxiliary space |
 | [Kruskal minimum spanning forest](concepts/data_structures/theory/graphs/kruskal/Kruskal.md) | `O(V + E log(E + 1) + E ?(V + 1))` time; `O(V + E)` auxiliary space |
+| [Prim minimum spanning forest](concepts/data_structures/theory/graphs/prim/Prim.md) | `O(V + E log(E + 1))` time; `O(V + E)` auxiliary space |
 | [Binary tree base](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(1)` node creation and access |
 | [Binary search tree maintenance](concepts/data_structures/theory/tree/bst/Binary%20Search%20Tree.md) | `O(h)` insertion/removal; worst `O(n)` |
 | [AVL tree](concepts/data_structures/theory/tree/avl/AVL%20Tree.md) | Worst-case `O(log(n + 1))` insertion/removal with rebalancing |

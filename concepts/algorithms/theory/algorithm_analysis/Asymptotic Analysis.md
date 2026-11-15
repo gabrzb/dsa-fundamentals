@@ -90,6 +90,7 @@ The data-structure review uses `N` stored entries, `B` buckets, `a` key length, 
 | Dijkstra (linear selection) | Worst `O(V² + E)`; scans for the next minimum, with `O(V)` auxiliary memory; no heap in this version |
 | [Heap Dijkstra](../../../data_structures/theory/graphs/dijkstra_heap/Heap%20Dijkstra.md) | `O(V + E log(E + 1))` time; `O(V + E)` arrays and lazy heap entries |
 | [Kruskal](../../../data_structures/theory/graphs/kruskal/Kruskal.md) | `O(V + E log(E + 1) + E ?(V + 1))` time; `O(V + E)` copied edges and Union-Find storage |
+| [Prim](../../../data_structures/theory/graphs/prim/Prim.md) | `O(V + E log(E + 1))` time; `O(V + E)` adjacency storage, marks and lazy heap entries |
 
 Here `?` denotes the inverse Ackermann function in the Union-Find bounds.
 

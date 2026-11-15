@@ -108,3 +108,5 @@ Code: matrix BFS in [Go](../../implementation/graphs/bfs_adj_matrix/golang/solut
 ## Minimum spanning forests
 
 A minimum spanning tree connects every vertex of a connected undirected graph with minimum total edge weight and no cycles. For disconnected graphs, a minimum spanning forest supplies one such tree per component. [Kruskal](kruskal/Kruskal.md) sorts edge records by weight and uses [Union-Find](../union_find/Union%20Find.md) to accept only edges joining separate selected components. Input edges are listed once with a separate vertex count, so isolated vertices are retained in the universe. Negative weights are valid for this task.
+
+[Prim](prim/Prim.md) instead grows one component through its cheapest crossing edge, using a min heap and restarting at unseen roots. Its priority is one edge weight rather than a cumulative source distance. Both spanning-forest routines preserve the input and return selected edge records, with no separately summed cost.
