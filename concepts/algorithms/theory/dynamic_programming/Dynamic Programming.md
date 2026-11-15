@@ -37,3 +37,4 @@ The introductory project example uses a fresh array cache per call and an explic
 | Project example | Meaning of a state | Choice and dependency order |
 | --- | --- | --- |
 | [Climbing Stairs](../../../../problems/climbing_stairs/SOLUTION.md) | Count ways for remaining height `r` | Sum one-step and two-step branches; tabulate increasing heights |
+| [Coin Change](../../../../problems/coin_change/SOLUTION.md) | Fewest reusable coins for remainder `r` | Minimize reachable predecessor plus one; tabulate increasing amounts |
