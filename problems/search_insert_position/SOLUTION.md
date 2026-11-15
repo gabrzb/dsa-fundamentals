@@ -38,3 +38,9 @@ Binary search takes `O(log n)` time for nonempty arrays and `O(1)` auxiliary spa
 Go and TypeScript use the difference-based midpoint in the pseudocode. Python uses integer division of `low + high`, which is safe with Python's arbitrary-precision integers.
 
 Code: [Go](golang/solution.go), [Python](python/solution.py) and [TypeScript](typescript/index.ts).
+
+## Complexity derivation
+
+Let `n` count array elements and `m = right - left` be the current interval length. After an unsuccessful comparison, at most `floor(m/2)` candidates remain. For target 2 in `[1, 3, 5, 6]`, interval lengths are `4 -> 2 -> 1 -> 0`, with middle indices 2, 1 and 0. After at most `floor(log2(n)) + 1` iterations for `n >= 1`, the loop returns or empties the interval. Worst-case time is `Θ(log(n + 1))` as `n` grows; a target at the first midpoint gives best-case `Θ(1)`.
+
+Empty input returns zero in `Θ(1)` time. Bounds and midpoint use `Θ(1)` auxiliary space, and the implementation is iterative: halving the interval does not create a recursive stack. Returning an insertion index also does not perform an array insertion. Actually shifting a suffix to insert a value would be a separate `O(n)` operation.
