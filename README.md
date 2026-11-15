@@ -4,6 +4,12 @@ A collection of data structures, algorithms, and coding problems implemented in 
 
 ## Contents
 
+### Algorithm analysis
+
+| Topic | Theory |
+| --- | --- |
+| Amortized analysis: aggregate, accounting and potential methods | [Notes](concepts/algorithms/theory/algorithm_analysis/Amortized%20Analysis.md) |
+
 ### Algorithm implementations
 
 | Topic | Time complexity | Theory | Go | TypeScript | Python |
