@@ -33,3 +33,9 @@ For `n` elements and expected constant-time hash operations, time is `O(n)` expe
 Go returns `nil` if no pair exists; Python and TypeScript return empty lists or arrays. That fallback lies outside the promised one-pair inputs. Test map membership rather than treating the saved index as a boolean: index zero is a valid match.
 
 Code: [Go](golang/solution.go), [Python](python/solution.py) and [TypeScript](typescript/index.ts).
+
+## Complexity derivation
+
+Let `n` be the array length and `p` the number of positions processed before a pair is returned. Each position performs constant arithmetic and a bounded number of map operations. Time is expected `Θ(p)` under constant expected hash costs, and map storage is `O(p)` entries. On `[3, 2, 4]`, target 6, the stored states are `{3:0}`, then `{3:0, 2:1}`; the third lookup finds 2 and returns without another insertion.
+
+For valid arrays of length at least two, a pair in the first two positions gives best-case `Θ(1)` time. A pair requiring the final position gives expected worst-input-case `Θ(n)` time and can retain `Θ(n)` distinct keys. With linear-cost collision handling, the scan instead has an `O(n²)` worst-case upper bound under that model. The two-index output and call stack use `Θ(1)` space. No sorting or recursive search occurs, and map lookup must distinguish an absent key from a stored index zero.
