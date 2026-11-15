@@ -70,6 +70,7 @@ The data-structure review uses `N` stored entries, `B` buckets, `a` key length, 
 | [Static array](../../../data_structures/theory/arrays/static_arrays/Static%20Array.md) | Indexed access `Θ(1)`; shifting insertion/deletion `O(N)`; allocation `Θ(capacity)` |
 | [Dynamic array](../../../data_structures/theory/arrays/dynamic_arrays/Dynamic%20Array.md) | Append amortized `Θ(1)`, resize append `Θ(N)`; find/delete worst `Θ(N)` |
 | [Chained hash map](../../../data_structures/theory/hashmaps/Hash%20Map.md) | Hashing `Θ(a)`; expected `O(1 + N/B)` bucket comparisons under uniform distribution; no resizing. String equality can add key-length work |
+| [Union-Find](../../../data_structures/theory/union_find/Union%20Find.md) | `?(N)` initialization/storage; find and union amortized `O(?(N + 1))`, worst individual `O(log(N + 1))` |
 | [Min heap](../../../data_structures/theory/heap/Heap.md) | Repair `O(log N)` frames/time; backing-array append can resize. Python removal copies `Θ(N)` elements and needs `Θ(N)` temporary storage |
 | [LRU cache](../../../data_structures/theory/lru_cache/LRU%20Cache.md) | Expected `O(1)` lookup/update with native hash maps; `Θ(capacity)` retained entries when full |
 | [Singly linked list](../../../data_structures/theory/linked_list/singly/Singly%20Linked%20List.md) | Prepend `Θ(1)`; append, search or removal by value worst `Θ(N)` because these versions keep only the head |

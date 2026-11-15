@@ -42,6 +42,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Static array](concepts/data_structures/theory/arrays/static_arrays/Static%20Array.md) | `O(1)` access; `O(n)` insertion and deletion |
 | [Dynamic array](concepts/data_structures/theory/arrays/dynamic_arrays/Dynamic%20Array.md) | `O(1)` access; amortized `O(1)` append |
 | [Hash map](concepts/data_structures/theory/hashmaps/Hash%20Map.md) | Expected `O(1 + n/b)` bucket work for `b` fixed buckets; worst `O(n)`, plus key costs |
+| [Union-Find](concepts/data_structures/theory/union_find/Union%20Find.md) | Amortized `O(?(n + 1))` find/union; `O(n)` storage |
 | [Min heap](concepts/data_structures/theory/heap/Heap.md) | `O(log n)` repair; Python removal adds `O(n)` copying |
 | [LRU cache](concepts/data_structures/theory/lru_cache/LRU%20Cache.md) | Expected `O(1)` lookup and update |
 | [Singly linked list](concepts/data_structures/theory/linked_list/singly/Singly%20Linked%20List.md) | `O(1)` insertion at head; `O(n)` access |
