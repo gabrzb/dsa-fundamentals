@@ -36,3 +36,9 @@ The allowed input range bounds the table scans and output length, so time and au
 Go and TypeScript use repeated subtraction. Python computes the number of repetitions for each entry with integer division, then appends and subtracts that many times. The implementations rely on the stated range; they do not validate arbitrary integers.
 
 Code: [Go](golang/solution.go), [Python](python/solution.py) and [TypeScript](typescript/index.ts).
+
+## Complexity derivation
+
+The input contract is `1 <= num <= 3999`, the value table has 13 entries, and the result has bounded length. Consequently, both upper and lower time bounds are constant: `Θ(1)`, including construction of the result. Auxiliary and output space are also `Θ(1)` on this domain. A number's magnitude is not the same as the number of bits used to encode it; extending the domain would require choosing which input size to analyze.
+
+For 1994, the four emitted tokens are `M`, `CM`, `XC`, `IV`, producing prefixes of lengths 1, 3, 5 and 7. Repeated immutable concatenation may copy those prefixes, but all remain bounded by the problem contract. With an unbounded extension and output length `q`, repeated copying could instead total `O(q²)` character work. That extension is not a bound on the current bounded problem. All three versions use loops and constant call-stack space.
