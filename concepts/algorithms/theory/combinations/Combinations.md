@@ -8,6 +8,12 @@ Build each selection in increasing order. After choosing a value, start the next
 
 ![The six ways to choose two integers from one through four](images/combinations.png)
 
+Every edge chooses a larger value than the preceding one. Green leaves have two values and become results. The red explanation marks the root choice that the loop excludes before making a recursive call.
+
+![Candidate bounds and restored path state in the final combination branch](images/combinations-state.png)
+
+At the root, `remaining = 2` and `last = 3`, so choosing 4 cannot start a valid pair. With path `[3]`, only one value remains to choose; `last` becomes 4 and `[3, 4]` is valid. After saving it, pop 4, return, then pop 3. The root's loop has finished.
+
 At each call, compute how many values the path still needs. Stop the loop early enough to leave that many candidates. With `n = 4` and `k = 2`, a first choice of 4 cannot lead to a full selection, so the root only tries 1, 2 and 3.
 
 ```c
