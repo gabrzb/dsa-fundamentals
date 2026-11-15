@@ -40,6 +40,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Monotonic Queue](concepts/algorithms/theory/monotonic_queue/Monotonic%20Queue.md) | O(n) time; O(k) auxiliary space |
 | [Merging Intervals](concepts/algorithms/theory/intervals/Merging%20Intervals.md) | O(n log n) time; O(n) auxiliary space |
 | [Binary Search on the Answer](concepts/algorithms/theory/binary_search_answer/Binary%20Search%20on%20the%20Answer.md) | O(n log S) time; O(1) auxiliary space |
+| [KMP Pattern Search](concepts/algorithms/theory/kmp/KMP%20Pattern%20Search.md) | O(n + m + r) time; prefix table O(m) |
 
 ### Data structures
 
