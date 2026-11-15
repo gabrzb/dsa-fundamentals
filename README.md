@@ -24,6 +24,7 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Subsets | `O(n * 2^n)` worst-case, including output | [Notes](concepts/algorithms/theory/subsets/Subsets.md) | [Solution](concepts/algorithms/implementation/subsets/golang/solution.go) | [Solution](concepts/algorithms/implementation/subsets/typescript/index.ts) | [Solution](concepts/algorithms/implementation/subsets/python/solution.py) |
 | Permutations | `O(n * n!)` worst-case, including output | [Notes](concepts/algorithms/theory/permutations/Permutations.md) | [Solution](concepts/algorithms/implementation/permutations/golang/solution.go) | [Solution](concepts/algorithms/implementation/permutations/typescript/index.ts) | [Solution](concepts/algorithms/implementation/permutations/python/solution.py) |
 | Combinations | `O(k * C(n, k))` for `0 < k <= n`, including output | [Notes](concepts/algorithms/theory/combinations/Combinations.md) | [Solution](concepts/algorithms/implementation/combinations/golang/solution.go) | [Solution](concepts/algorithms/implementation/combinations/typescript/index.ts) | [Solution](concepts/algorithms/implementation/combinations/python/solution.py) |
+| N queens | `O(n * n! + S * n)` upper bound for `S` solutions | [Notes](concepts/algorithms/theory/n_queens/N%20Queens.md) | [Solution](concepts/algorithms/implementation/n_queens/golang/solution.go) | [Solution](concepts/algorithms/implementation/n_queens/typescript/index.ts) | [Solution](concepts/algorithms/implementation/n_queens/python/solution.py) |
 
 ### Data structure implementations
 
