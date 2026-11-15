@@ -1,142 +1,44 @@
 # Binary Search
 
-Binary search is an efficient algorithm for finding a value in a **sorted** array.
+Binary search is a search algorithm that halves an ordered search interval after comparing its middle element with a target. This implementation requires an array sorted in ascending order and returns a matching index or `-1` if the target is absent.
 
-Characteristics:
-- Uses three positions as references: the beginning (`low`), the middle (`mid`), and the end (`high`);
-- Compares the middle element with the target. If the target is smaller, the search continues in the left half; if it is larger, the search continues in the right half;
-- Discards half of the remaining elements after each comparison;
-- Can only be used with sorted arrays.
+In `[1, 3, 5, 7, 9, 11]`, searching for `9` first checks index `3`, containing `7`. The target is larger, so discard indices through `3`. Check index `5`, containing `11`, then index `4`, containing `9`. The result is `4`.
 
-Its time complexity is **O(log n)** because each comparison reduces the search space by half. Therefore, the number of comparisons corresponds to the number of times `n` can be divided by `2` until only one element remains: `log₂(n)`.
+![Binary search narrowing a half-open interval until it finds nine at index four](Images/binary-search.png)
 
-General Illustration:
-![General Illustration](./Images/General.png)
+## Keep a half-open interval
 
+Use `[low, high)`: include `low` and exclude `high`. Initially, the interval covers the entire array, so `low = 0` and `high = length(values)`. Integer division computes the middle index.
 
-# Step-by-Step
-
-## Initial State
-
-- `target = 8`;
-- `low = 0`, pointing to the value `1`;
-- `high = 9`, pointing outside the array.
-
-To follow the same execution shown in the general illustration, we will search for the value `8` in the following sorted array:
-
-![Initial State](./Images/Initial%20State.png)
-
-The indices start at `0`. In this implementation, `low` point to valid position to the array, meanwhile `high` point plus one outside of the array. Therefore, the initial value of `high` is `arr.length`, which is `9`.
-
-## Algorithm Used
-
-```typescript
-function binarySearch(arr: number[], target: number): boolean {
-    let low: number = 0;
-    let high: number = arr.length;
-
+```c
+binarySearch(values, target) {
+    low = 0;
+    high = length(values);
     while (low < high) {
-        const mid: number = Math.floor(low + (high - low) / 2);
-
-        if (arr[mid] === target) {
-            return true;
-        } else if (arr[mid] < target) {
+        mid = low + (high - low) / 2;
+        if (values[mid] == target) {
+            return mid;
+        }
+        if (values[mid] < target) {
             low = mid + 1;
         } else {
             high = mid;
         }
     }
-
-    return false;
+    return -1;
 }
 ```
 
-When `arr[mid] < target`, the middle element can also be discarded, so `low` advances to `mid + 1`. When `arr[mid] > target`, `high` moves to `mid` because the middle element has already been checked and can be discarded as well.
+Sorted order makes each discarded interval safe. If `values[mid]` is smaller than the target, earlier values cannot match it. If it is larger, later values cannot match. Each unsuccessful comparison removes `mid` from consideration, so the interval shrinks and the loop terminates.
 
-The loop runs while `low < high`, meaning that the search interval still contains at least one valid position. If the loop ends without returning a result, the target is not in the array and the function returns `false`.
+At `low == high`, the interval is empty. This covers empty input and missing targets without accessing a position beyond the array. With repeated values, the first encountered match may be any occurrence; this routine does not search for the first or last occurrence.
 
-## 1st Iteration
+## Costs and project code
 
-First, the algorithm calculates the middle index:
+The worst-case time is `O(log n)`: halving an interval of `n` elements takes a number of steps proportional to `log2(n)`. A match on the first comparison costs `O(1)`. The iterative implementation uses `O(1)` auxiliary space and preserves the input.
 
-```text
-mid = floor(low + (high - low) / 2)
-mid = floor(0 + (8 - 0) / 2)
-mid = 4
-```
+Binary search assumes constant-time indexed access. Applying the same midpoint idea to a linked list would require traversal to reach the midpoint. Unsorted input invalidates the discard rule, and these implementations do not check or sort the array for you.
 
-![First Iteration](./Images/First%20Iteration.png)
+The three language versions use an exclusive upper bound and return an index. Keep that interval convention consistent when adapting the code; an inclusive upper bound would require different updates.
 
-The middle element is `arr[4] = 5`. Since `5 < 8`, the target can only be to the right of `mid`. The indices from `0` through `4` are discarded, and `low` is updated:
-
-```text
-low = mid + 1
-low = 5
-```
-
-![First Iteration Result](./Images/First%20Iteration%20-%20Result.png)
-
-The new search interval contains `[6, 7, 8, 9]`, stored at indices `5` through `8`.
-
-## 2nd Iteration
-
-Now, `low = 5` and `high = 9`. The middle index is calculated again:
-
-```text
-mid = floor(low + (high - low) / 2)
-mid = floor(5 + (8 - 5) / 2)
-mid = floor(6.5)
-mid = 6
-```
-
-The middle element is `arr[6] = 7`. Since `7 < 8`, the indices `5` and `6` are discarded, and `low` advances again:
-
-```text
-low = mid + 1
-low = 7
-```
-
-![Second Iteration](./Images/Second%20Iteration.png)
-
-The remaining search interval contains `[8, 9]`, stored at indices `7` and `8`.
-
-## 3rd Iteration
-
-With `low = 7` and `high = 9`, the middle index is calculated once more:
-
-```text
-mid = floor(low + (high - low) / 2)
-mid = floor(7 + (8 - 7) / 2)
-mid = floor(7.5)
-mid = 7
-```
-
-![Third Iteration](./Images/Third%20Iteration.png)
-
-Now, `arr[7] = 8`. Since the middle element is equal to the target, the search stops immediately and returns `true`.
-
-## Execution Summary
-
-| Iteration | `low` | `high` | `mid` | `arr[mid]` | Decision                    |
-| --------- | ----: | -----: | ----: | ---------: | --------------------------- |
-| 1         |     0 |      9 |     4 |          5 | `5 < 8`: move `low` to `5`  |
-| 2         |     5 |      9 |     6 |          7 | `7 < 8`: move `low` to `7`  |
-| 3         |     7 |      9 |     7 |          8 | Target found; return `true` |
-
-The search space was reduced from `9` elements to `4`, and then to `2`:
-
-```text
-9 → 4 → 2
-```
-
-This reduction by half after each comparison is why binary search has a time complexity of **O(log n)**.
-
-# Use Cases
-
-Binary search is suitable for:
-- Searching in a sorted array or list;
-- Finding the position of a specific element in a sorted collection;
-- Implementing efficient search algorithms in applications where the data is already sorted;
-- Reducing the time complexity of search operations in large datasets.
-
-Binary search should not be used for unsorted data, as it relies on the order of elements to function correctly. In such cases, linear search or other algorithms may be more appropriate.
+Code: [Go](../../implementation/binary_search/golang/solution.go), [Python](../../implementation/binary_search/python/solution.py) and [TypeScript](../../implementation/binary_search/typescript/index.ts).
