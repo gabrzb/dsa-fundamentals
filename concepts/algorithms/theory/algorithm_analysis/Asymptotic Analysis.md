@@ -77,6 +77,8 @@ The data-structure review uses `N` stored entries, `B` buckets, `a` key length, 
 | [Queue](../../../data_structures/theory/queue/Queue.md), [stack](../../../data_structures/theory/stack/Stack.md) | Linked-node enqueue/dequeue and push/pop/peek `Θ(1)`; `Θ(N)` retained nodes |
 | [Ring buffer](../../../data_structures/theory/ringbuffer/Ring%20Buffer.md) | Enqueue/dequeue/index access `Θ(1)`; fixed-capacity construction `Θ(capacity)` |
 | [Tree nodes, comparison, search and DFS traversal](../../../data_structures/theory/tree/Binary%20Tree.md) | Node creation `Θ(1)`; comparison worst `Θ(N)` with early mismatch; BST search worst `O(h)`; full DFS `Θ(N)` plus output, using `O(h)` frames |
+| [BST maintenance](../../../data_structures/theory/tree/bst/Binary%20Search%20Tree.md) | Insert/remove `O(h)` time and frames, worst `O(N)`; no balancing |
+| [AVL tree](../../../data_structures/theory/tree/avl/AVL%20Tree.md) | Insert/remove worst `O(log(N + 1))` time and frames; cached heights and rotations |
 | Tree BFS | Go worst `Θ(N)`; Python/TypeScript front removals can reach `O(N²)`; logical queue `O(w)`, while Go's slice may retain `O(N)` backing storage |
 | [Matrix BFS](../../../data_structures/theory/graphs/Graph.md) | Worst `Θ(V²)` row scanning, `O(V)` auxiliary memory; TypeScript queue shifts stay within this time bound |
 | Adjacency-list DFS | Worst `O(V + E)` including seen-array initialization; `O(V)` auxiliary memory and frames |
