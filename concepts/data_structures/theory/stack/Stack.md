@@ -1,240 +1,63 @@
-# Stacks
+# Stack
 
-A stack is a linear data structure that organizes elements according to the **LIFO** (*Last In, First Out*) policy: the last element inserted is the first one removed.
+A stack is a linear data structure with insertion and removal at one end, called the **top**. It follows **LIFO**, *Last In, First Out*: the last element inserted is the first one removed. After inserting `10`, `20` and `30`, the top contains `30`.
 
-The main insertion, removal, and access operations take place at a single end called the **top**.
+The operations are `push(value)` to insert, `pop()` to remove and return the top, and `peek()` to read the top without removing it. In the example, `peek()` returns `30` and leaves three elements. After `push(40)`, `pop()` returns `40` and restores the previous state.
 
-Characteristics:
+![Insertion and removal at the top of a linked stack, showing the difference between pop and peek](images/stack.png)
 
-- Inserts elements with the `push` operation;
-- Removes elements with the `pop` operation;
-- Accesses the top with `peek` or `top`;
-- Provides direct access only to the top element;
-- Keeps the oldest element near the base;
-- Can be implemented in different ways without changing its LIFO behavior.
+## Updating the top
 
-Its main advantage is performing insertions and removals at the top efficiently. Its main limitation is providing direct access to only one element at a time.
+The project implementations store each value in a **node** with a reference to the node below it. Nodes can occupy separate memory locations. Keep a `top` reference to the next node to remove and a `size` counter. The initial state is `top = NULL` and `size = 0`.
 
-# Stack organization
+To push `40`, create a node whose `previous` field points to the old top, `30`. Then update `top` to point to the new node. The reference to `30` preserves access to the remaining values.
 
-## Base and top
-
-Consider the following stack:
-
-![General representation of a stack](images/General%20Representation.png)
-
-The value `30` is at the top and will be removed first. The value `10` is at the base and can only be removed after the elements above it.
-
-## Empty state
-
-A stack is empty when it contains no elements:
-
-```text
-size = 0
-top = null
-```
-
-The `peek` and `pop` operations must check this state. Attempting to access or remove an element from an empty stack causes **underflow**.
-
-![Representation of an empty stack](images/Empty%20Stack.png)
-
-## Logical behavior
-
-In this example, the abstract operations `addLast` and `removeLast` are used only to represent the end that acts as the top. They do not determine whether the stack uses an array, a linked list, or another implementation.
-
-A stack user interacts through `push`, `pop`, and `peek` without needing to know its internal organization.
-
-
-# Main operations
-
-## Empty-state check
-
-```text
-isEmpty(stack) {
-    return stack.size == 0
-}
-```
-
-This operation has **O(1)** complexity.
-
-## Number of elements
-
-```text
-getSize(stack) {
-    return stack.size
-}
-```
-
-Because the size is stored by the structure, retrieving it has **O(1)** complexity.
-
-## Top access
-
-The `peek` operation returns the top element without removing it:
-
-```text
-peek(stack) {
-    if (isEmpty(stack)) {
-        throw "Empty stack"
-    }
-
-    return stack.lastElement
-}
-```
-
-![Accessing the top element of a stack](images/Top%20Element%20Access.png)
-
-Because the top is known, this operation has **O(1)** complexity.
-
-
-# Insertion
-
-## Addition at the top
-
-The `push` operation places the new element above the current top:
-
-```text
+```c
 push(stack, value) {
-    stack.addLast(value)
-    stack.size++
+    node = createNode(value, stack.top);
+    stack.top = node;
+    stack.size++;
 }
-```
 
-![Adding an element to a stack](images/Element%20Addition.png)
-
-In an appropriate implementation, `push` has **O(1)** complexity. When the stack uses a dynamic array, its cost may be **amortized O(1)** because of internal memory-management details.
-
-
-# Removal
-
-## Removal from the top
-
-The `pop` operation removes and returns the element at the top:
-
-```text
 pop(stack) {
-    if (isEmpty(stack)) {
-        throw "Empty stack"
+    if (stack.top == NULL) {
+        error("Stack is empty");
     }
 
-    removedValue = stack.lastElement
-    stack.removeLast()
-    stack.size--
+    removed = stack.top;
+    stack.top = removed.previous;
+    stack.size--;
+    return removed.value;
+}
 
-    return removedValue
+peek(stack) {
+    if (stack.top == NULL) {
+        error("Stack is empty");
+    }
+
+    return stack.top.value;
 }
 ```
 
-![Removing an element from a stack](images/Element%20Removal.png)
+Here, `createNode(value, previous)` creates a node with those fields, and `error(...)` stops the operation with a failure. To pop `40`, follow its `previous` reference and make the node containing `30` the new top. Removing the last node sets `top` to `NULL` and the size to zero. With manual memory management, release the removed node after saving the return value.
 
-In an appropriate implementation, `pop` has **O(1)** complexity.
+These steps preserve LIFO order: each push places a new value before the old top, and each pop follows the reference back to the preceding value.
 
+## Costs and use
 
-# Traversal and search
+In a linked stack, pushing, popping and peeking change or inspect a fixed number of references. For `n` elements:
 
-Traversal and search are not among the three essential stack operations, but some implementations may provide them.
+| Operation | Cost |
+| --- | --- |
+| `push`, `pop` and `peek` | `O(1)` |
+| Read size or check whether empty | `O(1)` with a stored counter |
+| Search by value or traverse | `O(n)` worst case |
+| Store the nodes | `O(n)` space, including references |
 
-A traversal from the top to the base visits elements in the order in which they would be removed:
+An array-based stack uses the last occupied slot as its top. With a dynamic array, `push` costs `O(1)` amortized because an insertion can require a copy to grow.
 
-```text
-traverseFromTop(stack) {
-    current = stack.top
+Use a stack to save states that you need to revisit in reverse order. To validate `([])`, push `(` and then `[`. On reading `]`, check and pop `[`. On reading `)`, check and pop `(`. An empty stack at the end means the openings have matching closings, provided no mismatched pair occurred. The [Valid Parentheses](../../../../problems/valid_parenthesis/QUESTION.md) problem demonstrates this use. Recursive function calls also require saving unfinished calls and their return points.
 
-    while (current != null) {
-        visit(current)
-        current = elementBelow(current)
-    }
-}
-```
+Empty-stack results differ from the error used in the pseudocode: Python returns `None`, TypeScript returns `undefined`, and the current Go implementation returns `(0, nil)`. That Go result does not distinguish an empty stack from a stored zero; check the stack's state before the operation.
 
-A linear search follows the same direction:
-
-```text
-search(stack, target) {
-    position = 0
-    current = stack.top
-
-    while (current != null) {
-        if (value(current) == target) {
-            return position
-        }
-
-        current = elementBelow(current)
-        position++
-    }
-
-    return -1
-}
-```
-
-![Searching for an element in a stack](images/Search.png)
-
-Traversal and search have **O(n)** complexity.
-
-
-# Implementation options
-
-LIFO behavior does not depend on how the elements are stored:
-
-| Implementation | Top representation      | Note                                      |
-| -------------- | ----------------------- | ----------------------------------------- |
-| Array          | Last occupied position  | Elements occupy contiguous positions      |
-| Linked list    | First node              | Each node points to the element below it  |
-
-Capacity, allocation, and resizing belong to the chosen implementation.
-
-
-# Operation complexity
-
-The following complexities represent a conventional implementation that maintains direct access to the top:
-
-| Operation            | Complexity                         | Reason                                                    |
-| -------------------- | ---------------------------------: | --------------------------------------------------------- |
-| Check whether empty  |                         **O(1)**   | The state is known                                        |
-| Get the size         |                         **O(1)**   | The size is stored                                        |
-| Access the top       |                         **O(1)**   | The top is accessed directly                              |
-| `push`               | **O(1)** or **amortized O(1)**    | Constant with a linked list and amortized with a dynamic array |
-| `pop`                |                         **O(1)**   | Removes the top directly                                  |
-| Traversal            |                         **O(n)**   | Visits every element                                      |
-| Linear search        |                         **O(n)**   | May examine every element                                 |
-| Memory usage         |                         **O(n)**   | Grows with the number of elements                         |
-
-With a dynamic-array implementation, `push` may be **amortized O(1)**. This difference is an implementation detail, not a change in stack behavior.
-
-
-# Advantages and disadvantages
-
-## Advantages
-
-- Efficient insertion, removal, and access at the top;
-- Simple and predictable access rules;
-- Suitable for controlling nested operations;
-- Makes reverse-order processing easier;
-- Can be implemented in different ways.
-
-## Disadvantages
-
-- Only the top element has direct access;
-- Searching for a value requires traversing the structure;
-- Does not allow direct removal from the base or middle;
-- LIFO order is unsuitable when elements must be handled in arrival order.
-
-
-# When to use
-
-Stacks are appropriate when:
-
-- The most recent item must be processed first;
-- Operations must be undone in reverse order;
-- Nested calls or states must be controlled;
-- A sequence must be reversed;
-- Delimiters and expressions must be validated.
-
-Common examples include:
-
-- Function call stacks;
-- Undo and redo history;
-- Navigation between pages or screens;
-- Expression evaluation and conversion;
-- Validation of parentheses and other delimiters;
-- Depth-first search algorithms;
-- Iterative implementations of recursion.
+Code: [Go](../../implementation/stack/golang/solution.go), [Python](../../implementation/stack/python/solution.py) and [TypeScript](../../implementation/stack/typescript/index.ts).
