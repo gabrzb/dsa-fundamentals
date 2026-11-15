@@ -10,6 +10,10 @@ In `10 <-> 20 <-> 30`, the node containing `20` points back to `10` and forward 
 
 For adjacent nodes `a` and `b`, keep `a.next = b` and `b.previous = a`. To insert a node between them, give the new node references to both neighbors and update both neighbors to reference it. Updating one direction alone leaves a broken backward or forward traversal.
 
+![The individual forward and backward assignments that insert a node between two neighbors](images/doubly-insert.png)
+
+To insert `15` between `10` and `20`, give it both neighboring references, set `10.next = 15`, then set `20.previous = 15`. These are stages inside one operation. Only after both neighbors point to the new node do forward and backward traversal agree.
+
 ```c
 append(list, value) {
     node = createNode(value, list.tail, NULL);
@@ -39,7 +43,11 @@ unlink(list, node) {
 }
 ```
 
-Here, `createNode(value, previous, next)` creates those fields. `unlink` assumes that its node belongs to this list. To remove `20` in the diagram, connect `10.next` to `30` and `30.previous` to `10`. Removing the head updates `head`; removing the tail updates `tail`. Removing the only node sets both endpoints to `NULL`. With manual memory management, release an unlinked node after saving any value you need.
+Here, `createNode(value, previous, next)` creates those fields. `unlink` assumes that its node belongs to this list. To remove `20` in the diagram, connect `10.next` to `30` and `30.previous` to `10`.
+
+![The target node remaining visible while each neighbor reconnects and its own links clear](images/doubly-remove.png)
+
+Changing `10.next` alone makes forward traversal skip `20`, but backward traversal from `30` still reaches it. Update `30.previous` too, then clear the removed node's links. The diagram keeps node identities fixed so you can follow each reference change. No values shift between nodes. Removing the head updates `head`; removing the tail updates `tail`. Removing the only node sets both endpoints to `NULL`. With manual memory management, release an unlinked node after saving any value you need.
 
 Deleting by value includes another step: traverse from the head to find the node, then call `unlink`. Inserting at a numeric position also requires traversal, unless the position is an endpoint. The backward reference makes unlinking a known node constant-time; it does not supply indexed access.
 
