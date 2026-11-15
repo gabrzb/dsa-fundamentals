@@ -18,6 +18,7 @@ A collection of data structures, algorithms, and coding problems implemented in 
 | Heap sort | Worst-case `O(n log n)` | [Notes](concepts/algorithms/theory/heap_sort/Heap%20Sort.md) | [Solution](concepts/algorithms/implementation/heap_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/heap_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/heap_sort/python/solution.py) |
 | Radix sort (signed integers) | `O(d(n + b))` for `d` digits and `b = 19` buckets | [Notes](concepts/algorithms/theory/radix_sort/Radix%20Sort.md) | [Solution](concepts/algorithms/implementation/radix_sort/golang/solution.go) | [Solution](concepts/algorithms/implementation/radix_sort/typescript/index.ts) | [Solution](concepts/algorithms/implementation/radix_sort/python/solution.py) |
 | Recursive maze solver | `O(r * c)` for `r` rows and `c` columns | — | [Solution](concepts/algorithms/implementation/recursion/golang/solution.go) | [Solution](concepts/algorithms/implementation/recursion/typescript/index.ts) | [Solution](concepts/algorithms/implementation/recursion/python/solution.py) |
+| Two pointers (array reversal) | `O(n)` | [Notes](concepts/algorithms/theory/two_pointers/Two%20Pointers.md) | [Solution](concepts/algorithms/implementation/two_pointers/golang/solution.go) | [Solution](concepts/algorithms/implementation/two_pointers/typescript/index.ts) | [Solution](concepts/algorithms/implementation/two_pointers/python/solution.py) |
 
 ### Data structure implementations
 
