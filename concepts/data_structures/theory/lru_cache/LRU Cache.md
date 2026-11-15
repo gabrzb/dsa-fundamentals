@@ -10,6 +10,10 @@ Combine a hash map from keys to nodes with a doubly linked list. Keep the most r
 
 With capacity `3`, insert `A`, `B` and `C`. The order from most to least recent is `C, B, A`. Reading `A` changes the order to `A, C, B`. Inserting `D` then evicts `B`, leaving `D, A, C`. The eviction follows recency, not key order or the age of the value.
 
+![Map entries identifying list nodes while a cache read detaches and prepends the same node](images/lru-map-move.png)
+
+`lookup[A]` locates node `N_A`. Detach that node from the tail, then place it before the old head. Its identity and map entry stay the same. Updating `N_B.next`, `tail`, the moved node's links and the old head's backward link changes recency without a list scan or a new node allocation.
+
 ```c
 get(cache, key) {
     node = cache.lookup.get(key);
@@ -58,7 +62,11 @@ A miss leaves the order unchanged. Updating a key changes its value and moves it
 
 The expected time assumes bounded key costs and the usual average constant-time behavior of the backing maps. Collisions or costly hashing can increase lookup time. The recency list itself needs no scan.
 
-In the project, nodes store values without keys. A second map from node to key lets eviction find the key to remove from the lookup map. These reverse-map entries must stay consistent with the list and primary map. The source calls insertion or update `update`/`Update`; its built-in maps are separate from this repository's custom hash map.
+In the project, nodes store values without keys. A second map from node to key lets eviction find the key to remove from the lookup map. These reverse-map entries must stay consistent with the list and primary map.
+
+![Insertion temporarily exceeding capacity, followed by tail removal and updates to both maps](images/lru-map-evict.png)
+
+The diagram follows the source's operation order: prepend `D`, trim the old tail `B`, then register `D` in the maps. The pseudocode above registers its keyed node before trimming; both reach the same final cache. In the source, eviction uses the reverse map to recover `B` from node `N_B`. Removing only the node would leave a stale lookup; removing only its key would leave an entry in the recency list. The source calls insertion or update `update`/`Update`; its built-in maps are separate from this repository's custom hash map.
 
 Use LRU when recent access is a useful guide to future reuse, such as caching repeated query results. A stream of distinct keys can evict useful entries, and LRU alone supplies no expiration time. A cached value also needs a policy for invalidation if its source changes.
 
