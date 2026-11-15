@@ -42,7 +42,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Static array](concepts/data_structures/theory/arrays/static_arrays/Static%20Array.md) | `O(1)` access; `O(n)` insertion and deletion |
 | [Dynamic array](concepts/data_structures/theory/arrays/dynamic_arrays/Dynamic%20Array.md) | `O(1)` access; amortized `O(1)` append |
 | [Hash map](concepts/data_structures/theory/hashmaps/Hash%20Map.md) | Expected `O(1 + n/b)` bucket work for `b` fixed buckets; worst `O(n)`, plus key costs |
-| [Union-Find](concepts/data_structures/theory/union_find/Union%20Find.md) | Amortized `O(?(n + 1))` find/union; `O(n)` storage |
+| [Union-Find](concepts/data_structures/theory/union_find/Union%20Find.md) | Amortized `O(α(n + 1))` find/union; `O(n)` storage |
 | [Min heap](concepts/data_structures/theory/heap/Heap.md) | `O(log n)` repair; Python removal adds `O(n)` copying |
 | [LRU cache](concepts/data_structures/theory/lru_cache/LRU%20Cache.md) | Expected `O(1)` lookup and update |
 | [Singly linked list](concepts/data_structures/theory/linked_list/singly/Singly%20Linked%20List.md) | `O(1)` insertion at head; `O(n)` access |
@@ -58,7 +58,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Topological sort](concepts/data_structures/theory/graphs/topological_sort/Topological%20Sort.md) | `O(V + E)` time; `O(V)` auxiliary space |
 | [Dijkstra shortest path (linear selection)](concepts/data_structures/theory/graphs/Graph.md) | `O(V^2 + E)` time; `O(V)` auxiliary space |
 | [Dijkstra shortest path (min heap)](concepts/data_structures/theory/graphs/dijkstra_heap/Heap%20Dijkstra.md) | `O(V + E log(E + 1))` time; `O(V + E)` auxiliary space |
-| [Kruskal minimum spanning forest](concepts/data_structures/theory/graphs/kruskal/Kruskal.md) | `O(V + E log(E + 1) + E ?(V + 1))` time; `O(V + E)` auxiliary space |
+| [Kruskal minimum spanning forest](concepts/data_structures/theory/graphs/kruskal/Kruskal.md) | `O(V + E log(E + 1) + E α(V + 1))` time; `O(V + E)` auxiliary space |
 | [Prim minimum spanning forest](concepts/data_structures/theory/graphs/prim/Prim.md) | `O(V + E log(E + 1))` time; `O(V + E)` auxiliary space |
 | [Binary tree base](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(1)` node creation and access |
 | [Binary search tree maintenance](concepts/data_structures/theory/tree/bst/Binary%20Search%20Tree.md) | `O(h)` insertion/removal; worst `O(n)` |

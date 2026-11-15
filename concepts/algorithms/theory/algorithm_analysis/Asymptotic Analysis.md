@@ -70,7 +70,7 @@ The data-structure review uses `N` stored entries, `B` buckets, `a` key length, 
 | [Static array](../../../data_structures/theory/arrays/static_arrays/Static%20Array.md) | Indexed access `Θ(1)`; shifting insertion/deletion `O(N)`; allocation `Θ(capacity)` |
 | [Dynamic array](../../../data_structures/theory/arrays/dynamic_arrays/Dynamic%20Array.md) | Append amortized `Θ(1)`, resize append `Θ(N)`; find/delete worst `Θ(N)` |
 | [Chained hash map](../../../data_structures/theory/hashmaps/Hash%20Map.md) | Hashing `Θ(a)`; expected `O(1 + N/B)` bucket comparisons under uniform distribution; no resizing. String equality can add key-length work |
-| [Union-Find](../../../data_structures/theory/union_find/Union%20Find.md) | `?(N)` initialization/storage; find and union amortized `O(?(N + 1))`, worst individual `O(log(N + 1))` |
+| [Union-Find](../../../data_structures/theory/union_find/Union%20Find.md) | `Θ(N)` initialization/storage; find and union amortized `O(α(N + 1))`, worst individual `O(log(N + 1))` |
 | [Min heap](../../../data_structures/theory/heap/Heap.md) | Repair `O(log N)` frames/time; backing-array append can resize. Python removal copies `Θ(N)` elements and needs `Θ(N)` temporary storage |
 | [LRU cache](../../../data_structures/theory/lru_cache/LRU%20Cache.md) | Expected `O(1)` lookup/update with native hash maps; `Θ(capacity)` retained entries when full |
 | [Singly linked list](../../../data_structures/theory/linked_list/singly/Singly%20Linked%20List.md) | Prepend `Θ(1)`; append, search or removal by value worst `Θ(N)` because these versions keep only the head |
@@ -89,10 +89,10 @@ The data-structure review uses `N` stored entries, `B` buckets, `a` key length, 
 | [Topological sort](../../../data_structures/theory/graphs/topological_sort/Topological%20Sort.md) | `O(V + E)` time; `O(V)` indegrees and queue; complete order or failure on a cycle |
 | Dijkstra (linear selection) | Worst `O(V² + E)`; scans for the next minimum, with `O(V)` auxiliary memory; no heap in this version |
 | [Heap Dijkstra](../../../data_structures/theory/graphs/dijkstra_heap/Heap%20Dijkstra.md) | `O(V + E log(E + 1))` time; `O(V + E)` arrays and lazy heap entries |
-| [Kruskal](../../../data_structures/theory/graphs/kruskal/Kruskal.md) | `O(V + E log(E + 1) + E ?(V + 1))` time; `O(V + E)` copied edges and Union-Find storage |
+| [Kruskal](../../../data_structures/theory/graphs/kruskal/Kruskal.md) | `O(V + E log(E + 1) + E α(V + 1))` time; `O(V + E)` copied edges and Union-Find storage |
 | [Prim](../../../data_structures/theory/graphs/prim/Prim.md) | `O(V + E log(E + 1))` time; `O(V + E)` adjacency storage, marks and lazy heap entries |
 
-Here `?` denotes the inverse Ackermann function in the Union-Find bounds.
+Here `α` denotes the inverse Ackermann function in the Union-Find bounds.
 
 Native maps used in problems and LRU are distinct from the educational fixed-bucket hash map. Its load factor `N/B` can grow without bound. No uniform collision distribution is promised by its deterministic hash function. Hashing a long key and comparing long strings are not constant-time operations.
 
