@@ -34,6 +34,7 @@ Each topic links to its explanation, which includes the project implementations.
 | [Permutations](concepts/algorithms/theory/permutations/Permutations.md) | `O(n * n!)` worst-case, including output |
 | [Combinations](concepts/algorithms/theory/combinations/Combinations.md) | `O(k * C(n, k))` for `0 < k <= n`, including output |
 | [N queens](concepts/algorithms/theory/n_queens/N%20Queens.md) | `O(n * n! + S * n)` upper bound for `S` solutions |
+| [Variable Sliding Window](concepts/algorithms/theory/variable_window/Variable%20Sliding%20Window.md) | O(n) time; O(1) auxiliary space |
 
 ### Data structures
 

@@ -1,0 +1,46 @@
+package solution
+
+import (
+	"encoding/json"
+	"slices"
+	"testing"
+)
+
+func TestBehavior(t *testing.T) {
+	var cases []struct {
+		Values []int
+		Param  int
+		Want   int
+	}
+	if err := json.Unmarshal([]byte(`[{"Values":[],"Param":1,"Want":0},{"Values":[2,3,1,2,4,3],"Param":7,"Want":2},{"Values":[1,1,1],"Param":9,"Want":0},{"Values":[10],"Param":10,"Want":1},{"Values":[1,2,3,4],"Param":6,"Want":2}]`), &cases); err != nil {
+		t.Fatal(err)
+	}
+	for _, tc := range cases {
+		original := slices.Clone(tc.Values)
+		got := MinSubarrayLen(tc.Values, tc.Param)
+		if got != tc.Want {
+			t.Fatalf("got %v want %v", got, tc.Want)
+		}
+		if !slices.Equal(tc.Values, original) {
+			t.Fatal("input mutated")
+		}
+	}
+	func() {
+		defer func() {
+			if recover() == nil {
+				t.Fatal("expected panic")
+			}
+		}()
+		MinSubarrayLen([]int{0}, 1)
+	}()
+}
+
+func TestOverflow(t *testing.T) {
+	maximum := int(^uint(0) >> 1)
+	defer func() {
+		if recover() == nil {
+			t.Fatal("expected overflow panic")
+		}
+	}()
+	MinSubarrayLen([]int{maximum - 1, 2}, maximum)
+}
