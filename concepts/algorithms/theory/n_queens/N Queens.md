@@ -8,6 +8,14 @@ Place one queen per row, starting at row zero. For each column, check whether an
 
 ![A valid four-queen placement with one queen in each row and column](images/n_queens.png)
 
+That board shows the goal. The search has to reach it by testing partial placements. Starting with a queen at `(0, 0)` leads to failed branches; starting at `(0, 1)` reaches the first solution. Read each pair as `(row, column)` here.
+
+![Partial boards showing attacked squares, failed choices, undo operations and the first complete solution](images/queens-search.png)
+
+With `path = [0, 2]`, row 2 has no safe column. Remove the row-1 queen and clear the flags it set before trying column 3. That branch reaches `[0, 3, 1]`, but row 3 has no safe square either. Return through those calls until row 0 can try column 1. The red squares show why the next row cannot continue, rather than just labeling the branch a failure.
+
+After saving a solution, undo its last placement too. The algorithm must restore the caller's state to find the other solutions. A stored copy of `path` keeps the completed result intact.
+
 The row order prevents row conflicts. Squares on one diagonal share `row + column`; squares on the other share `row - column`. Add `n` to the latter so you can use a nonnegative array index. These flags avoid comparing a candidate with each earlier queen.
 
 ```c
