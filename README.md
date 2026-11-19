@@ -90,20 +90,20 @@ LeetCode folders use `<number>_<name>`; generic exercises keep their names.
 
 | Problem | Main technique |
 | --- | --- |
-| [70. Climbing Stairs](problems/70_climbing_stairs/SOLUTION.md) | Memoization / tabulation |
-| [322. Coin Change](problems/322_coin_change/SOLUTION.md) | Memoization / tabulation |
-| [0/1 Knapsack](problems/knapsack/SOLUTION.md) | Memoization / tabulation |
-| [1143. Longest Common Subsequence](problems/1143_longest_common_subsequence/SOLUTION.md) | Memoization / tabulation |
-| [217. Contains Duplicate](problems/217_contains_duplicate/SOLUTION.md) | Hash set |
-| [49. Group Anagrams](problems/49_group_anagrams/SOLUTION.md) | Frequency counting / hash map |
-| [12. Integer to Roman](problems/12_int_to_roman/SOLUTION.md) | Greedy conversion |
-| [128. Longest Consecutive Sequence](problems/128_longest_consecutive_sequence/SOLUTION.md) | Hash set |
-| [1848. Minimum Distance to the Target Element](problems/1848_minimum_distance/SOLUTION.md) | Linear scan |
-| [35. Search Insert Position](problems/35_search_insert_position/SOLUTION.md) | Binary search |
-| [Two Crystal Balls](problems/two_crystal_balls/SOLUTION.md) | Square-root jump search |
 | [1. Two Sum](problems/1_two_sum/SOLUTION.md) | Hash map |
-| [242. Valid Anagram](problems/242_valid_anagram/SOLUTION.md) | Frequency counting / hash map |
+| [12. Integer to Roman](problems/12_int_to_roman/SOLUTION.md) | Greedy conversion |
 | [20. Valid Parentheses](problems/20_valid_parenthesis/SOLUTION.md) | Stack |
+| [35. Search Insert Position](problems/35_search_insert_position/SOLUTION.md) | Binary search |
+| [49. Group Anagrams](problems/49_group_anagrams/SOLUTION.md) | Frequency counting / hash map |
+| [70. Climbing Stairs](problems/70_climbing_stairs/SOLUTION.md) | Memoization / tabulation |
+| [128. Longest Consecutive Sequence](problems/128_longest_consecutive_sequence/SOLUTION.md) | Hash set |
+| [217. Contains Duplicate](problems/217_contains_duplicate/SOLUTION.md) | Hash set |
+| [242. Valid Anagram](problems/242_valid_anagram/SOLUTION.md) | Frequency counting / hash map |
+| [322. Coin Change](problems/322_coin_change/SOLUTION.md) | Memoization / tabulation |
+| [1143. Longest Common Subsequence](problems/1143_longest_common_subsequence/SOLUTION.md) | Memoization / tabulation |
+| [1848. Minimum Distance to the Target Element](problems/1848_minimum_distance/SOLUTION.md) | Linear scan |
+| [0/1 Knapsack](problems/knapsack/SOLUTION.md) | Memoization / tabulation |
+| [Two Crystal Balls](problems/two_crystal_balls/SOLUTION.md) | Square-root jump search |
 
 ## Repository structure
 
