@@ -56,7 +56,7 @@ In a linked stack, pushing, popping and peeking change or inspect a fixed number
 
 An array-based stack uses the last occupied slot as its top. With a dynamic array, `push` costs `O(1)` amortized because an insertion can require a copy to grow.
 
-Use a stack to save states that you need to revisit in reverse order. To validate `([])`, push `(` and then `[`. On reading `]`, check and pop `[`. On reading `)`, check and pop `(`. An empty stack at the end means the openings have matching closings, provided no mismatched pair occurred. The [Valid Parentheses](../../../../problems/valid_parenthesis/QUESTION.md) problem demonstrates this use. Recursive function calls also require saving unfinished calls and their return points.
+Use a stack to save states that you need to revisit in reverse order. To validate `([])`, push `(` and then `[`. On reading `]`, check and pop `[`. On reading `)`, check and pop `(`. An empty stack at the end means the openings have matching closings, provided no mismatched pair occurred. The [Valid Parentheses](../../../../problems/20_valid_parenthesis/QUESTION.md) problem demonstrates this use. Recursive function calls also require saving unfinished calls and their return points.
 
 Empty-stack results differ from the error used in the pseudocode: Python returns `None`, TypeScript returns `undefined`, and the current Go implementation returns `(0, nil)`. That Go result does not distinguish an empty stack from a stored zero; check the stack's state before the operation.
 

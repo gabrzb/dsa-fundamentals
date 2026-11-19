@@ -10,7 +10,7 @@ Start by defining exactly what one state returns. Give the base cases, list the 
 
 **Tabulation** starts with base answers and visits states in an order where every dependency has already been computed. It applies the same recurrence using loops. A smaller numeric index is not always a prerequisite: suffix-based states depend on larger indices, so their loops run backward.
 
-For [climbing stairs](../../../../problems/climbing_stairs/SOLUTION.md), both methods use `ways(r) = ways(r - 1) + ways(r - 2)`, with `ways(0) = ways(1) = 1`. Requesting height five recursively eventually saves counts 2, 3, 5 and 8 while returning through waiting calls. Tabulation initializes the bases and builds `[1, 1, 2, 3, 5, 8]` from left to right. The problem note shows the call returns, cache hits and table entries side by side.
+For [climbing stairs](../../../../problems/70_climbing_stairs/SOLUTION.md), both methods use `ways(r) = ways(r - 1) + ways(r - 2)`, with `ways(0) = ways(1) = 1`. Requesting height five recursively eventually saves counts 2, 3, 5 and 8 while returning through waiting calls. Tabulation initializes the bases and builds `[1, 1, 2, 3, 5, 8]` from left to right. The problem note shows the call returns, cache hits and table entries side by side.
 
 ```c
 solve(state) {
@@ -32,11 +32,11 @@ Memoization terminates when transitions move toward a base case and cached compl
 
 Count the number of possible states, multiply by work per evaluated state, then include table initialization, input conversion and output. Do not infer constant memory from a short recurrence. A dense cache may allocate all possible entries even if memoization requests only a few. Recursive call depth is a separate cost from the number of stored answers; tabulation removes those recursive frames but still retains its table.
 
-The introductory project example uses a fresh array cache per call and an explicit uncomputed marker. Its memoized and tabulated implementations are together in [Go](../../../../problems/climbing_stairs/golang/solution.go), [Python](../../../../problems/climbing_stairs/python/solution.py) and [TypeScript](../../../../problems/climbing_stairs/typescript/index.ts). See [recurrences](../algorithm_analysis/Recurrences.md) and [call-stack space](../algorithm_analysis/Call%20Stack%20Space.md) for the difference between recursive work and simultaneous storage.
+The introductory project example uses a fresh array cache per call and an explicit uncomputed marker. Its memoized and tabulated implementations are together in [Go](../../../../problems/70_climbing_stairs/golang/solution.go), [Python](../../../../problems/70_climbing_stairs/python/solution.py) and [TypeScript](../../../../problems/70_climbing_stairs/typescript/index.ts). See [recurrences](../algorithm_analysis/Recurrences.md) and [call-stack space](../algorithm_analysis/Call%20Stack%20Space.md) for the difference between recursive work and simultaneous storage.
 
 | Project example | Meaning of a state | Choice and dependency order |
 | --- | --- | --- |
-| [Climbing Stairs](../../../../problems/climbing_stairs/SOLUTION.md) | Count ways for remaining height `r` | Sum one-step and two-step branches; tabulate increasing heights |
-| [Coin Change](../../../../problems/coin_change/SOLUTION.md) | Fewest reusable coins for remainder `r` | Minimize reachable predecessor plus one; tabulate increasing amounts |
+| [Climbing Stairs](../../../../problems/70_climbing_stairs/SOLUTION.md) | Count ways for remaining height `r` | Sum one-step and two-step branches; tabulate increasing heights |
+| [Coin Change](../../../../problems/322_coin_change/SOLUTION.md) | Fewest reusable coins for remainder `r` | Minimize reachable predecessor plus one; tabulate increasing amounts |
 | [0/1 Knapsack](../../../../problems/knapsack/SOLUTION.md) | Maximum value from item index `i` with capacity `c` | Maximize skip versus take, advancing the item in both; tabulate decreasing item indices |
-| [Longest Common Subsequence](../../../../problems/longest_common_subsequence/SOLUTION.md) | Longest common subsequence of suffixes at `i` and `j` | Match both characters or maximize the two skips; tabulate decreasing string indices |
+| [Longest Common Subsequence](../../../../problems/1143_longest_common_subsequence/SOLUTION.md) | Longest common subsequence of suffixes at `i` and `j` | Match both characters or maximize the two skips; tabulate decreasing string indices |
