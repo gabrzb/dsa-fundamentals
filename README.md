@@ -98,6 +98,7 @@ LeetCode folders use `<number>_<name>`; generic exercises keep their names.
 | [70. Climbing Stairs](problems/70_climbing_stairs/SOLUTION.md) | Memoization / tabulation |
 | [128. Longest Consecutive Sequence](problems/128_longest_consecutive_sequence/SOLUTION.md) | Hash set |
 | [217. Contains Duplicate](problems/217_contains_duplicate/SOLUTION.md) | Hash set |
+| [238. Product of Array Except Self](problems/238_product_of_array_except_self/SOLUTION.md) | Prefix and suffix products |
 | [242. Valid Anagram](problems/242_valid_anagram/SOLUTION.md) | Frequency counting / hash map |
 | [322. Coin Change](problems/322_coin_change/SOLUTION.md) | Memoization / tabulation |
 | [1143. Longest Common Subsequence](problems/1143_longest_common_subsequence/SOLUTION.md) | Memoization / tabulation |
