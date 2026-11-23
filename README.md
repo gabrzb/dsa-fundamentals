@@ -96,6 +96,7 @@ LeetCode folders use `<number>_<name>`; generic exercises keep their names.
 | [35. Search Insert Position](problems/35_search_insert_position/SOLUTION.md) | Binary search |
 | [49. Group Anagrams](problems/49_group_anagrams/SOLUTION.md) | Frequency counting / hash map |
 | [70. Climbing Stairs](problems/70_climbing_stairs/SOLUTION.md) | Memoization / tabulation |
+| [125. Valid Palindrome](problems/125_valid_palindrome/SOLUTION.md) | String filtering / two pointers |
 | [128. Longest Consecutive Sequence](problems/128_longest_consecutive_sequence/SOLUTION.md) | Hash set |
 | [217. Contains Duplicate](problems/217_contains_duplicate/SOLUTION.md) | Hash set |
 | [238. Product of Array Except Self](problems/238_product_of_array_except_self/SOLUTION.md) | Prefix and suffix products |
