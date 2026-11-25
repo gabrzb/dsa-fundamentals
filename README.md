@@ -111,23 +111,43 @@ LeetCode folders use `<number>_<name>`; generic exercises keep their names.
 ## Repository structure
 
 ```text
-concepts/
-  algorithms/
-    implementation/<topic>/{golang,python,typescript}/
-    theory/<topic>/
-  data_structures/
-    implementation/<structure>/{golang,python,typescript}/
-    theory/<structure>/
-problems/<leetcode-number>_<problem>/
-  QUESTION.md
-  golang/
-  python/
-  typescript/
-scripts/
-  test_python.py
-Taskfile.yml
-go.mod
-package.json
+.
+├── concepts/
+│   ├── algorithms/
+│   │   ├── implementation/
+│   │   │   └── <topic>/
+│   │   │       ├── golang/
+│   │   │       ├── python/
+│   │   │       └── typescript/
+│   │   └── theory/
+│   │       └── <topic>/
+│   └── data_structures/
+│       ├── implementation/
+│       │   └── <structure>/
+│       │       ├── golang/
+│       │       ├── python/
+│       │       └── typescript/
+│       └── theory/
+│           └── <structure>/
+├── problems/
+│   ├── 1_two_sum/
+│   │   ├── QUESTION.md
+│   │   ├── SOLUTION.md
+│   │   ├── golang/
+│   │   ├── images/
+│   │   ├── python/
+│   │   └── typescript/
+│   └── …
+├── scripts/
+│   └── test_python.py
+├── .gitignore
+├── LICENSE
+├── README.md
+├── Taskfile.yml
+├── go.mod
+├── package.json
+├── pnpm-lock.yaml
+└── tsconfig.json
 ```
 
 Code stays next to its topic and language. Go implementations use `solution.go`,
