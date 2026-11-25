@@ -4,6 +4,15 @@ A collection of data structures, algorithms, and coding problems implemented in 
 
 ## Contents
 
+- [Algorithm analysis](#algorithm-analysis)
+- [Algorithms](#algorithms)
+- [Data structures](#data-structures)
+- [Dynamic programming](#dynamic-programming)
+- [Problems](#problems)
+- [Repository structure](#repository-structure)
+- [Requirements](#requirements)
+- [Development](#development)
+
 Each topic links to its explanation, which includes the project implementations.
 
 ### Algorithm analysis
@@ -34,16 +43,16 @@ Each topic links to its explanation, which includes the project implementations.
 | [Permutations](concepts/algorithms/theory/permutations/Permutations.md) | `O(n * n!)` worst-case, including output |
 | [Combinations](concepts/algorithms/theory/combinations/Combinations.md) | `O(k * C(n, k))` for `0 < k <= n`, including output |
 | [N queens](concepts/algorithms/theory/n_queens/N%20Queens.md) | `O(n * n! + S * n)` upper bound for `S` solutions |
-| [Variable Sliding Window](concepts/algorithms/theory/variable_window/Variable%20Sliding%20Window.md) | O(n) time; O(1) auxiliary space |
-| [Fast and Slow Pointers](concepts/algorithms/theory/fast_slow_pointers/Fast%20and%20Slow%20Pointers.md) | O(n) time; O(1) auxiliary space |
-| [Monotonic Stack](concepts/algorithms/theory/monotonic_stack/Monotonic%20Stack.md) | O(n) time; O(n) auxiliary space |
-| [Monotonic Queue](concepts/algorithms/theory/monotonic_queue/Monotonic%20Queue.md) | O(n) time; O(k) auxiliary space |
-| [Merging Intervals](concepts/algorithms/theory/intervals/Merging%20Intervals.md) | O(n log n) time; O(n) auxiliary space |
-| [Binary Search on the Answer](concepts/algorithms/theory/binary_search_answer/Binary%20Search%20on%20the%20Answer.md) | O(n log S) time; O(1) auxiliary space |
-| [KMP Pattern Search](concepts/algorithms/theory/kmp/KMP%20Pattern%20Search.md) | O(n + m + r) time; prefix table O(m) |
+| [Variable Sliding Window](concepts/algorithms/theory/variable_window/Variable%20Sliding%20Window.md) | `O(n)` time; `O(1)` auxiliary space |
+| [Fast and Slow Pointers](concepts/algorithms/theory/fast_slow_pointers/Fast%20and%20Slow%20Pointers.md) | `O(n)` time; `O(1)` auxiliary space |
+| [Monotonic Stack](concepts/algorithms/theory/monotonic_stack/Monotonic%20Stack.md) | `O(n)` time; `O(n)` auxiliary space |
+| [Monotonic Queue](concepts/algorithms/theory/monotonic_queue/Monotonic%20Queue.md) | `O(n)` time; `O(k)` auxiliary space |
+| [Merging Intervals](concepts/algorithms/theory/intervals/Merging%20Intervals.md) | `O(n log n)` time; `O(n)` auxiliary space |
+| [Binary Search on the Answer](concepts/algorithms/theory/binary_search_answer/Binary%20Search%20on%20the%20Answer.md) | `O(n log S)` time; `O(1)` auxiliary space |
+| [KMP Pattern Search](concepts/algorithms/theory/kmp/KMP%20Pattern%20Search.md) | `O(n + m + r)` time; prefix table `O(m)` |
 | [Bit Operations](concepts/algorithms/theory/bit_operations/Bit%20Operations.md) | Constant bounds for unsigned 32-bit words |
-| [Greatest Common Divisor](concepts/algorithms/theory/gcd/Greatest%20Common%20Divisor.md) | O(log(min(a,b)+1) + 1) remainder steps |
-| [Sieve of Eratosthenes](concepts/algorithms/theory/prime_sieve/Sieve%20of%20Eratosthenes.md) | O(n log log n) time; O(n) auxiliary space |
+| [Greatest Common Divisor](concepts/algorithms/theory/gcd/Greatest%20Common%20Divisor.md) | `O(log(min(a,b)+1) + 1)` remainder steps |
+| [Sieve of Eratosthenes](concepts/algorithms/theory/prime_sieve/Sieve%20of%20Eratosthenes.md) | `O(n log log n)` time; `O(n)` auxiliary space |
 
 ### Data structures
 
@@ -77,8 +86,8 @@ Each topic links to its explanation, which includes the project implementations.
 | [Binary tree depth-first search](concepts/data_structures/theory/tree/Binary%20Tree.md) | BST search: `O(h)`; worst-case `O(n)` |
 | [Binary tree breadth-first search](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(n)` with FIFO queue; Python/TypeScript front removal can reach `O(n^2)` |
 | [Binary tree depth-first traversal](concepts/data_structures/theory/tree/Binary%20Tree.md) | `O(n)` time; `O(h)` recursion space |
-| [Deque](concepts/data_structures/theory/deque/Deque.md) | Amortized O(1) insertion; O(1) removal and peek |
-| [Trie](concepts/data_structures/theory/trie/Trie.md) | O(L) word operations; storage proportional to distinct prefixes |
+| [Deque](concepts/data_structures/theory/deque/Deque.md) | Amortized `O(1)` insertion; `O(1)` removal and peek |
+| [Trie](concepts/data_structures/theory/trie/Trie.md) | `O(L)` word operations; storage proportional to distinct prefixes |
 
 ### Dynamic programming
 
